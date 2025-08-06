@@ -28,7 +28,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.6'
+          flutter-version: 'latest'
           channel: stable
 
       - name: Install dependencies
@@ -54,7 +54,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.6'
+          flutter-version: 'latest'
           channel: stable
 
       - name: Install dependencies
@@ -72,7 +72,7 @@ jobs:
         run: |
           version_name=$(yq e .version pubspec.yaml | cut -d "+" -f 1)
           for file in app.ipa; do
-            new_file_name="build/Zephyr-${version_name}.ipa"
+            new_file_name="build/Zephyr-${version_name}-NoSign.ipa"
             mv "$file" "$new_file_name"
           done
 

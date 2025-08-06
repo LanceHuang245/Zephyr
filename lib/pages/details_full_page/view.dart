@@ -23,7 +23,10 @@ class DetailedDataFullPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).detailedData),
+        title: Align(
+          alignment: Alignment.topLeft,
+          child: Text(AppLocalizations.of(context).detailedData),
+        ),
         backgroundColor: colorScheme.surface,
         elevation: 0,
       ),
