@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zephyr/core/services/native_weather_service.dart';
 import 'notifiers.dart';
@@ -8,6 +9,10 @@ import 'languages.dart';
 Future<void> initAppSettings() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
+
+  // 加载环境变量
+  await dotenv.load(fileName: ".env");
+
   themeModeNotifier.value = ThemeMode.values[prefs.getInt('theme_mode') ?? 0];
   tempUnitNotifier.value = prefs.getString('temp_unit') ?? 'C';
   dynamicColorEnabledNotifier.value =

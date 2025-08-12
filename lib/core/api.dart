@@ -21,7 +21,7 @@ class Api {
         appLanguages.firstWhere((l) => l.code == localeCodeNotifier.value).code;
     qweatherLang = localeToApiLang[localeKey] ?? 'en';
     final url = Uri.parse(
-      '${AppConstants.alertUrl}?location=$lon,$lat&lang=$qweatherLang',
+      '$alertUrl?location=$lon,$lat&lang=$qweatherLang',
     );
     try {
       final response = await http.get(url);
@@ -51,8 +51,8 @@ class Api {
     } else if (prefs.getString('weather_source') == 'OpenMeteo') {
       ws = 'osm';
     }
-    final url = Uri.parse(
-        '${AppConstants.searchUrl}?query=$query&accept-language=$lang&source=$ws');
+    final url =
+        Uri.parse('$searchUrl?query=$query&accept-language=$lang&source=$ws');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final List data = json.decode(response.body);

@@ -3,7 +3,7 @@ description: zephyr by claret
 
 publish_to: 'none' 
 
-version: 2.1.2+1
+version: 2.2.0+1
 
 environment:
   sdk: '>=3.0.3 <4.0.0'
@@ -26,6 +26,7 @@ dependencies:
   fl_chart: 
   percent_indicator: 
   flutter_colorpicker: 
+  flutter_dotenv: 
   
 dev_dependencies:
   flutter_test:
@@ -39,3 +40,4 @@ flutter:
 
   assets:
     - assets/images/zephyr.png
+    - .env

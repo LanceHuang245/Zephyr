@@ -1,6 +1,8 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class AppConstants {
   static const String appName = 'Zephyr';
-  static const String appVersion = 'v2.1.2';
+  static const String appVersion = 'v2.2.0';
   static const String appDescription =
       'Simple and fast real-time weather forecast software.';
   static const String appUrl = 'https://github.com/LanceHuang245/Zephyr';
@@ -14,13 +16,13 @@ class AppConstants {
   static const String omForecastUrl = 'https://api.open-meteo.com/v1/forecast';
   static const String omAirQualityUrl =
       'https://air-quality-api.open-meteo.com/v1/air-quality';
-
-  // API url (Lance免费特供，有一定用量限制，请勿滥用或攻击该服务器)
-  static const String weatherUrl = 'http://192.168.6.120:3899/api/v1';
-
-  // Alerts API Url 用于获取全球天气预警
-  static const String alertUrl = '$weatherUrl/weather/alert';
-
-  // City Search API Url 用于城市搜索
-  static const String searchUrl = '$weatherUrl/city/search';
 }
+
+// API url (Lance免费特供，有一定用量限制，请勿滥用或攻击该服务器)
+String weatherUrl = dotenv.env['WEATHER_URL'] ?? '';
+
+// Alerts API Url 用于获取全球天气预警
+String alertUrl = '$weatherUrl/weather/alert';
+
+// City Search API Url 用于城市搜索
+String searchUrl = '$weatherUrl/city/search';
