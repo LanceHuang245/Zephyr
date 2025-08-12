@@ -7,22 +7,20 @@ class AppConstants {
 
   static const List<String> weatherSources = [
     'OpenMeteo',
-    'QWeather',
-    // 'AccuWeather'
+    // 'QWeather',
   ];
-
-  // OpenStreetMap API Url 用于搜索城市
-  static const String osmUrl = 'https://nominatim.openstreetmap.org/search';
 
   // OpenMeteo API Url 用于获取天气数据
   static const String omForecastUrl = 'https://api.open-meteo.com/v1/forecast';
   static const String omAirQualityUrl =
       'https://air-quality-api.open-meteo.com/v1/air-quality';
 
-  // Alerts API Url 用于获取全球天气预警 (Lance免费特供，有一定用量限制，请勿滥用或攻击该服务器)
-  // 数据由QWeather提供
-  static const String weatherAlertUrl =
-      'http://43.136.78.208:443/api/v1/weather/alert';
+  // API url (Lance免费特供，有一定用量限制，请勿滥用或攻击该服务器)
+  static const String weatherUrl = 'http://192.168.6.120:3899/api/v1';
 
-  // TODO: 未来将通过以参数的方式传入经纬度、天气源、语言等信息，仅设置一个API URL
+  // Alerts API Url 用于获取全球天气预警
+  static const String alertUrl = '$weatherUrl/weather/alert';
+
+  // City Search API Url 用于城市搜索
+  static const String searchUrl = '$weatherUrl/city/search';
 }

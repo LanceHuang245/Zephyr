@@ -36,8 +36,6 @@ class _ZephyrAppState extends State<ZephyrApp> {
     final customColorValue =
         prefs.getInt('custom_color') ?? Colors.blue.toARGB32();
     customColorNotifier.value = Color(customColorValue);
-    final localeCode = prefs.getString('locale_code') ?? 'en';
-    localeCodeNotifier.value = localeCode;
   }
 
   @override

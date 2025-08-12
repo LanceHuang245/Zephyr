@@ -50,8 +50,7 @@ class _WeatherSourceSelectorWidgetState
                       children: [
                         Icon(Icons.downloading, color: colorScheme.primary),
                         const SizedBox(width: 8),
-                        Text("${l10n.weatherSource} Unavailable now",
-                            style: textTheme.titleMedium),
+                        Text(l10n.weatherSource, style: textTheme.titleMedium),
                         const Spacer(),
                         Icon(_expanded ? Icons.expand_less : Icons.expand_more),
                       ],

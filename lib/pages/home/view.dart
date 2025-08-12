@@ -15,7 +15,7 @@ import '../../core/utils/notification_utils.dart';
 import '../../core/services/widget_service.dart';
 import 'widgets/weather_bg.dart';
 import '../../core/models/weather_warning.dart';
-import '../../core/api/alerts_api.dart';
+import '../../core/api.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -135,8 +135,7 @@ class _HomePageState extends State<HomePage> {
         latitude: city.lat, longitude: city.lon, units: unit);
     List<WeatherWarning> warnings = [];
     try {
-      warnings =
-          await WeatherAlertApi.fetchWarning(lat: city.lat, lon: city.lon);
+      warnings = await Api.fetchWarning(lat: city.lat, lon: city.lon);
     } catch (_) {}
     if (data != null) {
       await cacheWeather(city, data, warnings);

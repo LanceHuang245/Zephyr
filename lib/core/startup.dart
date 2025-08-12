@@ -33,6 +33,15 @@ Future<void> initAppSettings() async {
     );
     localeCodeNotifier.value = matched.code;
   }
+
+  if (prefs.containsKey('weather_source')) {
+    weatherSourceNotifier.value =
+        prefs.getString('weather_source') ?? 'OpenMeteo';
+  } else {
+    weatherSourceNotifier.value = 'OpenMeteo';
+    prefs.setString('weather_source', 'OpenMeteo');
+    kDebugMode ? debugPrint('默认天气源设置为OpenMeteo') : null;
+  }
   // 初始化并启动原生天气服务
   await NativeWeatherService.initialize();
 }

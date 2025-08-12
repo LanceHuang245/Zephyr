@@ -68,7 +68,7 @@ class SearchResultsWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            _extractCityName(city.name),
+                            city.name,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: textTheme.titleMedium
@@ -76,7 +76,7 @@ class SearchResultsWidget extends StatelessWidget {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            _extractRegionName(city.name),
+                            "${city.admin ?? ''}, ${city.country}",
                             style: textTheme.bodySmall
                                 ?.copyWith(color: colorScheme.onSurfaceVariant),
                           ),
@@ -91,30 +91,5 @@ class SearchResultsWidget extends StatelessWidget {
         },
       ),
     );
-  }
-
-  // Chinese Available
-  String _extractCityName(String displayName) {
-    // 只取市或县级名称
-    final parts = displayName.split(',').map((e) => e.trim()).toList();
-    for (final p in parts) {
-      if (p.endsWith('市') || p.endsWith('县') || p.endsWith('区')) {
-        return p;
-      }
-    }
-    // 若无市县区，取第一个
-    return parts.isNotEmpty ? parts[0] : displayName;
-  }
-
-  String _extractRegionName(String displayName) {
-    // 提取省/国家级信息
-    final parts = displayName.split(',').map((e) => e.trim()).toList();
-    if (parts.length >= 3) {
-      // 取倒数第二和最后一个（如"北京市, 北京市, 中国"）
-      return '${parts[parts.length - 2]} · ${parts.last}';
-    } else if (parts.length == 2) {
-      return parts.last;
-    }
-    return '';
   }
 }

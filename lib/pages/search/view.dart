@@ -1,8 +1,8 @@
+import 'package:zephyr/core/api.dart';
 import 'package:zephyr/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '../../core/models/city.dart';
-import '../../core/api/open_street_map_api.dart';
 import 'widgets/search_bar_widget.dart';
 import 'widgets/search_error_widget.dart';
 import 'widgets/search_results_widget.dart';
@@ -16,6 +16,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   final TextEditingController _controller = TextEditingController();
+
   List<City> _results = [];
   bool _loading = false;
   String _error = '';
@@ -57,7 +58,7 @@ class _SearchPageState extends State<SearchPage> {
       _error = '';
     });
     try {
-      final results = await CitySearchApi.searchCity(query);
+      final results = await Api.searchCity(query);
       if (!mounted) return;
       setState(() {
         _results = results;
@@ -77,7 +78,7 @@ class _SearchPageState extends State<SearchPage> {
 
   void _onCityTap(City city) async {
     final parts = city.name.split(',').map((e) => e.trim()).toList();
-    String cityName = _extractCityName(city.name);
+    String cityName = city.name;
     String? admin;
     String country = '';
     if (parts.length >= 3) {
@@ -98,18 +99,6 @@ class _SearchPageState extends State<SearchPage> {
       lon: city.lon,
     );
     Navigator.pop(context, cityObj);
-  }
-
-  String _extractCityName(String displayName) {
-    // 只取市或县级名称
-    final parts = displayName.split(',').map((e) => e.trim()).toList();
-    for (final p in parts) {
-      if (p.endsWith('市') || p.endsWith('县') || p.endsWith('区')) {
-        return p;
-      }
-    }
-    // 若无市县区，取第一个
-    return parts.isNotEmpty ? parts[0] : displayName;
   }
 
   @override

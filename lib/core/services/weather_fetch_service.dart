@@ -4,7 +4,7 @@ import '../models/city.dart';
 import '../api/open_meteo_api.dart';
 import 'weather_cache.dart';
 import 'package:flutter/foundation.dart';
-import '../api/alerts_api.dart';
+import '../api.dart';
 import 'package:zephyr/core/notifiers.dart';
 
 class WeatherFetchService {
@@ -56,7 +56,7 @@ class WeatherFetchService {
       );
 
       // 拉取天气预警
-      final warnings = await WeatherAlertApi.fetchWarning(
+      final warnings = await Api.fetchWarning(
         lat: mainCity.lat,
         lon: mainCity.lon,
       );
