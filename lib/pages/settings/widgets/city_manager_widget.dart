@@ -217,11 +217,7 @@ class CityManagerWidget extends StatelessWidget {
                                                         const SizedBox(
                                                             height: 4),
                                                         Text(
-                                                          city.admin != null &&
-                                                                  city.admin!
-                                                                      .isNotEmpty
-                                                              ? '${city.admin} · ${city.country}'
-                                                              : city.country,
+                                                          '${city.admin}, ${city.country}',
                                                           style: textTheme
                                                               .bodySmall
                                                               ?.copyWith(

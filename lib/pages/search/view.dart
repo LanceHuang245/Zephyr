@@ -77,20 +77,9 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _onCityTap(City city) async {
-    final parts = city.name.split(',').map((e) => e.trim()).toList();
     String cityName = city.name;
-    String? admin;
-    String country = '';
-    if (parts.length >= 3) {
-      admin = parts[parts.length - 2];
-      country = parts.last;
-    } else if (parts.length == 2) {
-      admin = null;
-      country = parts.last;
-    } else {
-      admin = null;
-      country = '';
-    }
+    String? admin = city.admin!;
+    String country = city.country;
     final cityObj = City(
       name: cityName,
       admin: admin,
