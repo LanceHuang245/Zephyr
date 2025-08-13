@@ -5,7 +5,7 @@ import '../../../core/models/weather.dart';
 import '../../../core/models/weather_warning.dart';
 import 'weather_view.dart';
 
-class HomePageContentWidget extends StatelessWidget {
+class HomePageContentWidget extends StatefulWidget {
   final City city;
   final WeatherData? weather;
   final bool loading;
@@ -22,10 +22,20 @@ class HomePageContentWidget extends StatelessWidget {
   });
 
   @override
+  State<HomePageContentWidget> createState() => _HomePageContentWidgetState();
+}
+
+class _HomePageContentWidgetState extends State<HomePageContentWidget>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
-    if (loading) {
+    super.build(context);
+    if (widget.loading) {
       return const Center(child: CircularProgressIndicator());
-    } else if (weather == null) {
+    } else if (widget.weather == null) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +44,7 @@ class HomePageContentWidget extends StatelessWidget {
               AppLocalizations.of(context).weatherDataError,
             ),
             FilledButton(
-              onPressed: onRefresh,
+              onPressed: widget.onRefresh,
               child: Text(AppLocalizations.of(context).retry),
             ),
           ],
@@ -45,16 +55,16 @@ class HomePageContentWidget extends StatelessWidget {
         children: [
           RefreshIndicator(
             displacement: kToolbarHeight + 75,
-            onRefresh: onRefresh,
+            onRefresh: widget.onRefresh,
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
                   SizedBox(height: kToolbarHeight + 55),
                   WeatherView(
-                    city: city,
-                    weather: weather!,
-                    warnings: warnings,
+                    city: widget.city,
+                    weather: widget.weather!,
+                    warnings: widget.warnings,
                   ),
                 ],
               ),

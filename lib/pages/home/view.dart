@@ -328,7 +328,7 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           AnimatedSwitcher(
-            duration: const Duration(milliseconds: 600),
+            duration: const Duration(milliseconds: 500),
             child: cities.isEmpty
                 ? const SizedBox.shrink()
                 : WeatherBg(
@@ -337,7 +337,7 @@ class _HomePageState extends State<HomePage> {
                   ),
           ),
           cities.isEmpty
-              ? EmptyCityTip(onLocate: _onLocate)
+              ? EmptyCityTip(onAdd: _onAddCity, onLocate: _onLocate)
               : PageView.builder(
                   controller: _pageController,
                   itemCount: cities.length,

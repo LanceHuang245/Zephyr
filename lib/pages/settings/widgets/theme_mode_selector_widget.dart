@@ -102,17 +102,14 @@ class ThemeModeSelectorWidget extends StatelessWidget {
                                 ButtonSegment(
                                   value: ThemeMode.system,
                                   label: Text(l10n.system),
-                                  icon: const Icon(Icons.phone_android),
                                 ),
                                 ButtonSegment(
                                   value: ThemeMode.light,
                                   label: Text(l10n.light),
-                                  icon: const Icon(Icons.light_mode),
                                 ),
                                 ButtonSegment(
                                   value: ThemeMode.dark,
                                   label: Text(l10n.dark),
-                                  icon: const Icon(Icons.dark_mode),
                                 ),
                               ],
                               selected: {themeMode ?? ThemeMode.system},
@@ -121,7 +118,7 @@ class ThemeModeSelectorWidget extends StatelessWidget {
                                   onThemeModeChanged(modes.first);
                                 }
                               },
-                              showSelectedIcon: false,
+                              showSelectedIcon: true,
                             ),
                           ),
                         ],
@@ -142,7 +139,7 @@ class ThemeModeSelectorWidget extends StatelessWidget {
                   ? null
                   : () => onDynamicColorChanged(!dynamicColorEnabled),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+                padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
                 child: Row(
                   children: [
                     Icon(Icons.palette_outlined,
@@ -177,7 +174,7 @@ class ThemeModeSelectorWidget extends StatelessWidget {
                   ? () => _showColorPicker(context)
                   : null,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+                padding: const EdgeInsets.fromLTRB(16, 6, 16, 16),
                 child: Row(
                   children: [
                     Icon(

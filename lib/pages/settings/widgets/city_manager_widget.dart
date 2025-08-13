@@ -78,7 +78,7 @@ class CityManagerWidget extends StatelessWidget {
             curve: Curves.linearToEaseOut,
             child: cityManagerExpanded
                 ? Padding(
-                    padding: const EdgeInsets.fromLTRB(12, 6, 12, 2),
+                    padding: const EdgeInsets.fromLTRB(12, 2, 12, 2),
                     child: Column(
                       children: [
                         const SizedBox(height: 8),

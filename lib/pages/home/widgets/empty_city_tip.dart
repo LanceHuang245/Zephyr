@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class EmptyCityTip extends StatelessWidget {
   final VoidCallback? onLocate;
-  const EmptyCityTip({super.key, this.onLocate});
+  final VoidCallback? onAdd;
+  const EmptyCityTip({super.key, this.onAdd, this.onLocate});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +22,7 @@ class EmptyCityTip extends StatelessWidget {
           FilledButton.icon(
             icon: const Icon(Icons.add_location_alt),
             label: Text(AppLocalizations.of(context).addCity),
-            onPressed: () {
-              Navigator.pushNamed(context, '/search');
-            },
+            onPressed: onAdd,
           ),
           const SizedBox(height: 12),
           FilledButton.icon(

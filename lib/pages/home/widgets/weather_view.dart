@@ -322,7 +322,7 @@ class _WeatherViewState extends State<WeatherView>
                   current: current,
                   daily: daily.first,
                   hourly: widget.weather.hourly),
-              const SizedBox(height: 24),
+              const SizedBox(height: 12),
             ],
           ),
         ),

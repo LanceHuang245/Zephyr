@@ -146,24 +146,23 @@ class AirQualityCard extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              LinearProgressIndicator(
-                value: ((value ?? 0) / max).clamp(0.0, 1.0),
-                color: color,
-                backgroundColor: colorScheme.outlineVariant,
-                minHeight: 10,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              const SizedBox(height: 2),
-              Text(
+          child: LinearPercentIndicator(
+            percent: ((value ?? 0) / max).clamp(0.0, 1.0),
+            progressColor: color,
+            backgroundColor: colorScheme.outlineVariant,
+            lineHeight: 10,
+            barRadius: const Radius.circular(5),
+            animation: true,
+            trailing: SizedBox(
+              width: 70,
+              child: Text(
                 value != null ? '${value.toStringAsFixed(1)} $unit' : '--',
+                textAlign: TextAlign.end,
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: colorScheme.onSurfaceVariant,
                     ),
               ),
-            ],
+            ),
           ),
         ),
       ],
