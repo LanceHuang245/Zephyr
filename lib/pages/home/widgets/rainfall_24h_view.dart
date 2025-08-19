@@ -47,10 +47,13 @@ class Rainfall24hView extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 8),
-        Material(
+        Card(
           elevation: 3,
           color: colorScheme.surface,
-          borderRadius: BorderRadius.circular(24),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
+          clipBehavior: Clip.antiAlias,
           child: Container(
             height: 220,
             padding: const EdgeInsets.symmetric(vertical: 15),
@@ -97,9 +100,10 @@ class Rainfall24hView extends StatelessWidget {
                                   FlSpot(i + 0.5, rainfall[i]),
                                 if (rainfall.isNotEmpty)
                                   FlSpot(rainfall.length.toDouble(),
-                                      rainfall.last / 1.5),
+                                      rainfall.last),
                               ],
                               isCurved: true,
+                              curveSmoothness: 0.6,
                               color: colorScheme.primary,
                               barWidth: 2,
                               dotData: FlDotData(show: false),

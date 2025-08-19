@@ -23,7 +23,7 @@ class DetailedDataWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
       child: OpenContainer(
-        transitionType: ContainerTransitionType.fadeThrough,
+        transitionType: ContainerTransitionType.fade,
         closedElevation: 3,
         closedShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
@@ -46,6 +46,8 @@ class DetailedDataWidget extends StatelessWidget {
   }
 
   Widget _buildCard(BuildContext context, ColorScheme colorScheme) {
+    final loc = AppLocalizations.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -89,7 +91,7 @@ class DetailedDataWidget extends StatelessWidget {
                     Expanded(
                       child: DataTile(
                         icon: Icons.sunny,
-                        label: AppLocalizations.of(context).uvIndex,
+                        label: loc.uvIndex,
                         value: daily?.uvIndexMax != null
                             ? daily!.uvIndexMax!.toStringAsFixed(1)
                             : '-',
@@ -105,7 +107,7 @@ class DetailedDataWidget extends StatelessWidget {
                     Expanded(
                       child: DataTile(
                         icon: Icons.waves,
-                        label: AppLocalizations.of(context).windSpeed,
+                        label: loc.windSpeed,
                         value: current?.windSpeed != null
                             ? current!.windSpeed.toStringAsFixed(1)
                             : '-',
@@ -117,7 +119,7 @@ class DetailedDataWidget extends StatelessWidget {
                     Expanded(
                       child: DataTile(
                         icon: Icons.remove_red_eye,
-                        label: AppLocalizations.of(context).visibility,
+                        label: loc.visibility,
                         value: (hourly != null &&
                                 hourly!.isNotEmpty &&
                                 hourly!.first.visibility != null)
@@ -132,7 +134,7 @@ class DetailedDataWidget extends StatelessWidget {
                     Expanded(
                       child: DataTile(
                         icon: Icons.insights,
-                        label: AppLocalizations.of(context).pressure,
+                        label: loc.pressure,
                         value: current?.surfacePressure != null
                             ? current!.surfacePressure!.toStringAsFixed(1)
                             : '-',

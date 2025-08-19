@@ -17,7 +17,7 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
       appLanguages.map((e) => e.name).toList();
 
   void _showLanguageDialog(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
+    final loc = AppLocalizations.of(context);
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
@@ -31,49 +31,52 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
                 appLanguages.indexWhere((l) => l.code == localeCode);
 
             return AlertDialog(
-              title: Text(l10n.language),
+              title: Text(loc.language),
               content: SingleChildScrollView(
-                child: Column(
-                  children: List.generate(supportedLocales.length, (index) {
-                    return Container(
-                      margin: const EdgeInsets.symmetric(vertical: 1),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: currentIndex == index
-                            ? colorScheme.primary.withValues(alpha: 0.1)
-                            : Colors.transparent,
-                      ),
-                      child: RadioListTile<int>(
-                        title: Text(
-                          supportedLanguageNames[index],
-                          style: currentIndex == index
-                              ? textTheme.bodyLarge?.copyWith(
-                                  color: colorScheme.primary,
-                                  fontWeight: FontWeight.bold,
-                                )
-                              : textTheme.bodyLarge,
-                        ),
-                        value: index,
-                        groupValue: currentIndex,
-                        activeColor: colorScheme.primary,
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 8),
-                        dense: true,
-                        shape: RoundedRectangleBorder(
+                child: RadioGroup<int>(
+                  groupValue: currentIndex,
+                  onChanged: (int? value) async {
+                    if (value != null && value != currentIndex) {
+                      localeCodeNotifier.value = appLanguages[value].code;
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setString(
+                          'locale_code', appLanguages[value].code);
+                      if (context.mounted) {
+                        Navigator.of(context).pop();
+                      }
+                    }
+                  },
+                  child: Column(
+                    children: List.generate(supportedLocales.length, (index) {
+                      return Container(
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
+                          color: currentIndex == index
+                              ? colorScheme.primary.withValues(alpha: 0.1)
+                              : Colors.transparent,
                         ),
-                        onChanged: (int? value) async {
-                          if (value != null && value != currentIndex) {
-                            localeCodeNotifier.value = appLanguages[value].code;
-                            final prefs = await SharedPreferences.getInstance();
-                            await prefs.setString(
-                                'locale_code', appLanguages[value].code);
-                            Navigator.of(context).pop();
-                          }
-                        },
-                      ),
-                    );
-                  }),
+                        child: RadioListTile<int>(
+                          title: Text(
+                            supportedLanguageNames[index],
+                            style: currentIndex == index
+                                ? textTheme.bodyLarge?.copyWith(
+                                    color: colorScheme.primary,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                : textTheme.bodyLarge,
+                          ),
+                          value: index,
+                          activeColor: colorScheme.primary,
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 8),
+                          dense: true,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
                 ),
               ),
               actions: [
@@ -95,7 +98,7 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
-    final l10n = AppLocalizations.of(context);
+    final loc = AppLocalizations.of(context);
 
     return ValueListenableBuilder<String>(
       valueListenable: localeCodeNotifier,
@@ -130,7 +133,7 @@ class _LanguageSelectorWidgetState extends State<LanguageSelectorWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(l10n.language, style: textTheme.titleMedium),
+                          Text(loc.language, style: textTheme.titleMedium),
                           const SizedBox(height: 4),
                           Text(
                             currentLanguageName,
