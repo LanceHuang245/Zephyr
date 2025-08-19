@@ -6,6 +6,10 @@ English | [简体中文](README_CN.md)
   </a>
 </p>
 
+> **Temporary Notice**
+>
+> The backend of Zephyr is under development and may randomly experience service unavailability. Please consider using it with caution.
+
 # Zephyr
 
 A simple and beautiful weather app built with Flutter, powered by the OpenMeteo API, Qweather API and the search functionality is provided by the OpenStreetMap API.
@@ -59,31 +63,6 @@ More screenshots in [Public Folder](https://github.com/LanceHuang245/Zephyr/tree
 
 ## Download
 [Click here to download the latest version of Zephyr](https://github.com/LanceHuang245/Zephyr/releases/latest)
-
-## Acknowledgments
-This project is built with the help of these amazing open-source projects and APIs:
-
-### Frameworks & SDKs
-- [Flutter](https://flutter.dev/) - UI framework
-- [Dart](https://dart.dev/) - Programming language
-
-### APIs
-- [OpenMeteo API](https://open-meteo.com/) - Weather data
-- [OpenStreetMap API](https://www.openstreetmap.org/) - City search
-- [QWeather API](https://dev.qweather.com/) - Weather warning
-
-### Dependencies
-- [shared_preferences](https://pub.dev/packages/shared_preferences) - Local data storage
-- [http](https://pub.dev/packages/http) - HTTP requests
-- [dynamic_color](https://pub.dev/packages/dynamic_color) - Material You dynamic colors
-- [geolocator](https://pub.dev/packages/geolocator) - Location services
-- [geocoding](https://pub.dev/packages/geocoding) - Address geocoding
-- [flutter_localizations](https://flutter.dev/docs/development/accessibility-and-localization/internationalization) - Internationalization
-- [home_widget](https://pub.dev/packages/home_widget) - Home widget
-- [url_launcher](https://pub.dev/packages/url_launcher) - Open in browser
-- [battery_optimization_helper](https://pub.dev/packages/battery_optimization_helper) - Ignore battery optimization
-- [animations](https://pub.dev/packages/animations) - Animation library
-- [fl_chart](https://pub.dev/packages/fl_chart) - Chart library
 
 ## License
 [MIT License](LICENSE) © Huang LinXing

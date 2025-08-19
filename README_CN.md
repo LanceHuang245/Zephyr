@@ -6,6 +6,10 @@
   </a>
 </p>
 
+> **临时通知**
+> 
+> 当前项目的后端处于开发阶段，概率性出现服务不可用状态，请谨慎使用。
+
 # Zephyr
 
 一款简洁美观的天气应用，基于 Flutter 开发，数据来源于 OpenMeteo API 与 QWeather API，搜索功能由 OpenStreetMap API 提供。
@@ -59,31 +63,6 @@
 
 ## 下载
 [点击前往下载最新版本](https://github.com/LanceHuang245/Zephyr/releases/latest)
-
-## 致谢
-本项目得益于以下优秀的开源项目和API的支持：
-
-### 框架与SDK
-- [Flutter](https://flutter.dev/) - UI框架
-- [Dart](https://dart.dev/) - 编程语言
-
-### API服务
-- [OpenMeteo API](https://open-meteo.com/) - 全球天气数据
-- [OpenStreetMap API](https://www.openstreetmap.org/) - 城市搜索
-- [QWeather API](https://dev.qweather.com/) - 天气预警数据
-
-### 依赖包
-- [shared_preferences](https://pub.dev/packages/shared_preferences) - 本地数据存储
-- [http](https://pub.dev/packages/http) - HTTP请求
-- [dynamic_color](https://pub.dev/packages/dynamic_color) - Material You动态色彩
-- [geolocator](https://pub.dev/packages/geolocator) - 定位服务
-- [geocoding](https://pub.dev/packages/geocoding) - 地址地理编码
-- [flutter_localizations](https://flutter.dev/docs/development/accessibility-and-localization/internationalization) - 国际化支持
-- [home_widget](https://pub.dev/packages/home_widget) - 桌面小部件
-- [url_launcher](https://pub.dev/packages/url_launcher) - 跳转至网页服务
-- [battery_optimization_helper](https://pub.dev/packages/battery_optimization_helper) - 忽略电池优化设置
-- [animations](https://pub.dev/packages/animations) - 动画库
-- [fl_chart](https://pub.dev/packages/fl_chart) - 图表库
 
 ## 许可
 [MIT License](LICENSE) © Huang LinXing
