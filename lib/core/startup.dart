@@ -13,6 +13,7 @@ Future<void> initAppSettings() async {
   // 加载环境变量
   await dotenv.load(fileName: ".env");
 
+  // 必要的监听器
   themeModeNotifier.value = ThemeMode.values[prefs.getInt('theme_mode') ?? 0];
   tempUnitNotifier.value = prefs.getString('temp_unit') ?? 'C';
   dynamicColorEnabledNotifier.value =

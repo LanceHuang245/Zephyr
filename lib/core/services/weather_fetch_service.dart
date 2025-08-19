@@ -4,7 +4,7 @@ import '../models/city.dart';
 import '../api/open_meteo_api.dart';
 import 'weather_cache.dart';
 import 'package:flutter/foundation.dart';
-import '../api.dart';
+import '../api/public.dart';
 import 'package:zephyr/core/notifiers.dart';
 
 class WeatherFetchService {
@@ -44,15 +44,13 @@ class WeatherFetchService {
       // 获取当前语言和单位
       final localeIndex = prefs.getInt('locale_index') ?? 0;
       final languageCode = localeIndex == 0 ? 'en' : 'zh';
-      final tempUnit = prefs.getString('temp_unit') ?? 'C';
-      final units = tempUnit == 'F' ? 'imperial' : 'metric';
 
       // 拉取天气数据
       final weather = await OpenMeteoApi.fetchWeather(
         latitude: mainCity.lat,
         longitude: mainCity.lon,
         lang: languageCode,
-        units: units,
+        units: tempUnitNotifier.value,
       );
 
       // 拉取天气预警

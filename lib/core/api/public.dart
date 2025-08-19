@@ -1,13 +1,17 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zephyr/app_constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:zephyr/core/models/city.dart';
-import 'models/weather_warning.dart';
-import 'notifiers.dart';
-import 'utils/locale_language_map.dart';
-import 'languages.dart';
+import '../models/weather_warning.dart';
+import '../notifiers.dart';
+import '../utils/locale_language_map.dart';
+import '../languages.dart';
+
+// WARNING: This APIs is server by Lance's free server, which has usage limits.
+// Please do not abuse or attack this server.
 
 class Api {
   // 获取天气预警信息
@@ -24,7 +28,7 @@ class Api {
       '$alertUrl?location=$lon,$lat&lang=$qweatherLang',
     );
     try {
-      final response = await http.get(url);
+      final response = await http.get(url).timeout(Duration(seconds: 8));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         if (data is Map<String, dynamic> && data['code'] == '200') {
@@ -49,29 +53,33 @@ class Api {
     if (prefs.getString('weather_source') == 'QWeather') {
       ws = 'qweather';
     } else if (prefs.getString('weather_source') == 'OpenMeteo') {
-      ws = 'osm';
+      ws = 'om';
     }
     final url =
         Uri.parse('$searchUrl?query=$query&accept-language=$lang&source=$ws');
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      final List data = json.decode(response.body);
-      return data
-          .map((item) {
-            final address = item['address'] ?? {};
-            String name = item['name'] ?? '';
-            String? admin = address['state'];
-            String country = address['country'] ?? '';
-            return City(
-              name: name,
-              admin: admin,
-              country: country,
-              lat: double.tryParse(item['lat'] ?? '') ?? 0,
-              lon: double.tryParse(item['lon'] ?? '') ?? 0,
-            );
-          })
-          .where((e) => e.lat != 0 && e.lon != 0)
-          .toList();
+    try {
+      final response = await http.get(url).timeout(Duration(seconds: 8));
+      if (response.statusCode == 200) {
+        final List data = json.decode(response.body);
+        return data
+            .map((item) {
+              final address = item['address'] ?? {};
+              String name = item['name'] ?? '';
+              String? admin = address['state'];
+              String country = address['country'] ?? '';
+              return City(
+                name: name,
+                admin: admin,
+                country: country,
+                lat: double.tryParse(item['lat'] ?? '') ?? 0,
+                lon: double.tryParse(item['lon'] ?? '') ?? 0,
+              );
+            })
+            .where((e) => e.lat != 0 && e.lon != 0)
+            .toList();
+      }
+    } on TimeoutException catch (e) {
+      if (kDebugMode) debugPrint('Weather Search fetch error: $e');
     }
     return [];
   }

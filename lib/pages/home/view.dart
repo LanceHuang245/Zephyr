@@ -15,7 +15,7 @@ import '../../core/utils/notification_utils.dart';
 import '../../core/services/widget_service.dart';
 import 'widgets/weather_bg.dart';
 import '../../core/models/weather_warning.dart';
-import '../../core/api.dart';
+import '../../core/api/public.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -130,9 +130,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _refreshWeather(City city) async {
-    final unit = tempUnitNotifier.value == 'F' ? 'imperial' : 'metric';
     final data = await OpenMeteoApi.fetchWeather(
-        latitude: city.lat, longitude: city.lon, units: unit);
+        latitude: city.lat, longitude: city.lon, units: tempUnitNotifier.value);
     List<WeatherWarning> warnings = [];
     try {
       warnings = await Api.fetchWarning(lat: city.lat, lon: city.lon);

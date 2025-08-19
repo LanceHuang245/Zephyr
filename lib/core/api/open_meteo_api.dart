@@ -10,7 +10,7 @@ class OpenMeteoApi {
     required double latitude,
     required double longitude,
     String lang = 'zh',
-    String units = 'metric',
+    required String units,
   }) async {
     try {
       // 并行获取天气数据和空气质量数据
@@ -57,7 +57,7 @@ class OpenMeteoApi {
         '&daily=temperature_2m_max,temperature_2m_min,weather_code,uv_index_max'
         '&timezone=auto'
         '&lang=$lang'
-        '&temperature_unit=${units == 'imperial' ? 'fahrenheit' : 'celsius'}');
+        '&temperature_unit=${units == 'F' ? 'fahrenheit' : 'celsius'}');
 
     final response = await http.get(url);
     if (response.statusCode == 200) {
