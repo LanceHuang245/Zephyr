@@ -13,12 +13,8 @@ class WindLineChartCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final hours = hourly.length > 24 ? hourly.sublist(0, 24) : hourly;
     List<FlSpot> spots10m = [];
-    List<FlSpot> spots80m = [];
-    List<FlSpot> spots120m = [];
     for (int i = 0; i < hours.length; i++) {
       spots10m.add(FlSpot(i.toDouble(), hours[i].windSpeed10m ?? 0));
-      spots80m.add(FlSpot(i.toDouble(), hours[i].windSpeed80m ?? 0));
-      spots120m.add(FlSpot(i.toDouble(), hours[i].windSpeed120m ?? 0));
     }
     return Card(
       elevation: 0,
@@ -160,28 +156,6 @@ class WindLineChartCard extends StatelessWidget {
                         color: colorScheme.primary.withValues(alpha: 0.2),
                       ),
                     ),
-                    LineChartBarData(
-                      spots: spots80m,
-                      isCurved: true,
-                      color: colorScheme.secondary,
-                      barWidth: 3,
-                      dotData: FlDotData(show: false),
-                      belowBarData: BarAreaData(
-                        show: true,
-                        color: colorScheme.secondary.withValues(alpha: 0.2),
-                      ),
-                    ),
-                    LineChartBarData(
-                      spots: spots120m,
-                      isCurved: true,
-                      color: colorScheme.tertiary,
-                      barWidth: 3,
-                      dotData: FlDotData(show: false),
-                      belowBarData: BarAreaData(
-                        show: true,
-                        color: colorScheme.tertiary.withValues(alpha: 0.2),
-                      ),
-                    ),
                   ],
                   lineTouchData: LineTouchData(
                     touchTooltipData: LineTouchTooltipData(
@@ -189,8 +163,6 @@ class WindLineChartCard extends StatelessWidget {
                         return touchedSpots.map((spot) {
                           String label = '';
                           if (spot.barIndex == 0) label = '10m';
-                          if (spot.barIndex == 1) label = '80m';
-                          if (spot.barIndex == 2) label = '120m';
                           return LineTooltipItem(
                             '$label: ${spot.y.toStringAsFixed(1)} km/h',
                             textTheme.labelMedium!.copyWith(

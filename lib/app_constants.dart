@@ -9,7 +9,7 @@ class AppConstants {
 
   static const List<String> weatherSources = [
     'OpenMeteo',
-    // 'QWeather',
+    'QWeather',
   ];
 
   // OpenMeteo API Url 用于获取天气数据

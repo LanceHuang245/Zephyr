@@ -21,8 +21,6 @@ class WeatherData {
           precipitation: (json['hourly']['precipitation']?[i])?.toDouble(),
           visibility: (json['hourly']['visibility']?[i])?.toDouble(),
           windSpeed10m: (json['hourly']['wind_speed_10m']?[i])?.toDouble(),
-          windSpeed80m: (json['hourly']['wind_speed_80m']?[i])?.toDouble(),
-          windSpeed120m: (json['hourly']['wind_speed_120m']?[i])?.toDouble(),
           pressureMsl: (json['hourly']['pressure_msl']?[i])?.toDouble(),
           surfacePressure: (json['hourly']['surface_pressure']?[i])?.toDouble(),
         ));
@@ -53,8 +51,6 @@ class WeatherData {
           'precipitation': hourly.map((e) => e.precipitation).toList(),
           'visibility': hourly.map((e) => e.visibility).toList(),
           'wind_speed_10m': hourly.map((e) => e.windSpeed10m).toList(),
-          'wind_speed_80m': hourly.map((e) => e.windSpeed80m).toList(),
-          'wind_speed_120m': hourly.map((e) => e.windSpeed120m).toList(),
           'pressure_msl': hourly.map((e) => e.pressureMsl).toList(),
           'surface_pressure': hourly.map((e) => e.surfacePressure).toList(),
         },
@@ -150,8 +146,6 @@ class HourlyWeather {
   final double? precipitation;
   final double? visibility;
   final double? windSpeed10m;
-  final double? windSpeed80m;
-  final double? windSpeed120m;
   final double? pressureMsl;
   final double? surfacePressure;
 
@@ -162,8 +156,6 @@ class HourlyWeather {
     this.precipitation,
     this.visibility,
     this.windSpeed10m,
-    this.windSpeed80m,
-    this.windSpeed120m,
     this.pressureMsl,
     this.surfacePressure,
   });
@@ -175,8 +167,6 @@ class HourlyWeather {
         'precipitation': precipitation,
         'visibility': visibility,
         'wind_speed_10m': windSpeed10m,
-        'wind_speed_80m': windSpeed80m,
-        'wind_speed_120m': windSpeed120m,
         'pressure_msl': pressureMsl,
         'surface_pressure': surfacePressure,
       };
