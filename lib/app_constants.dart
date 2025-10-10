@@ -13,13 +13,16 @@ class AppConstants {
   ];
 
   // OpenMeteo API Url 用于获取天气数据
-  static const String omForecastUrl = 'https://api.open-meteo.com/v1/forecast';
-  static const String omAirQualityUrl =
-      'https://air-quality-api.open-meteo.com/v1/air-quality';
+  // static const String omForecastUrl = 'https://api.open-meteo.com/v1/forecast';
+  // static const String omAirQualityUrl =
+  // 'https://air-quality-api.open-meteo.com/v1/air-quality';
 }
 
 // API url (Lance免费特供，有一定用量限制，请勿滥用或攻击该服务器)
 String weatherUrl = dotenv.env['WEATHER_URL'] ?? '';
+
+// Forecast API Url 用于获取天气数据
+String forecastUrl = '$weatherUrl/weather/forecast';
 
 // Alerts API Url 用于获取全球天气预警
 String alertUrl = '$weatherUrl/weather/alert';

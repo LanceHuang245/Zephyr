@@ -1,7 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zephyr/core/services/widget_service.dart';
 import '../models/city.dart';
-import '../api/open_meteo_api.dart';
 import 'weather_cache.dart';
 import 'package:flutter/foundation.dart';
 import '../api/public.dart';
@@ -46,7 +45,7 @@ class WeatherFetchService {
       final languageCode = localeIndex == 0 ? 'en' : 'zh';
 
       // 拉取天气数据
-      final weather = await OpenMeteoApi.fetchWeather(
+      final weather = await Api.fetchWeather(
         latitude: mainCity.lat,
         longitude: mainCity.lon,
         lang: languageCode,

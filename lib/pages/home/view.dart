@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/models/city.dart';
 import '../../core/models/weather.dart';
-import '../../core/api/open_meteo_api.dart';
 import 'widgets/empty_city_tip.dart';
 import '../../core/services/weather_cache.dart';
 import '../../core/notifiers.dart';
@@ -130,7 +129,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _refreshWeather(City city) async {
-    final data = await OpenMeteoApi.fetchWeather(
+    final data = await Api.fetchWeather(
         latitude: city.lat, longitude: city.lon, units: tempUnitNotifier.value);
     List<WeatherWarning> warnings = [];
     try {

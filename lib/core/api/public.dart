@@ -5,6 +5,7 @@ import 'package:zephyr/app_constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:zephyr/core/models/city.dart';
+import 'package:zephyr/core/models/weather.dart';
 import '../models/weather_warning.dart';
 import '../notifiers.dart';
 import '../utils/locale_language_map.dart';
@@ -40,6 +41,40 @@ class Api {
       if (kDebugMode) debugPrint('Weather Alert fetch error: $e');
     }
     return [];
+  }
+
+  // 获取天气数据
+  static Future<WeatherData?> fetchWeather({
+    required double latitude,
+    required double longitude,
+    String lang = 'zh',
+    required String units,
+  }) async {
+    // 根据当前语言设置API请求的语言参数
+    String lang = 'en-US';
+    String? ws;
+    final localeKey =
+        appLanguages.firstWhere((l) => l.code == localeCodeNotifier.value).code;
+    lang = localeToApiLang[localeKey] ?? 'en-US';
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getString('weather_source') == 'QWeather') {
+      ws = 'qweather';
+    } else if (prefs.getString('weather_source') == 'OpenMeteo') {
+      ws = 'om';
+    }
+    final url = Uri.parse('$forecastUrl'
+        '?latitude=$latitude'
+        '&longitude=$longitude'
+        '&accept-language=$lang'
+        '&source=$ws'
+        '&unit=${units == 'F' ? 'fahrenheit' : 'celsius'}');
+
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      kDebugMode ? debugPrint('Weather API response: ${response.body}') : null;
+      return WeatherData.fromJson(json.decode(response.body));
+    }
+    return null;
   }
 
   static Future<List<City>> searchCity(String query) async {
