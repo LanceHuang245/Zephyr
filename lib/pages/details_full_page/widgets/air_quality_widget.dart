@@ -12,7 +12,7 @@ class AirQualityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-    final aqiColor = getAqiColor('aqi', current.euAQI ?? 0, colorScheme);
+    final aqiColor = getAqiColor('aqi', current.aqi ?? 0, colorScheme);
 
     return Card(
       elevation: 0,
@@ -76,12 +76,12 @@ class AirQualityCard extends StatelessWidget {
                 CircularPercentIndicator(
                   radius: 46,
                   lineWidth: 10,
-                  percent: ((current.euAQI ?? 0) / 100).clamp(0.0, 1.0),
+                  percent: ((current.aqi ?? 0) / 100).clamp(0.0, 1.0),
                   center: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        current.euAQI?.toStringAsFixed(0) ?? '--',
+                        current.aqi?.toStringAsFixed(0) ?? '--',
                         style: textTheme.titleMedium?.copyWith(
                           color: aqiColor,
                           fontWeight: FontWeight.bold,

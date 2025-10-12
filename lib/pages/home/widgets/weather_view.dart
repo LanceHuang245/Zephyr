@@ -147,7 +147,7 @@ class _WeatherViewState extends State<WeatherView>
                                 WeatherInfoTile(
                                   icon: current.pm25 != null
                                       ? getAirQualityIcon(getAirQualityLevel(
-                                          euAQI: current.euAQI))
+                                          euAQI: current.aqi))
                                       : Icons.air,
                                   label:
                                       AppLocalizations.of(context).airQuality,
@@ -155,7 +155,7 @@ class _WeatherViewState extends State<WeatherView>
                                       ? getLocalizedAirQualityDesc(
                                           context,
                                           getAirQualityLevel(
-                                              euAQI: current.euAQI))
+                                              euAQI: current.aqi))
                                       : '-',
                                   unit: '',
                                 ),

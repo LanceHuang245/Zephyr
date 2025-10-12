@@ -35,7 +35,7 @@ class DetailedDataFullPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (current != null && current!.euAQI != null) ...[
+            if (current != null && current!.aqi != null) ...[
               AirQualityCard(current: current!),
               const SizedBox(height: 12),
             ],

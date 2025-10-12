@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'weather.g.dart';
+
+@JsonSerializable()
 class WeatherData {
   final CurrentWeather? current;
   final List<HourlyWeather> hourly;
@@ -5,85 +10,40 @@ class WeatherData {
 
   WeatherData({this.current, required this.hourly, required this.daily});
 
-  factory WeatherData.fromJson(Map<String, dynamic> json) {
-    final current = json['current'] != null
-        ? CurrentWeather.fromJson(
-            json['current'], json['hourly']?['visibility']?[0])
-        : null;
-    final hourlyList = <HourlyWeather>[];
-    if (json['hourly'] != null && json['hourly']['time'] != null) {
-      final times = List<String>.from(json['hourly']['time']);
-      for (int i = 0; i < times.length; i++) {
-        hourlyList.add(HourlyWeather(
-          time: times[i],
-          temperature: (json['hourly']['temperature_2m']?[i])?.toDouble(),
-          weatherCode: json['hourly']['weather_code']?[i],
-          precipitation: (json['hourly']['precipitation']?[i])?.toDouble(),
-          visibility: (json['hourly']['visibility']?[i])?.toDouble(),
-          windSpeed10m: (json['hourly']['wind_speed_10m']?[i])?.toDouble(),
-          pressureMsl: (json['hourly']['pressure_msl']?[i])?.toDouble(),
-          surfacePressure: (json['hourly']['surface_pressure']?[i])?.toDouble(),
-        ));
-      }
-    }
-    final dailyList = <DailyWeather>[];
-    if (json['daily'] != null && json['daily']['time'] != null) {
-      final times = List<String>.from(json['daily']['time']);
-      for (int i = 0; i < times.length; i++) {
-        dailyList.add(DailyWeather(
-          date: times[i],
-          tempMax: (json['daily']['temperature_2m_max']?[i])?.toDouble(),
-          tempMin: (json['daily']['temperature_2m_min']?[i])?.toDouble(),
-          weatherCode: json['daily']['weather_code']?[i],
-          uvIndexMax: (json['daily']['uv_index_max']?[i])?.toDouble(),
-        ));
-      }
-    }
-    return WeatherData(current: current, hourly: hourlyList, daily: dailyList);
-  }
-
-  Map<String, dynamic> toJson() => {
-        'current': current?.toJson(),
-        'hourly': {
-          'time': hourly.map((e) => e.time).toList(),
-          'temperature_2m': hourly.map((e) => e.temperature).toList(),
-          'weather_code': hourly.map((e) => e.weatherCode).toList(),
-          'precipitation': hourly.map((e) => e.precipitation).toList(),
-          'visibility': hourly.map((e) => e.visibility).toList(),
-          'wind_speed_10m': hourly.map((e) => e.windSpeed10m).toList(),
-          'pressure_msl': hourly.map((e) => e.pressureMsl).toList(),
-          'surface_pressure': hourly.map((e) => e.surfacePressure).toList(),
-        },
-        'daily': {
-          'time': daily.map((e) => e.date).toList(),
-          'temperature_2m_max': daily.map((e) => e.tempMax).toList(),
-          'temperature_2m_min': daily.map((e) => e.tempMin).toList(),
-          'weather_code': daily.map((e) => e.weatherCode).toList(),
-          'uv_index_max': daily.map((e) => e.uvIndexMax).toList(),
-        },
-      };
+  factory WeatherData.fromJson(Map<String, dynamic> json) =>
+      _$WeatherDataFromJson(json);
+  Map<String, dynamic> toJson() => _$WeatherDataToJson(this);
 }
 
+@JsonSerializable()
 class CurrentWeather {
   final double temperature;
+  @JsonKey(name: 'weather_code')
   final int weatherCode;
+  @JsonKey(name: 'wind_speed')
   final double windSpeed;
+  @JsonKey(name: 'wind_direction')
   final double? windDirection;
+  @JsonKey(name: 'apparent_temperature')
   final double? apparentTemperature;
   final double? humidity;
+  @JsonKey(name: 'surface_pressure')
   final double? surfacePressure;
+  @JsonKey(name: 'pm2_5')
   final double? pm25;
   final double? pm10;
   final double? ozone;
+  @JsonKey(name: 'nitrogen_dioxide')
   final double? nitrogenDioxide;
+  @JsonKey(name: 'sulfur_dioxide')
   final double? sulphurDioxide;
-  final double? euAQI;
+  final double? aqi;
 
   CurrentWeather({
     required this.temperature,
     required this.weatherCode,
     required this.windSpeed,
-    required this.windDirection,
+    this.windDirection,
     this.apparentTemperature,
     this.humidity,
     this.surfacePressure,
@@ -92,61 +52,27 @@ class CurrentWeather {
     this.ozone,
     this.nitrogenDioxide,
     this.sulphurDioxide,
-    this.euAQI,
+    this.aqi,
   });
 
-  factory CurrentWeather.fromJson(
-      Map<String, dynamic> json, double? visibility) {
-    return CurrentWeather(
-      temperature: (json['temperature_2m'] ?? 0).toDouble(),
-      weatherCode: json['weather_code'] ?? 0,
-      windSpeed: (json['wind_speed_10m'] ?? 0).toDouble(),
-      windDirection: (json['winddirection_10m'] ?? 0).toDouble(),
-      apparentTemperature: json['apparent_temperature'] != null
-          ? (json['apparent_temperature']).toDouble()
-          : null,
-      humidity: (json['relative_humidity_2m'] ?? 0).toDouble(),
-      surfacePressure: (json['surface_pressure'] ?? 0).toDouble(),
-      pm25: json['pm25'] != null ? (json['pm25']).toDouble() : null,
-      pm10: json['pm10'] != null ? (json['pm10']).toDouble() : null,
-      ozone: json['ozone'] != null ? (json['ozone']).toDouble() : null,
-      nitrogenDioxide: json['nitrogen_dioxide'] != null
-          ? (json['nitrogen_dioxide']).toDouble()
-          : null,
-      sulphurDioxide: json['sulphur_dioxide'] != null
-          ? (json['sulphur_dioxide']).toDouble()
-          : null,
-      euAQI: json['european_aqi'] != null
-          ? (json['european_aqi']).toDouble()
-          : null,
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        'temperature_2m': temperature,
-        'weather_code': weatherCode,
-        'wind_speed_10m': windSpeed,
-        'winddirection_10m': windDirection,
-        'apparent_temperature': apparentTemperature,
-        'relative_humidity_2m': humidity,
-        'surface_pressure': surfacePressure,
-        'pm25': pm25,
-        'pm10': pm10,
-        'ozone': ozone,
-        'nitrogen_dioxide': nitrogenDioxide,
-        'sulphur_dioxide': sulphurDioxide,
-        'european_aqi': euAQI
-      };
+  factory CurrentWeather.fromJson(Map<String, dynamic> json) =>
+      _$CurrentWeatherFromJson(json);
+  Map<String, dynamic> toJson() => _$CurrentWeatherToJson(this);
 }
 
+@JsonSerializable()
 class HourlyWeather {
   final String time;
   final double? temperature;
+  @JsonKey(name: 'weather_code')
   final int? weatherCode;
   final double? precipitation;
   final double? visibility;
-  final double? windSpeed10m;
+  @JsonKey(name: 'wind_speed')
+  final double? windSpeed;
+  @JsonKey(name: 'pressure_msl')
   final double? pressureMsl;
+  @JsonKey(name: 'surface_pressure')
   final double? surfacePressure;
 
   HourlyWeather({
@@ -155,29 +81,28 @@ class HourlyWeather {
     this.weatherCode,
     this.precipitation,
     this.visibility,
-    this.windSpeed10m,
+    this.windSpeed,
     this.pressureMsl,
     this.surfacePressure,
   });
 
-  Map<String, dynamic> toJson() => {
-        'time': time,
-        'temperature_2m': temperature,
-        'weather_code': weatherCode,
-        'precipitation': precipitation,
-        'visibility': visibility,
-        'wind_speed_10m': windSpeed10m,
-        'pressure_msl': pressureMsl,
-        'surface_pressure': surfacePressure,
-      };
+  factory HourlyWeather.fromJson(Map<String, dynamic> json) =>
+      _$HourlyWeatherFromJson(json);
+  Map<String, dynamic> toJson() => _$HourlyWeatherToJson(this);
 }
 
+@JsonSerializable()
 class DailyWeather {
   final String date;
+  @JsonKey(name: 'temp_max')
   final double? tempMax;
+  @JsonKey(name: 'temp_min')
   final double? tempMin;
+  @JsonKey(name: 'weather_code')
   final int? weatherCode;
+  @JsonKey(name: 'uv_index_max')
   final double? uvIndexMax;
+
   DailyWeather({
     required this.date,
     this.tempMax,
@@ -186,11 +111,7 @@ class DailyWeather {
     this.uvIndexMax,
   });
 
-  Map<String, dynamic> toJson() => {
-        'date': date,
-        'tempMax': tempMax,
-        'tempMin': tempMin,
-        'weatherCode': weatherCode,
-        'uv_index_max': uvIndexMax,
-      };
+  factory DailyWeather.fromJson(Map<String, dynamic> json) =>
+      _$DailyWeatherFromJson(json);
+  Map<String, dynamic> toJson() => _$DailyWeatherToJson(this);
 }

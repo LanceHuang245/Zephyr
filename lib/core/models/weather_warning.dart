@@ -1,16 +1,34 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'weather_warning.g.dart';
+
+@JsonSerializable()
 class WeatherWarning {
+  @JsonKey(defaultValue: '')
   final String id;
+  @JsonKey(defaultValue: '')
   final String sender;
+  @JsonKey(defaultValue: '')
   final String pubTime;
+  @JsonKey(defaultValue: '')
   final String title;
+  @JsonKey(defaultValue: '')
   final String startTime;
+  @JsonKey(defaultValue: '')
   final String endTime;
+  @JsonKey(defaultValue: '')
   final String status;
+  @JsonKey(defaultValue: '')
   final String level;
+  @JsonKey(defaultValue: '')
   final String severity;
+  @JsonKey(defaultValue: '')
   final String severityColor;
+  @JsonKey(defaultValue: '')
   final String type;
+  @JsonKey(defaultValue: '')
   final String typeName;
+  @JsonKey(defaultValue: '')
   final String text;
 
   WeatherWarning({
@@ -29,37 +47,8 @@ class WeatherWarning {
     required this.text,
   });
 
-  factory WeatherWarning.fromJson(Map<String, dynamic> json) {
-    return WeatherWarning(
-      id: json['id'] ?? '',
-      sender: json['sender'] ?? '',
-      pubTime: json['pubTime'] ?? '',
-      title: json['title'] ?? '',
-      startTime: json['startTime'] ?? '',
-      endTime: json['endTime'] ?? '',
-      status: json['status'] ?? '',
-      level: json['level'] ?? '',
-      severity: json['severity'] ?? '',
-      severityColor: json['severityColor'] ?? '',
-      type: json['type'] ?? '',
-      typeName: json['typeName'] ?? '',
-      text: json['text'] ?? '',
-    );
-  }
+  factory WeatherWarning.fromJson(Map<String, dynamic> json) =>
+      _$WeatherWarningFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'sender': sender,
-        'pubTime': pubTime,
-        'title': title,
-        'startTime': startTime,
-        'endTime': endTime,
-        'status': status,
-        'level': level,
-        'severity': severity,
-        'severityColor': severityColor,
-        'type': type,
-        'typeName': typeName,
-        'text': text,
-      };
+  Map<String, dynamic> toJson() => _$WeatherWarningToJson(this);
 }

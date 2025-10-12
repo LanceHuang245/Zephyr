@@ -14,7 +14,7 @@ class WindLineChartCard extends StatelessWidget {
     final hours = hourly.length > 24 ? hourly.sublist(0, 24) : hourly;
     List<FlSpot> spots10m = [];
     for (int i = 0; i < hours.length; i++) {
-      spots10m.add(FlSpot(i.toDouble(), hours[i].windSpeed10m ?? 0));
+      spots10m.add(FlSpot(i.toDouble(), hours[i].windSpeed ?? 0));
     }
     return Card(
       elevation: 0,
