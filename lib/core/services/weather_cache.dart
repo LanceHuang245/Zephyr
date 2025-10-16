@@ -8,7 +8,9 @@ import '../models/weather_warning.dart';
 Future<Map<String, dynamic>?> loadCachedWeather(City city,
     {int maxAgeMinutes = 13}) async {
   final prefs = await SharedPreferences.getInstance();
-  final str = prefs.getString(city.cacheKey);
+  final weatherSource = prefs.getString('weather_source') ?? 'OpenMeteo';
+  final key = 'weather_${city.lat}_${city.lon}_$weatherSource';
+  final str = prefs.getString(key);
   if (str == null) return null;
   final map = json.decode(str);
   final ts = map['ts'] as int?;
@@ -32,8 +34,10 @@ Future<Map<String, dynamic>?> loadCachedWeather(City city,
 Future<void> cacheWeather(
     City city, WeatherData data, List<WeatherWarning> warnings) async {
   final prefs = await SharedPreferences.getInstance();
+  final weatherSource = prefs.getString('weather_source') ?? 'OpenMeteo';
+  final key = 'weather_${city.lat}_${city.lon}_$weatherSource';
   await prefs.setString(
-    city.cacheKey,
+    key,
     json.encode({
       'data': data.toJson(),
       'warnings': warnings.map((w) => w.toJson()).toList(),
