@@ -67,7 +67,7 @@ class Api {
         '&longitude=$longitude'
         '&accept-language=$lang'
         '&source=$ws'
-        '&unit=${units == 'F' ? 'fahrenheit' : 'celsius'}');
+        '&unit=${ws == 'om' ? units == 'F' ? 'fahrenheit' : 'celsius' : units == 'F' ? 'i' : 'm'}');
 
     final response = await http.get(url);
     if (response.statusCode == 200) {

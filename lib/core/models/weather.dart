@@ -37,6 +37,8 @@ class CurrentWeather {
   final double? nitrogenDioxide;
   @JsonKey(name: 'sulfur_dioxide')
   final double? sulphurDioxide;
+  @JsonKey(name: 'visibility')
+  final double? visibility;
   final double? aqi;
 
   CurrentWeather({
@@ -52,6 +54,7 @@ class CurrentWeather {
     this.ozone,
     this.nitrogenDioxide,
     this.sulphurDioxide,
+    this.visibility,
     this.aqi,
   });
 

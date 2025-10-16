@@ -39,6 +39,7 @@ CurrentWeather _$CurrentWeatherFromJson(Map<String, dynamic> json) =>
       ozone: (json['ozone'] as num?)?.toDouble(),
       nitrogenDioxide: (json['nitrogen_dioxide'] as num?)?.toDouble(),
       sulphurDioxide: (json['sulfur_dioxide'] as num?)?.toDouble(),
+      visibility: (json['visibility'] as num?)?.toDouble(),
       aqi: (json['aqi'] as num?)?.toDouble(),
     );
 
@@ -56,6 +57,7 @@ Map<String, dynamic> _$CurrentWeatherToJson(CurrentWeather instance) =>
       'ozone': instance.ozone,
       'nitrogen_dioxide': instance.nitrogenDioxide,
       'sulfur_dioxide': instance.sulphurDioxide,
+      'visibility': instance.visibility,
       'aqi': instance.aqi,
     };
 

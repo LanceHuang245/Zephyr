@@ -5,7 +5,8 @@ import '../../l10n/generated/app_localizations.dart';
 IconData weatherIcon(int? code) {
   if (code == null) return Icons.help_outline;
   if (code == 0) return Icons.wb_sunny;
-  if ([1, 2, 3].contains(code)) return Icons.cloud;
+  if ([1, 2].contains(code)) return Icons.cloud_queue;
+  if (code == 3) return Icons.cloud;
   if ([45, 48].contains(code)) return Icons.foggy;
   if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].contains(code)) {
     return Icons.grain;
@@ -23,8 +24,9 @@ String weatherDesc(int? code) {
       return 'weatherClear';
     case 1:
     case 2:
-    case 3:
       return 'weatherCloudy';
+    case 3:
+      return 'weatherOvercast';
     case 45:
     case 48:
       return 'weatherFoggy';
@@ -33,15 +35,17 @@ String weatherDesc(int? code) {
     case 55:
     case 56:
     case 57:
+      return 'weatherDrizzle';
     case 61:
     case 63:
     case 65:
     case 66:
     case 67:
+      return 'weatherRain';
     case 80:
     case 81:
     case 82:
-      return 'weatherRainy';
+      return 'weatherRainShower';
     case 71:
     case 73:
     case 75:
@@ -69,10 +73,16 @@ String getWeatherDescForWidget(int code, String lang) {
       return lang == 'zh_CN' ? '晴天' : 'Clear';
     case 'weatherCloudy':
       return lang == 'zh_CN' ? '多云' : 'Cloudy';
+    case 'weatherOvercast':
+      return lang == 'zh_CN' ? '阴' : 'Overcast';
     case 'weatherFoggy':
       return lang == 'zh_CN' ? '雾' : 'Foggy';
-    case 'weatherRainy':
-      return lang == 'zh_CN' ? '雨' : 'Rainy';
+    case 'weatherDrizzle':
+      return lang == 'zh_CN' ? '小雨' : 'Drizzle';
+    case 'weatherRain':
+      return lang == 'zh_CN' ? '雨' : 'Rain';
+    case 'weatherRainShower':
+      return lang == 'zh_CN' ? '暴雨' : 'RainShower';
     case 'weatherSnowy':
       return lang == 'zh_CN' ? '雪' : 'Snowy';
     case 'weatherThunderstorm':
@@ -94,10 +104,16 @@ String getLocalizedWeatherDesc(BuildContext context, int? code) {
       return l10n.weatherClear;
     case 'weatherCloudy':
       return l10n.weatherCloudy;
+    case 'weatherOvercast':
+      return l10n.weatherOvercast;
     case 'weatherFoggy':
       return l10n.weatherFoggy;
-    case 'weatherRainy':
-      return l10n.weatherRainy;
+    case 'weatherDrizzle':
+      return l10n.weatherDrizzle;
+    case 'weatherRain':
+      return l10n.weatherRain;
+    case 'weatherRainShower':
+      return l10n.weatherRainShower;
     case 'weatherSnowy':
       return l10n.weatherSnowy;
     case 'weatherThunderstorm':
