@@ -149,9 +149,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get retry => '重试';
 
   @override
-  String get weatherDataError => '天气数据加载失败';
-
-  @override
   String get uvIndex => '紫外线指数';
 
   @override
@@ -240,6 +237,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get fahrenheit => '华氏度';
+
+  @override
+  String get weatherDataError => '天气数据获取失败';
+
+  @override
+  String get checkNetworkAndRetry => '请检查您的网络连接并重试';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -387,9 +390,6 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get retry => '重試';
 
   @override
-  String get weatherDataError => '天氣數據加載失敗';
-
-  @override
   String get uvIndex => '紫外線指數';
 
   @override
@@ -478,4 +478,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get fahrenheit => '華氏度';
+
+  @override
+  String get weatherDataError => '無法獲取天氣數據';
+
+  @override
+  String get checkNetworkAndRetry => '請檢查您的網路設定後重試';
 }

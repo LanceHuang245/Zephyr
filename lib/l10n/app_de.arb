@@ -53,7 +53,6 @@
   "language": "Sprache",
   "monetColor": "Monet-Farbe",
   "retry": "Wiederholen",
-  "weatherDataError": "Wetterdaten konnten nicht geladen werden",
   "uvIndex": "UV-Index",
   "addCity": "Stadt hinzufügen",
   "addByLocation": "Per Standort hinzufügen",
@@ -83,5 +82,7 @@
   "weatherSource": "Wetterquelle",
   "customColor": "Benutzerdefinierte Farbe",
   "celsius": "Celsius",
-  "fahrenheit": "Fahrenheit"
+  "fahrenheit": "Fahrenheit",
+  "weatherDataError": "Wetterdaten konnten nicht abgerufen werden",
+  "checkNetworkAndRetry": "Bitte überprüfen Sie Ihre Netzwerkverbindung und versuchen Sie es erneut."
 }

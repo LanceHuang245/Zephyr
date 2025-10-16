@@ -37,17 +37,39 @@ class _HomePageContentWidgetState extends State<HomePageContentWidget>
       return const Center(child: CircularProgressIndicator());
     } else if (widget.weather == null) {
       return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              AppLocalizations.of(context).weatherDataError,
-            ),
-            FilledButton(
-              onPressed: widget.onRefresh,
-              child: Text(AppLocalizations.of(context).retry),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 32.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.cloud_off_outlined,
+                size: 80,
+                color: Theme.of(context)
+                    .colorScheme
+                    .onSurface
+                    .withValues(alpha: 0.5),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                AppLocalizations.of(context).weatherDataError,
+                style: Theme.of(context).textTheme.titleLarge,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                AppLocalizations.of(context).checkNetworkAndRetry,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              FilledButton.icon(
+                onPressed: widget.onRefresh,
+                icon: const Icon(Icons.refresh),
+                label: Text(AppLocalizations.of(context).retry),
+              ),
+            ],
+          ),
         ),
       );
     } else {

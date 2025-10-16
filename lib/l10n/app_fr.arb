@@ -53,7 +53,6 @@
   "language": "Langue",
   "monetColor": "Couleur dynamique",
   "retry": "Réessayer",
-  "weatherDataError": "Échec du chargement des données météo",
   "uvIndex": "Indice UV",
   "addCity": "Ajouter une ville",
   "addByLocation": "Ajouter par localisation",
@@ -83,5 +82,7 @@
   "weatherSource": "Source météo",
   "customColor": "Couleur personnalisée",
   "celsius": "Celsius",
-  "fahrenheit": "Fahrenheit"
+  "fahrenheit": "Fahrenheit",
+  "weatherDataError": "Échec de la récupération des données météorologiques",
+  "checkNetworkAndRetry": "Veuillez vérifier votre connexion réseau et réessayer."
 }

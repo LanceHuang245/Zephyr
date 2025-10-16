@@ -149,9 +149,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get retry => 'Reintentar';
 
   @override
-  String get weatherDataError => 'Error al cargar datos meteorológicos';
-
-  @override
   String get uvIndex => 'Índice UV';
 
   @override
@@ -240,4 +237,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get fahrenheit => 'Fahrenheit';
+
+  @override
+  String get weatherDataError => 'No se pudieron obtener los datos meteorológicos.';
+
+  @override
+  String get checkNetworkAndRetry => 'Comprueba tu conexión a Internet e inténtalo de nuevo.';
 }

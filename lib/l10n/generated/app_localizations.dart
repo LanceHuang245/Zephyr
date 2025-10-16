@@ -380,12 +380,6 @@ abstract class AppLocalizations {
   /// **'Retry'**
   String get retry;
 
-  /// No description provided for @weatherDataError.
-  ///
-  /// In en, this message translates to:
-  /// **'Weather data loading failed'**
-  String get weatherDataError;
-
   /// No description provided for @uvIndex.
   ///
   /// In en, this message translates to:
@@ -565,6 +559,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fahrenheit'**
   String get fahrenheit;
+
+  /// No description provided for @weatherDataError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to fetch weather data'**
+  String get weatherDataError;
+
+  /// No description provided for @checkNetworkAndRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your network connection and try again'**
+  String get checkNetworkAndRetry;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

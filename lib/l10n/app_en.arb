@@ -53,7 +53,6 @@
   "language": "Language",
   "monetColor": "Dynamic Color",
   "retry": "Retry",
-  "weatherDataError": "Weather data loading failed",
   "uvIndex": "UV Index",
   "addCity": "Add City",
   "addByLocation": "Add by Location",
@@ -83,5 +82,7 @@
   "weatherSource": "Weather Source",
   "customColor": "Custom Color",
   "celsius": "Celsius",
-  "fahrenheit": "Fahrenheit"
+  "fahrenheit": "Fahrenheit",
+  "weatherDataError": "Failed to fetch weather data",
+  "checkNetworkAndRetry": "Please check your network connection and try again"
 }

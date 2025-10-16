@@ -53,7 +53,6 @@
   "language": "语言",
   "monetColor": "Monet取色",
   "retry": "重试",
-  "weatherDataError": "天气数据加载失败",
   "uvIndex": "紫外线指数",
   "addCity": "添加城市",
   "addByLocation": "定位添加",
@@ -83,5 +82,7 @@
   "weatherSource": "自定义天气源",
   "customColor": "自定义颜色",
   "celsius": "摄氏度",
-  "fahrenheit": "华氏度"
+  "fahrenheit": "华氏度",
+  "weatherDataError": "天气数据获取失败",
+  "checkNetworkAndRetry": "请检查您的网络连接并重试"
 }

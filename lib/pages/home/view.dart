@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     tempUnitNotifier.addListener(_onUnitChanged);
     weatherDataChangedNotifier.addListener(_onWeatherDataChanged);
-    weatherSourceNotifier.addListener(_onWeatherDataChanged);
+    weatherSourceNotifier.addListener(_onSourceChanged);
     _loadCities();
   }
 
@@ -48,9 +48,16 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     tempUnitNotifier.removeListener(_onUnitChanged);
     weatherDataChangedNotifier.removeListener(_onWeatherDataChanged);
-    weatherSourceNotifier.removeListener(_onWeatherDataChanged);
+    weatherSourceNotifier.removeListener(_onSourceChanged);
     _pageController?.dispose();
     super.dispose();
+  }
+
+  void _onSourceChanged() {
+    if (!mounted) return;
+    for (var city in cities) {
+      _loadWeather(city, force: false);
+    }
   }
 
   void _onUnitChanged() {

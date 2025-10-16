@@ -73,6 +73,10 @@ class Api {
     if (response.statusCode == 200) {
       kDebugMode ? debugPrint('Weather API response: ${response.body}') : null;
       return WeatherData.fromJson(json.decode(response.body));
+    } else {
+      kDebugMode
+          ? debugPrint('Weather API fetch error: ${response.body}')
+          : null;
     }
     return null;
   }
