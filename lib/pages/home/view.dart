@@ -31,11 +31,16 @@ class _HomePageState extends State<HomePage> {
   Map<String, bool> loadingMap = {};
   PageController? _pageController;
 
+  String _getMapKey(City city) {
+    return '${city.lat}_${city.lon}_${weatherSourceNotifier.value}';
+  }
+
   @override
   void initState() {
     super.initState();
     tempUnitNotifier.addListener(_onUnitChanged);
     weatherDataChangedNotifier.addListener(_onWeatherDataChanged);
+    weatherSourceNotifier.addListener(_onWeatherDataChanged);
     _loadCities();
   }
 
@@ -43,6 +48,7 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     tempUnitNotifier.removeListener(_onUnitChanged);
     weatherDataChangedNotifier.removeListener(_onWeatherDataChanged);
+    weatherSourceNotifier.removeListener(_onWeatherDataChanged);
     _pageController?.dispose();
     super.dispose();
   }
@@ -99,7 +105,7 @@ class _HomePageState extends State<HomePage> {
     if (cities.isNotEmpty) {
       // 更新小部件数据
       final mainCity = cities.first;
-      final weather = weatherMap[mainCity.cacheKey];
+      final weather = weatherMap[_getMapKey(mainCity)];
       if (weather != null) {
         await WidgetService.updateWidget(city: mainCity, weatherData: weather);
       }
@@ -109,7 +115,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _loadWeather(City city, {bool force = false}) async {
     if (!mounted) return;
     setState(() {
-      loadingMap[city.cacheKey] = true;
+      loadingMap[_getMapKey(city)] = true;
     });
     Map<String, dynamic>? cached;
     if (!force) {
@@ -117,13 +123,17 @@ class _HomePageState extends State<HomePage> {
     }
     if (cached != null) {
       setState(() {
-        kDebugMode ? debugPrint('已加载缓存天气数据: $city') : null;
-        weatherMap[city.cacheKey] = cached!['weather'];
-        warningsMap[city.cacheKey] = cached['warnings'];
-        loadingMap[city.cacheKey] = false;
+        kDebugMode
+            ? debugPrint('已加载缓存天气数据: key=${_getMapKey(city)}')
+            : null;
+        weatherMap[_getMapKey(city)] = cached!['weather'];
+        warningsMap[_getMapKey(city)] = cached['warnings'];
+        loadingMap[_getMapKey(city)] = false;
       });
     } else {
-      kDebugMode ? debugPrint('缓存已过期，或无缓存，加载新数据: $city') : null;
+      kDebugMode
+          ? debugPrint('缓存已过期，或无缓存，加载新数据: key=${_getMapKey(city)}')
+          : null;
       await _refreshWeather(city);
     }
   }
@@ -147,9 +157,9 @@ class _HomePageState extends State<HomePage> {
     }
     if (!mounted) return;
     setState(() {
-      weatherMap[city.cacheKey] = data;
-      warningsMap[city.cacheKey] = warnings;
-      loadingMap[city.cacheKey] = false;
+      weatherMap[_getMapKey(city)] = data;
+      warningsMap[_getMapKey(city)] = warnings;
+      loadingMap[_getMapKey(city)] = false;
     });
   }
 
@@ -311,7 +321,7 @@ class _HomePageState extends State<HomePage> {
         ? cities[pageIndex]
         : null;
     final currentWeather =
-        currentCity != null ? weatherMap[currentCity.cacheKey] : null;
+        currentCity != null ? weatherMap[_getMapKey(currentCity)] : null;
     final weatherCode = currentWeather?.current?.weatherCode;
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -342,18 +352,14 @@ class _HomePageState extends State<HomePage> {
                   onPageChanged: _onPageChanged,
                   itemBuilder: (context, idx) {
                     final city = cities[idx];
-                    final weather = weatherMap[city.cacheKey];
-                    final warnings = warningsMap[city.cacheKey];
-                    final loading = loadingMap[city.cacheKey] ?? false;
-
-                    if (loading || weather == null || warnings == null) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
+                    final weather = weatherMap[_getMapKey(city)];
+                    final warnings = warningsMap[_getMapKey(city)] ?? [];
+                    final loading = loadingMap[_getMapKey(city)] ?? true;
 
                     return HomePageContentWidget(
                       city: city,
                       weather: weather,
-                      loading: false,
+                      loading: loading,
                       onRefresh: () => _refreshWeather(city),
                       warnings: warnings,
                     );
