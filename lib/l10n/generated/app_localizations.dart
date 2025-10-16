@@ -545,13 +545,13 @@ abstract class AppLocalizations {
   /// No description provided for @eAQIGrading.
   ///
   /// In en, this message translates to:
-  /// **'European Standard Air Quality Index Grading'**
+  /// **'Air Quality Index Grading'**
   String get eAQIGrading;
 
   /// No description provided for @eAQIDesc.
   ///
   /// In en, this message translates to:
-  /// **'0-20 is good, 20-40 is fair, 40-60 is moderate, 60-80 is poor, 80-100 is very poor, >100 is extremely poor. \nThe grading of each pollutant is seen in the European Environment Standards.'**
+  /// **'The higher this figure, the greater the potential harm to human health. If your data source is OpenMeteo, it uses the European standard air quality classification; otherwise, it follows local quality grading standards.'**
   String get eAQIDesc;
 
   /// No description provided for @weatherSource.

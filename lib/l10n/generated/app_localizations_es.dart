@@ -230,10 +230,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get hourly_pressure_Desc => 'Presión atmosférica horaria a nivel del mar y presión superficial a nivel del suelo, hPa es la unidad de presión atmosférica. Puede deslizar manualmente el gráfico para ver los datos detallados de la presión barométrica horaria.';
 
   @override
-  String get eAQIGrading => 'Clasificación del índice europeo de calidad del aire';
+  String get eAQIGrading => 'Clasificación del índice de calidad del aire';
 
   @override
-  String get eAQIDesc => '0-20 es bueno, 20-40 es regular, 40-60 es moderado, 60-80 es deficiente, 80-100 es muy deficiente, >100 es extremadamente deficiente. \nLa clasificación de cada contaminante se ve en las Normas Europeas de Medio Ambiente.';
+  String get eAQIDesc => 'Cuanto mayor sea esta cifra, mayor será el daño potencial para la salud humana. Si su fuente de datos es OpenMeteo, utiliza la clasificación europea estándar de calidad del aire; de lo contrario, sigue las normas locales de clasificación de calidad.';
 
   @override
   String get weatherSource => 'Fuente meteorológica';

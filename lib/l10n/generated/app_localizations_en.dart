@@ -230,10 +230,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hourly_pressure_Desc => 'Hourly air pressure at sea level and surface pressure at ground level, hPa is the unit of air pressure. You can manually slide the chart to see detailed hourly barometric pressure data.';
 
   @override
-  String get eAQIGrading => 'European Standard Air Quality Index Grading';
+  String get eAQIGrading => 'Air Quality Index Grading';
 
   @override
-  String get eAQIDesc => '0-20 is good, 20-40 is fair, 40-60 is moderate, 60-80 is poor, 80-100 is very poor, >100 is extremely poor. \nThe grading of each pollutant is seen in the European Environment Standards.';
+  String get eAQIDesc => 'The higher this figure, the greater the potential harm to human health. If your data source is OpenMeteo, it uses the European standard air quality classification; otherwise, it follows local quality grading standards.';
 
   @override
   String get weatherSource => 'Weather Source';

@@ -230,10 +230,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get hourly_pressure_Desc => '每小时的海平面气压与地面气压，hPa为气压单位。可以手动滑动图表查看每小时的详细气压数据。';
 
   @override
-  String get eAQIGrading => '欧洲标准空气质量分级';
+  String get eAQIGrading => '空气质量分级';
 
   @override
-  String get eAQIDesc => '0-20 为好，20-40 为一般，40-60 为良，60-80 为较差，80-100 为极差，>100 为危险。\n每种污染物的分级见欧洲环境标准。';
+  String get eAQIDesc => '该数值越高，对人体健康的潜在危害就越大。若数据源为OpenMeteo，则采用欧洲标准空气质量分类；否则遵循当地质量分级标准。';
 
   @override
   String get weatherSource => '自定义天气源';
@@ -480,10 +480,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get hourly_pressure_Desc => '每小時的海平面氣壓和地面氣壓，hPa為氣壓單位。可以手動滑動图表查看每小时的详细氣壓数据。';
 
   @override
-  String get eAQIGrading => '歐洲標準空氣品質分級';
+  String get eAQIGrading => '空氣品質分級';
 
   @override
-  String get eAQIDesc => '0-20 為良好，20-40 為一般，40-60 為中等，60-80 為較差，80-100 為非常差，>100 為極差。\n每種污染物的分級見於歐洲環境標準。';
+  String get eAQIDesc => '此數值越高，對人體健康的潛在危害就越大。若您的數據來源為OpenMeteo，則採用歐洲標準空氣品質分級；否則將遵循當地品質分級標準。';
 
   @override
   String get weatherSource => '自定天氣源';

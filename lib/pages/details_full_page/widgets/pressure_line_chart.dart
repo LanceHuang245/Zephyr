@@ -18,8 +18,12 @@ class PressureLineChartCard extends StatelessWidget {
       spotsSeaLevel.add(FlSpot(i.toDouble(), hours[i].pressureMsl ?? 0));
       spotsSurface.add(FlSpot(i.toDouble(), hours[i].surfacePressure ?? 0));
     }
+
+    final isSeaLevelPressureAllZero =
+        spotsSeaLevel.every((spot) => spot.y == 0);
+
     final allPressures = [
-      ...spotsSeaLevel.map((e) => e.y),
+      if (!isSeaLevelPressureAllZero) ...spotsSeaLevel.map((e) => e.y),
       ...spotsSurface.map((e) => e.y),
     ];
     double minPressure = allPressures.isNotEmpty
@@ -30,6 +34,33 @@ class PressureLineChartCard extends StatelessWidget {
         : 1050;
     double minY = (minPressure - 10).clamp(600, 1100);
     double maxY = (maxPressure + 10).clamp(600, 1100);
+
+    List<LineChartBarData> lineBars = [];
+    if (!isSeaLevelPressureAllZero) {
+      lineBars.add(LineChartBarData(
+        spots: spotsSeaLevel,
+        isCurved: true,
+        color: colorScheme.primary,
+        barWidth: 3,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: true,
+          color: colorScheme.primary.withValues(alpha: 0.2),
+        ),
+      ));
+    }
+    lineBars.add(LineChartBarData(
+      spots: spotsSurface,
+      isCurved: true,
+      color: colorScheme.secondary,
+      barWidth: 3,
+      dotData: FlDotData(show: false),
+      belowBarData: BarAreaData(
+        show: true,
+        color: colorScheme.secondary.withValues(alpha: 0.2),
+      ),
+    ));
+
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -160,37 +191,18 @@ class PressureLineChartCard extends StatelessWidget {
                   ),
                   minY: minY,
                   maxY: maxY,
-                  lineBarsData: [
-                    LineChartBarData(
-                      spots: spotsSeaLevel,
-                      isCurved: true,
-                      color: colorScheme.primary,
-                      barWidth: 3,
-                      dotData: FlDotData(show: false),
-                      belowBarData: BarAreaData(
-                        show: true,
-                        color: colorScheme.primary.withValues(alpha: 0.2),
-                      ),
-                    ),
-                    LineChartBarData(
-                      spots: spotsSurface,
-                      isCurved: true,
-                      color: colorScheme.secondary,
-                      barWidth: 3,
-                      dotData: FlDotData(show: false),
-                      belowBarData: BarAreaData(
-                        show: true,
-                        color: colorScheme.secondary.withValues(alpha: 0.2),
-                      ),
-                    ),
-                  ],
+                  lineBarsData: lineBars,
                   lineTouchData: LineTouchData(
                     touchTooltipData: LineTouchTooltipData(
                       getTooltipItems: (touchedSpots) {
                         return touchedSpots.map((spot) {
                           String label = '';
-                          if (spot.barIndex == 0) label = 'SeaLevel';
-                          if (spot.barIndex == 1) label = 'Surface';
+                          final barData = lineBars[spot.barIndex];
+                          if (barData.spots == spotsSeaLevel) {
+                            label = 'SeaLevel';
+                          } else if (barData.spots == spotsSurface) {
+                            label = 'Surface';
+                          }
                           return LineTooltipItem(
                             '$label:  ${spot.y.toStringAsFixed(1)} hPa',
                             textTheme.labelMedium!.copyWith(

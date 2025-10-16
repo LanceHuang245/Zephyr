@@ -230,10 +230,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get hourly_pressure_Desc => 'Stündlicher Luftdruck auf Meereshöhe und Oberflächendruck auf Bodenhöhe, hPa ist die Einheit des Luftdrucks. Sie können das Diagramm manuell verschieben, um detaillierte stündliche Luftdruckdaten zu sehen.';
 
   @override
-  String get eAQIGrading => 'Europäische Norm für die Einstufung des Luftqualitätsindex';
+  String get eAQIGrading => 'Bewertung des Luftqualitätsindex';
 
   @override
-  String get eAQIDesc => '0-20 ist gut, 20-40 ist mittelmäßig, 40-60 ist mäßig, 60-80 ist schlecht, 80-100 ist sehr schlecht, >100 ist extrem schlecht. \nDie Einstufung der einzelnen Schadstoffe ist in den Europäischen Umweltnormen zu finden.';
+  String get eAQIDesc => 'Je höher dieser Wert ist, desto größer ist das potenzielle Gesundheitsrisiko für den Menschen. Wenn Ihre Datenquelle OpenMeteo ist, wird die europäische Standardklassifizierung für Luftqualität verwendet; andernfalls gelten die lokalen Qualitätsbewertungsstandards.';
 
   @override
   String get weatherSource => 'Wetterquelle';
