@@ -120,12 +120,12 @@ class DetailedDataWidget extends StatelessWidget {
                       child: DataTile(
                         icon: Icons.remove_red_eye,
                         label: loc.visibility,
-                        value: (hourly != null &&
-                                hourly!.isNotEmpty &&
-                                hourly!.first.visibility != null)
+                        value: hourly != null && hourly!.first.visibility! != 0
                             ? (hourly!.first.visibility! / 1000)
                                 .toStringAsFixed(1)
-                            : '-',
+                            : current!.visibility != null
+                                ? current!.visibility!.toStringAsFixed(1)
+                                : '-',
                         unit: 'km',
                       ),
                     ),

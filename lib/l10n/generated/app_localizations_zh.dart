@@ -71,10 +71,19 @@ class AppLocalizationsZh extends AppLocalizations {
   String get weatherCloudy => '多云';
 
   @override
+  String get weatherOvercast => '阴天';
+
+  @override
   String get weatherFoggy => '有雾';
 
   @override
-  String get weatherRainy => '雨';
+  String get weatherDrizzle => '细雨';
+
+  @override
+  String get weatherRain => '雨';
+
+  @override
+  String get weatherRainShower => '大雨';
 
   @override
   String get weatherSnowy => '雪';
@@ -312,10 +321,19 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get weatherCloudy => '多雲';
 
   @override
+  String get weatherOvercast => '陰';
+
+  @override
   String get weatherFoggy => '有霧';
 
   @override
-  String get weatherRainy => '雨';
+  String get weatherDrizzle => '细雨';
+
+  @override
+  String get weatherRain => '雨';
+
+  @override
+  String get weatherRainShower => '大雨';
 
   @override
   String get weatherSnowy => '雪';

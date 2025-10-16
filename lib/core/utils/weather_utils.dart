@@ -38,12 +38,12 @@ String weatherDesc(int? code) {
       return 'weatherDrizzle';
     case 61:
     case 63:
-    case 65:
     case 66:
-    case 67:
-      return 'weatherRain';
     case 80:
     case 81:
+      return 'weatherRain';
+    case 65:
+    case 67:
     case 82:
       return 'weatherRainShower';
     case 71:

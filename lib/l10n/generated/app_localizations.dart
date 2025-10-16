@@ -224,17 +224,35 @@ abstract class AppLocalizations {
   /// **'Cloudy'**
   String get weatherCloudy;
 
+  /// No description provided for @weatherOvercast.
+  ///
+  /// In en, this message translates to:
+  /// **'Overcast'**
+  String get weatherOvercast;
+
   /// No description provided for @weatherFoggy.
   ///
   /// In en, this message translates to:
   /// **'Foggy'**
   String get weatherFoggy;
 
-  /// No description provided for @weatherRainy.
+  /// No description provided for @weatherDrizzle.
   ///
   /// In en, this message translates to:
-  /// **'Rainy'**
-  String get weatherRainy;
+  /// **'Drizzle'**
+  String get weatherDrizzle;
+
+  /// No description provided for @weatherRain.
+  ///
+  /// In en, this message translates to:
+  /// **'Rain'**
+  String get weatherRain;
+
+  /// No description provided for @weatherRainShower.
+  ///
+  /// In en, this message translates to:
+  /// **'Rain Shower'**
+  String get weatherRainShower;
 
   /// No description provided for @weatherSnowy.
   ///
