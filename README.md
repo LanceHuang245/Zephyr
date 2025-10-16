@@ -6,10 +6,6 @@ English | [简体中文](README_CN.md)
   </a>
 </p>
 
-> **Temporary Notice**
->
-> The backend of Zephyr is under development and may randomly experience service unavailability. Please consider using it with caution.
-
 # Zephyr
 
 A simple and beautiful weather app built with Flutter, powered by the OpenMeteo API, Qweather API and the search functionality is provided by the OpenStreetMap API.

@@ -6,10 +6,6 @@
   </a>
 </p>
 
-> **临时通知**
-> 
-> 当前项目的后端处于开发阶段，概率性出现服务不可用状态，请谨慎使用。
-
 # Zephyr
 
 一款简洁美观的天气应用，基于 Flutter 开发，数据来源于 OpenMeteo API 与 QWeather API，搜索功能由 OpenStreetMap API 提供。
