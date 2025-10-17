@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "org.claret.zephyr"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "28.2.13676358"
+    ndkVersion = "29.0.14206865"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
