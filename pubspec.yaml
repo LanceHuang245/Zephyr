@@ -25,8 +25,7 @@ dependencies:
   animations: 
   fl_chart: 
   percent_indicator: 
-  flutter_colorpicker: 
-  flutter_dotenv: 
+  flutter_colorpicker:  
   json_annotation: 
   
 dev_dependencies:
@@ -43,4 +42,3 @@ flutter:
 
   assets:
     - assets/images/zephyr.png
-    - .env
