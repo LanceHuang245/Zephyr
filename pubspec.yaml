@@ -27,6 +27,7 @@ dependencies:
   percent_indicator: 
   flutter_colorpicker:  
   json_annotation: 
+  workmanager:
   
 dev_dependencies:
   flutter_test:

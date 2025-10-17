@@ -73,11 +73,11 @@ class WeatherWidgetProvider : AppWidgetProvider() {
                     // 晴天 - 蓝色渐变
                     views.setInt(R.id.widget_container, "setBackgroundResource", R.drawable.widget_gradient_background)
                 }
-                1, 2, 3 -> {
+                1, 2 -> {
                     // 多云 - 浅蓝色渐变
                     views.setInt(R.id.widget_container, "setBackgroundResource", R.drawable.widget_gradient_background)
                 }
-                45, 48 -> {
+                3, 45, 48 -> {
                     // 雾天 - 浅灰色
                     views.setInt(R.id.widget_container, "setBackgroundColor", Color.parseColor("#ECEFF1"))
                 }

@@ -7,21 +7,10 @@ import '../api/public.dart';
 import 'package:zephyr/core/notifiers.dart';
 
 class WeatherFetchService {
-  static DateTime? _lastFetchTime;
-
   // 获取并缓存天气数据
-  // 由原生Android服务调用，每15分钟执行一次
+  // 由WorkManager调用，每15分钟执行一次
   static Future<void> fetchAndCacheWeather() async {
     try {
-      // 检查是否在短时间内重复调用
-      final now = DateTime.now();
-      if (_lastFetchTime != null &&
-          now.difference(_lastFetchTime!) < const Duration(minutes: 13)) {
-        if (kDebugMode) debugPrint('天气获取过于频繁，跳过本次获取');
-        return;
-      }
-      _lastFetchTime = now;
-
       if (kDebugMode) debugPrint('开始获取天气数据...');
 
       final prefs = await SharedPreferences.getInstance();
@@ -70,7 +59,11 @@ class WeatherFetchService {
 
       if (weather != null) {
         await cacheWeather(mainCity, weather, warnings);
-        if (kDebugMode) debugPrint('天气数据获取并缓存成功');
+        if (kDebugMode) {
+          debugPrint('天气数据获取并缓存成功');
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('last_background_fetch_timestamp', DateTime.now().toIso8601String());
+        }
         WidgetService.updateWidget(city: mainCity, weatherData: weather);
       } else {
         if (kDebugMode) debugPrint('天气数据获取失败');
@@ -78,12 +71,5 @@ class WeatherFetchService {
     } catch (e) {
       if (kDebugMode) debugPrint('获取天气失败: $e');
     }
-  }
-
-  // 强制获取天气数据
-  static Future<void> forceFetchWeather() async {
-    _lastFetchTime = null; // 重置时间限制
-    await fetchAndCacheWeather();
-    weatherDataChangedNotifier.value++;
   }
 }

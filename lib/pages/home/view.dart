@@ -39,7 +39,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     tempUnitNotifier.addListener(_onUnitChanged);
-    weatherDataChangedNotifier.addListener(_onWeatherDataChanged);
     weatherSourceNotifier.addListener(_onSourceChanged);
     _loadCities();
   }
@@ -47,7 +46,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     tempUnitNotifier.removeListener(_onUnitChanged);
-    weatherDataChangedNotifier.removeListener(_onWeatherDataChanged);
     weatherSourceNotifier.removeListener(_onSourceChanged);
     _pageController?.dispose();
     super.dispose();
@@ -61,13 +59,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onUnitChanged() {
-    if (!mounted) return;
-    for (var city in cities) {
-      _loadWeather(city, force: true);
-    }
-  }
-
-  void _onWeatherDataChanged() {
     if (!mounted) return;
     for (var city in cities) {
       _loadWeather(city, force: true);
@@ -130,9 +121,7 @@ class _HomePageState extends State<HomePage> {
     }
     if (cached != null) {
       setState(() {
-        kDebugMode
-            ? debugPrint('已加载缓存天气数据: key=${_getMapKey(city)}')
-            : null;
+        kDebugMode ? debugPrint('已加载缓存天气数据: key=${_getMapKey(city)}') : null;
         weatherMap[_getMapKey(city)] = cached!['weather'];
         warningsMap[_getMapKey(city)] = cached['warnings'];
         loadingMap[_getMapKey(city)] = false;

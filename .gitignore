@@ -47,6 +47,4 @@ app.*.map.json
 .fvm/
 .fvmrc
 
-.env
-
 .vscode/

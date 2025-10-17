@@ -1,9 +1,22 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zephyr/core/services/native_weather_service.dart';
+import 'package:workmanager/workmanager.dart';
+import 'package:zephyr/core/services/weather_fetch_service.dart';
 import 'notifiers.dart';
 import 'package:flutter/material.dart';
 import 'languages.dart';
+
+@pragma('vm:entry-point')
+void callbackDispatcher() {
+  Workmanager().executeTask((task, inputData) async {
+    switch (task) {
+      case "fetchWeatherTask":
+        await WeatherFetchService.fetchAndCacheWeather();
+        break;
+    }
+    return Future.value(true);
+  });
+}
 
 Future<void> initAppSettings() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,6 +57,13 @@ Future<void> initAppSettings() async {
     prefs.setString('weather_source', 'OpenMeteo');
     kDebugMode ? debugPrint('默认天气源设置为OpenMeteo') : null;
   }
-  // 初始化并启动原生天气服务
-  await NativeWeatherService.initialize();
+  await Workmanager().initialize(
+    callbackDispatcher,
+  );
+
+  Workmanager().registerPeriodicTask(
+    "1",
+    "fetchWeatherTask",
+    frequency: const Duration(minutes: 30),
+  );
 }
