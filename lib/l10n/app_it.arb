@@ -88,5 +88,6 @@
   "fahrenheit": "Fahrenheit",
   "weatherDataError": "Impossibile recuperare i dati meteorologici",
   "checkNetworkAndRetry": "Controlla la tua connessione di rete e riprova.",
-  "today":"Oggi"
+  "today": "Oggi",
+  "customizeHomepage": "Personalizza la homepage"
 }

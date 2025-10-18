@@ -402,6 +402,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get detailedData => '詳細數據';
 
   @override
+  String get customizeHomepage => '自定主頁';
+
+  @override
   String get settings => '設置';
 
   @override

@@ -88,5 +88,6 @@
   "fahrenheit": "Fahrenheit",
   "weatherDataError": "Échec de la récupération des données météorologiques",
   "checkNetworkAndRetry": "Veuillez vérifier votre connexion réseau et réessayer.",
-  "today": "Auj."
+  "today": "Auj.",
+  "customizeHomepage": "Personnaliser la page d'accueil"
 }

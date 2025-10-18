@@ -88,5 +88,6 @@
   "fahrenheit": "Fahrenheit",
   "weatherDataError": "Wetterdaten konnten nicht abgerufen werden",
   "checkNetworkAndRetry": "Bitte überprüfen Sie Ihre Netzwerkverbindung und versuchen Sie es erneut.",
-  "today": "Heute"
+  "today": "Heute",
+  "customizeHomepage": "Homepage anpassen"
 }
