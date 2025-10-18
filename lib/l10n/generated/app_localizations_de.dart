@@ -221,7 +221,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get hourly_windSpeed => 'Stündliche Windgeschwindigkeit';
 
   @override
-  String get hourly_windSpeed_Desc => 'Stündliche Windgeschwindigkeit, 10m steht für die Windgeschwindigkeit in 10 Metern über dem Boden, usw. Sie können das Diagramm manuell verschieben, um detaillierte Windgeschwindigkeitsdaten pro Stunde zu sehen.';
+  String get hourly_windSpeed_Desc => 'Stündliche Windgeschwindigkeit. Sie können die Karte manuell scrollen, um detaillierte stündliche Windgeschwindigkeitsdaten anzuzeigen.';
 
   @override
   String get hourly_pressure => 'Stündlicher Luftdruck';
@@ -252,4 +252,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get checkNetworkAndRetry => 'Bitte überprüfen Sie Ihre Netzwerkverbindung und versuchen Sie es erneut.';
+
+  @override
+  String get today => 'Heute';
 }

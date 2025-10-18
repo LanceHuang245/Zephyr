@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:zephyr/l10n/generated/app_localizations.dart';
 import '../../../core/notifiers.dart';
 import '../../../core/utils/weather_utils.dart';
 
@@ -11,6 +13,14 @@ class FutureWeatherBand extends StatelessWidget {
       required this.colorScheme,
       required this.textTheme,
       super.key});
+
+  String _getWeekday(DateTime date, int index, BuildContext context) {
+    if (index == 0) {
+      return AppLocalizations.of(context).today;
+    } else {
+      return DateFormat.E(AppLocalizations.of(context).localeName).format(date);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +55,7 @@ class FutureWeatherBand extends StatelessWidget {
             yBottom: yBottom,
             tmax: tmax,
             tmin: tmin,
-            date: d.date,
+            date: _getWeekday(DateTime.parse(d.date), i, context),
             weatherCode: d.weatherCode,
             weatherDesc: weatherDesc(d.weatherCode),
           ));
@@ -59,7 +69,7 @@ class FutureWeatherBand extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              bar.date.substring(5),
+                              bar.date,
                               style: textTheme.titleSmall
                                   ?.copyWith(fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center,

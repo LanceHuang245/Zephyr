@@ -527,7 +527,7 @@ abstract class AppLocalizations {
   /// No description provided for @hourly_windSpeed_Desc.
   ///
   /// In en, this message translates to:
-  /// **'Hourly wind speed, 10m represents wind speed at 10 meters above the ground, and so on. You can manually slide the chart to see detailed wind speed data per hour.'**
+  /// **'Hourly wind speed. You can manually scroll the chart to view detailed hourly wind speed data.'**
   String get hourly_windSpeed_Desc;
 
   /// No description provided for @hourly_pressure.
@@ -589,6 +589,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please check your network connection and try again'**
   String get checkNetworkAndRetry;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

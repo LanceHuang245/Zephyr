@@ -221,7 +221,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hourly_windSpeed => 'Hourly Wind Speed';
 
   @override
-  String get hourly_windSpeed_Desc => 'Hourly wind speed, 10m represents wind speed at 10 meters above the ground, and so on. You can manually slide the chart to see detailed wind speed data per hour.';
+  String get hourly_windSpeed_Desc => 'Hourly wind speed. You can manually scroll the chart to view detailed hourly wind speed data.';
 
   @override
   String get hourly_pressure => 'Hourly Air Pressure';
@@ -252,4 +252,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get checkNetworkAndRetry => 'Please check your network connection and try again';
+
+  @override
+  String get today => 'Today';
 }

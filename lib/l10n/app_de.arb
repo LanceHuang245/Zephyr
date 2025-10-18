@@ -77,7 +77,7 @@
   "starUs": "Einen Stern auf GitHub",
   "alert": "Warnungen",
   "hourly_windSpeed": "Stündliche Windgeschwindigkeit",
-  "hourly_windSpeed_Desc": "Stündliche Windgeschwindigkeit, 10m steht für die Windgeschwindigkeit in 10 Metern über dem Boden, usw. Sie können das Diagramm manuell verschieben, um detaillierte Windgeschwindigkeitsdaten pro Stunde zu sehen.",
+  "hourly_windSpeed_Desc": "Stündliche Windgeschwindigkeit. Sie können die Karte manuell scrollen, um detaillierte stündliche Windgeschwindigkeitsdaten anzuzeigen.",
   "hourly_pressure": "Stündlicher Luftdruck",
   "hourly_pressure_Desc": "Stündlicher Luftdruck auf Meereshöhe und Oberflächendruck auf Bodenhöhe, hPa ist die Einheit des Luftdrucks. Sie können das Diagramm manuell verschieben, um detaillierte stündliche Luftdruckdaten zu sehen.",
   "eAQIGrading": "Bewertung des Luftqualitätsindex",
@@ -87,5 +87,6 @@
   "celsius": "Celsius",
   "fahrenheit": "Fahrenheit",
   "weatherDataError": "Wetterdaten konnten nicht abgerufen werden",
-  "checkNetworkAndRetry": "Bitte überprüfen Sie Ihre Netzwerkverbindung und versuchen Sie es erneut."
+  "checkNetworkAndRetry": "Bitte überprüfen Sie Ihre Netzwerkverbindung und versuchen Sie es erneut.",
+  "today": "Heute"
 }

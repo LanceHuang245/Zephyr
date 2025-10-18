@@ -77,7 +77,7 @@
   "starUs": "Étoilez-nous sur GitHub",
   "alert": "Alertes",
   "hourly_windSpeed": "Vitesse horaire du vent",
-  "hourly_windSpeed_Desc": "Vitesse horaire du vent, 10m représente la vitesse du vent à 10 mètres au-dessus du sol, etc. Vous pouvez faire glisser manuellement le graphique pour obtenir des données détaillées sur la vitesse du vent par heure.",
+  "hourly_windSpeed_Desc": "Vitesse horaire du vent. Vous pouvez faire défiler manuellement le graphique pour afficher les données détaillées relatives à la vitesse horaire du vent.",
   "hourly_pressure": "Pression atmosphérique horaire",
   "hourly_pressure_Desc": "Pression atmosphérique horaire au niveau de la mer et pression de surface au niveau du sol, hPa étant l'unité de pression atmosphérique. Vous pouvez faire glisser manuellement le graphique pour obtenir des données détaillées sur la pression barométrique horaire.",
   "eAQIGrading": "Classification de l'indice de qualité de l'air",
@@ -87,5 +87,6 @@
   "celsius": "Celsius",
   "fahrenheit": "Fahrenheit",
   "weatherDataError": "Échec de la récupération des données météorologiques",
-  "checkNetworkAndRetry": "Veuillez vérifier votre connexion réseau et réessayer."
+  "checkNetworkAndRetry": "Veuillez vérifier votre connexion réseau et réessayer.",
+  "today": "Auj."
 }

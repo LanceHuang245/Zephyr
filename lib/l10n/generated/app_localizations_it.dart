@@ -221,7 +221,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get hourly_windSpeed => 'Velocità oraria del vento';
 
   @override
-  String get hourly_windSpeed_Desc => 'Velocità oraria del vento, 10m rappresenta la velocità del vento a 10 metri dal suolo, e così via. È possibile far scorrere manualmente il grafico per visualizzare i dati dettagliati della velocità del vento all\'ora.';
+  String get hourly_windSpeed_Desc => 'Velocità del vento oraria. È possibile scorrere manualmente il grafico per visualizzare i dati dettagliati relativi alla velocità del vento oraria.';
 
   @override
   String get hourly_pressure => 'Pressione oraria dell\'aria';
@@ -252,4 +252,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get checkNetworkAndRetry => 'Controlla la tua connessione di rete e riprova.';
+
+  @override
+  String get today => 'Oggi';
 }

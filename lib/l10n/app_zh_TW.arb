@@ -77,7 +77,7 @@
   "starUs": "給我们點個Star",
   "alert": "預警",
   "hourly_windSpeed": "逐小時風速",
-  "hourly_windSpeed_Desc": "每小時風速，10m為距離地面10米的風俗，以此類推。可以手動滑動图表查看每小时的详细风速数据。",
+  "hourly_windSpeed_Desc": "每小時風速。可以手動滑動图表查看每小时的详细风速数据。",
   "hourly_pressure": "逐小時氣壓",
   "hourly_pressure_Desc": "每小時的海平面氣壓和地面氣壓，hPa為氣壓單位。可以手動滑動图表查看每小时的详细氣壓数据。",
   "eAQIGrading": "空氣品質分級",
@@ -87,5 +87,6 @@
   "celsius": "攝氏度",
   "fahrenheit": "華氏度",
   "weatherDataError": "無法獲取天氣數據",
-  "checkNetworkAndRetry": "請檢查您的網路設定後重試"
+  "checkNetworkAndRetry": "請檢查您的網路設定後重試",
+  "today": "今日"
 }

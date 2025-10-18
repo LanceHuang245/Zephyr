@@ -77,7 +77,7 @@
   "starUs": "Star us on GitHub",
   "alert": "Alerts",
   "hourly_windSpeed": "Hourly Wind Speed",
-  "hourly_windSpeed_Desc": "Hourly wind speed, 10m represents wind speed at 10 meters above the ground, and so on. You can manually slide the chart to see detailed wind speed data per hour.",
+  "hourly_windSpeed_Desc": "Hourly wind speed. You can manually scroll the chart to view detailed hourly wind speed data.",
   "hourly_pressure": "Hourly Air Pressure",
   "hourly_pressure_Desc": "Hourly air pressure at sea level and surface pressure at ground level, hPa is the unit of air pressure. You can manually slide the chart to see detailed hourly barometric pressure data.",
   "eAQIGrading": "Air Quality Index Grading",
@@ -87,5 +87,6 @@
   "celsius": "Celsius",
   "fahrenheit": "Fahrenheit",
   "weatherDataError": "Failed to fetch weather data",
-  "checkNetworkAndRetry": "Please check your network connection and try again"
+  "checkNetworkAndRetry": "Please check your network connection and try again",
+  "today": "Today"
 }

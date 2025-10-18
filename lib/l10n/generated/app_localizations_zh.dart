@@ -221,7 +221,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get hourly_windSpeed => '逐小时风速';
 
   @override
-  String get hourly_windSpeed_Desc => '每小时的风速，10m代表距离地面10米处的风速，以此类推。可以手动滑动图表查看每小时的详细风速数据。';
+  String get hourly_windSpeed_Desc => '每小时的风速。可以手动滑动图表查看每小时的详细风速数据。';
 
   @override
   String get hourly_pressure => '逐小时气压';
@@ -252,6 +252,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get checkNetworkAndRetry => '请检查您的网络连接并重试';
+
+  @override
+  String get today => '今日';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -471,7 +474,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get hourly_windSpeed => '逐小時風速';
 
   @override
-  String get hourly_windSpeed_Desc => '每小時風速，10m為距離地面10米的風俗，以此類推。可以手動滑動图表查看每小时的详细风速数据。';
+  String get hourly_windSpeed_Desc => '每小時風速。可以手動滑動图表查看每小时的详细风速数据。';
 
   @override
   String get hourly_pressure => '逐小時氣壓';
@@ -502,4 +505,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get checkNetworkAndRetry => '請檢查您的網路設定後重試';
+
+  @override
+  String get today => '今日';
 }

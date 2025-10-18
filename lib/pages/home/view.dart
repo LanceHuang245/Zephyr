@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../core/models/city.dart';
 import '../../core/models/weather.dart';
@@ -30,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   Map<String, List<WeatherWarning>> warningsMap = {};
   Map<String, bool> loadingMap = {};
   PageController? _pageController;
+  final ValueNotifier<bool> _isFabVisibleNotifier = ValueNotifier(true);
 
   String _getMapKey(City city) {
     return '${city.lat}_${city.lon}_${weatherSourceNotifier.value}';
@@ -45,6 +47,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
+    _isFabVisibleNotifier.dispose();
     tempUnitNotifier.removeListener(_onUnitChanged);
     weatherSourceNotifier.removeListener(_onSourceChanged);
     _pageController?.dispose();
@@ -82,7 +85,6 @@ class _HomePageState extends State<HomePage> {
     }
     if (!mounted) return;
 
-    // 确保pageIndex在有效范围内
     if (list.isNotEmpty && idx >= list.length) {
       idx = 0;
     }
@@ -90,7 +92,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       cities = list;
       pageIndex = idx;
-      // 城市列表发生变化时重建
       if (_pageController == null || _pageController!.hasClients == false) {
         _pageController = PageController(initialPage: idx);
       }
@@ -101,7 +102,6 @@ class _HomePageState extends State<HomePage> {
     }
 
     if (cities.isNotEmpty) {
-      // 更新小部件数据
       final mainCity = cities.first;
       final weather = weatherMap[_getMapKey(mainCity)];
       if (weather != null) {
@@ -121,15 +121,11 @@ class _HomePageState extends State<HomePage> {
     }
     if (cached != null) {
       setState(() {
-        kDebugMode ? debugPrint('已加载缓存天气数据: key=${_getMapKey(city)}') : null;
         weatherMap[_getMapKey(city)] = cached!['weather'];
         warningsMap[_getMapKey(city)] = cached['warnings'];
         loadingMap[_getMapKey(city)] = false;
       });
     } else {
-      kDebugMode
-          ? debugPrint('缓存已过期，或无缓存，加载新数据: key=${_getMapKey(city)}')
-          : null;
       await _refreshWeather(city);
     }
   }
@@ -157,19 +153,15 @@ class _HomePageState extends State<HomePage> {
     final result = await Navigator.pushNamed(context, '/search');
     if (result is City) {
       final prefs = await SharedPreferences.getInstance();
-      // 读取原有城市列表
       final citiesStr = prefs.getString('cities');
       List<City> list = citiesStr != null ? City.listFromJson(citiesStr) : [];
-      // 判断是否已存在
       if (!list.any((c) => c.lat == result.lat && c.lon == result.lon)) {
         list.add(result);
         await prefs.setString('cities', City.listToJson(list));
       }
 
-      // 重新加载城市列表
       await _loadCities();
 
-      // 重新查找新城市的下标（包括已存在的情况）
       final citiesStr2 = prefs.getString('cities');
       List<City> list2 =
           citiesStr2 != null ? City.listFromJson(citiesStr2) : [];
@@ -181,7 +173,6 @@ class _HomePageState extends State<HomePage> {
           pageIndex = newIdx;
         });
 
-        // 确保PageController已经创建并且页面已经构建完成后再跳转
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (_pageController != null && _pageController!.hasClients) {
             _pageController!.animateToPage(
@@ -223,10 +214,6 @@ class _HomePageState extends State<HomePage> {
       );
       return;
     } else {
-      kDebugMode
-          ? debugPrint(
-              "获取经纬度：${pos.latitude.toString()},${pos.longitude.toString()}")
-          : null;
       if (!mounted) return;
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       NotificationUtils.showSnackBar(
@@ -235,7 +222,6 @@ class _HomePageState extends State<HomePage> {
       );
     }
     final city = await LocationService.getCityFromPosition(pos);
-    kDebugMode ? debugPrint(city.name) : null;
     final prefs = await SharedPreferences.getInstance();
     if (city.name.isEmpty) {
       if (!mounted) return;
@@ -274,7 +260,6 @@ class _HomePageState extends State<HomePage> {
         });
       }
     } else {
-      // 城市已存在，直接跳转到该城市
       int existIdx =
           list.indexWhere((c) => c.lat == city.lat && c.lon == city.lon);
       if (existIdx >= 0 && existIdx < cities.length) {
@@ -314,6 +299,19 @@ class _HomePageState extends State<HomePage> {
         onOpenSettings: _onOpenSettings,
         onLocate: _onLocate,
       ),
+      floatingActionButton: ValueListenableBuilder<bool>(
+        valueListenable: _isFabVisibleNotifier,
+        builder: (context, isVisible, child) {
+          return AnimatedScale(
+            scale: isVisible ? 1 : 0,
+            duration: const Duration(milliseconds: 200),
+            child: FloatingActionButton(
+              onPressed: _onAddCity,
+              child: const Icon(Icons.search),
+            ),
+          );
+        },
+      ),
       body: Stack(
         children: [
           AnimatedSwitcher(
@@ -325,27 +323,45 @@ class _HomePageState extends State<HomePage> {
                     weatherCode: weatherCode,
                   ),
           ),
-          cities.isEmpty
-              ? EmptyCityTip(onAdd: _onAddCity, onLocate: _onLocate)
-              : PageView.builder(
-                  controller: _pageController,
-                  itemCount: cities.length,
-                  onPageChanged: _onPageChanged,
-                  itemBuilder: (context, idx) {
-                    final city = cities[idx];
-                    final weather = weatherMap[_getMapKey(city)];
-                    final warnings = warningsMap[_getMapKey(city)] ?? [];
-                    final loading = loadingMap[_getMapKey(city)] ?? true;
+          NotificationListener<ScrollNotification>(
+            onNotification: (notification) {
+              if (notification is UserScrollNotification &&
+                  notification.metrics.axis == Axis.vertical) {
+                final direction = notification.direction;
+                if (direction == ScrollDirection.reverse) {
+                  if (_isFabVisibleNotifier.value) {
+                    _isFabVisibleNotifier.value = false;
+                  }
+                } else if (direction == ScrollDirection.forward) {
+                  if (!_isFabVisibleNotifier.value) {
+                    _isFabVisibleNotifier.value = true;
+                  }
+                }
+              }
+              return false;
+            },
+            child: cities.isEmpty
+                ? EmptyCityTip(onAdd: _onAddCity, onLocate: _onLocate)
+                : PageView.builder(
+                    controller: _pageController,
+                    itemCount: cities.length,
+                    onPageChanged: _onPageChanged,
+                    itemBuilder: (context, idx) {
+                      final city = cities[idx];
+                      final weather = weatherMap[_getMapKey(city)];
+                      final warnings = warningsMap[_getMapKey(city)] ?? [];
+                      final loading = loadingMap[_getMapKey(city)] ?? true;
 
-                    return HomePageContentWidget(
-                      city: city,
-                      weather: weather,
-                      loading: loading,
-                      onRefresh: () => _refreshWeather(city),
-                      warnings: warnings,
-                    );
-                  },
-                ),
+                      return HomePageContentWidget(
+                        city: city,
+                        weather: weather,
+                        loading: loading,
+                        onRefresh: () => _refreshWeather(city),
+                        warnings: warnings,
+                      );
+                    },
+                  ),
+          ),
         ],
       ),
     );
