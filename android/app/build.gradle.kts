@@ -6,10 +6,11 @@ plugins {
 
 android {
     namespace = "org.claret.zephyr"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = "29.0.14206865"
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
@@ -59,4 +60,5 @@ flutter {
 
 dependencies {
     implementation("androidx.work:work-runtime-ktx:2.10.3")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }

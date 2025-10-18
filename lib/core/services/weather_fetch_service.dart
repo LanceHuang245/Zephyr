@@ -1,75 +1,96 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zephyr/core/services/notification_service.dart';
 import 'package:zephyr/core/services/widget_service.dart';
 import '../models/city.dart';
+import '../models/weather_warning.dart';
 import 'weather_cache.dart';
 import 'package:flutter/foundation.dart';
 import '../api/public.dart';
 import 'package:zephyr/core/notifiers.dart';
 
 class WeatherFetchService {
-  // 获取并缓存天气数据
-  // 由WorkManager调用，每15分钟执行一次
+  static Future<Map<String, dynamic>?> getFreshWeatherData(City city) async {
+    try {
+      if (kDebugMode) debugPrint('获取城市天气: ${city.name}');
+
+      final prefs = await SharedPreferences.getInstance();
+      final localeIndex = prefs.getInt('locale_index') ?? 0;
+      final languageCode = localeIndex == 0 ? 'en' : 'zh';
+
+      final weather = await Api.fetchWeather(
+        latitude: city.lat,
+        longitude: city.lon,
+        lang: languageCode,
+        units: tempUnitNotifier.value,
+      );
+
+      List<WeatherWarning> warnings = [];
+      try {
+        warnings = await Api.fetchWarning(
+          lat: city.lat,
+          lon: city.lon,
+        );
+      } catch (e) {
+        if (kDebugMode) debugPrint('获取天气预警失败: $e');
+      }
+
+      if (weather != null) {
+        await cacheWeather(city, weather, warnings);
+        if (kDebugMode) debugPrint('天气数据获取并缓存成功 for ${city.name}');
+
+        final citiesStr = prefs.getString('cities');
+        if (citiesStr != null) {
+          final cities = City.listFromJson(citiesStr);
+          if (cities.isNotEmpty &&
+              cities.first.lat == city.lat &&
+              cities.first.lon == city.lon) {
+            await WidgetService.updateWidget(city: city, weatherData: weather);
+          }
+        }
+
+        return {'weather': weather, 'warnings': warnings};
+      } else {
+        if (kDebugMode) debugPrint('天气数据获取失败 for ${city.name}');
+        return null;
+      }
+    } catch (e) {
+      if (kDebugMode) debugPrint('获取天气失败 for ${city.name}: $e');
+      return null;
+    }
+  }
+
   static Future<void> fetchAndCacheWeather() async {
     try {
-      if (kDebugMode) debugPrint('开始获取天气数据...');
+      if (kDebugMode) debugPrint('后台任务开始获取天气数据...');
 
       final prefs = await SharedPreferences.getInstance();
       final citiesStr = prefs.getString('cities');
       if (citiesStr == null) {
-        if (kDebugMode) debugPrint('没有配置城市信息');
+        if (kDebugMode) debugPrint('后台任务: 没有配置城市信息');
         return;
       }
 
       final cities = City.listFromJson(citiesStr);
       if (cities.isEmpty) {
-        if (kDebugMode) debugPrint('城市列表为空');
+        if (kDebugMode) debugPrint('后台任务: 城市列表为空');
         return;
       }
 
       final mainCity = cities.first;
-      if (kDebugMode) debugPrint('获取城市天气: ${mainCity.name}');
+      final weatherData = await getFreshWeatherData(mainCity);
 
-      // 获取当前语言和单位
-      final localeIndex = prefs.getInt('locale_index') ?? 0;
-      final languageCode = localeIndex == 0 ? 'en' : 'zh';
-
-      // 拉取天气数据
-      final weather = await Api.fetchWeather(
-        latitude: mainCity.lat,
-        longitude: mainCity.lon,
-        lang: languageCode,
-        units: tempUnitNotifier.value,
-      );
-
-      // 拉取天气预警
-      final warnings = await Api.fetchWarning(
-        lat: mainCity.lat,
-        lon: mainCity.lon,
-      );
-      if (warnings.isNotEmpty) {
-        for (final warning in warnings) {
-          if (kDebugMode) {
-            debugPrint(
-                '天气预警: ${warning.title} - ${warning.level}\n${warning.text}');
-          }
+      if (weatherData != null) {
+        final warnings = weatherData['warnings'] as List<WeatherWarning>? ?? [];
+        if (warnings.isNotEmpty) {
+          final title = warnings.first.title;
+          final body = warnings.map((w) => w.text).join('\n');
+          await NotificationService().showWarningNotification(title, body);
         }
-      } else {
-        if (kDebugMode) debugPrint('天气预警获取失败或无预警');
-      }
-
-      if (weather != null) {
-        await cacheWeather(mainCity, weather, warnings);
-        if (kDebugMode) {
-          debugPrint('天气数据获取并缓存成功');
-          final prefs = await SharedPreferences.getInstance();
-          await prefs.setString('last_background_fetch_timestamp', DateTime.now().toIso8601String());
-        }
-        WidgetService.updateWidget(city: mainCity, weatherData: weather);
-      } else {
-        if (kDebugMode) debugPrint('天气数据获取失败');
+        await prefs.setString('last_background_fetch_timestamp',
+            DateTime.now().toIso8601String());
       }
     } catch (e) {
-      if (kDebugMode) debugPrint('获取天气失败: $e');
+      if (kDebugMode) debugPrint('后台任务获取天气失败: $e');
     }
   }
 }

@@ -28,6 +28,9 @@ dependencies:
   flutter_colorpicker:  
   json_annotation: 
   workmanager:
+  flutter_local_notifications: 
+  timezone: 
+  permission_handler: ^12.0.1
   
 dev_dependencies:
   flutter_test:

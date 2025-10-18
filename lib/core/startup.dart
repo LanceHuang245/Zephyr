@@ -1,14 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
+import 'package:zephyr/core/services/notification_service.dart';
 import 'package:zephyr/core/services/weather_fetch_service.dart';
 import 'notifiers.dart';
 import 'package:flutter/material.dart';
 import 'languages.dart';
 
+// 运行后台自动获取天气数据任务
 @pragma('vm:entry-point')
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
+    await NotificationService().init();
+
     switch (task) {
       case "fetchWeatherTask":
         await WeatherFetchService.fetchAndCacheWeather();
@@ -20,6 +24,10 @@ void callbackDispatcher() {
 
 Future<void> initAppSettings() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // 初始化通知服务
+  await NotificationService().init();
+
   final prefs = await SharedPreferences.getInstance();
 
   // 必要的监听器

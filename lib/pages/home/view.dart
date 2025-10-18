@@ -14,7 +14,7 @@ import '../../core/utils/notification_utils.dart';
 import '../../core/services/widget_service.dart';
 import 'widgets/weather_bg.dart';
 import '../../core/models/weather_warning.dart';
-import '../../core/api/public.dart';
+import 'package:zephyr/core/services/weather_fetch_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -135,26 +135,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _refreshWeather(City city) async {
-    final data = await Api.fetchWeather(
-        latitude: city.lat, longitude: city.lon, units: tempUnitNotifier.value);
-    List<WeatherWarning> warnings = [];
-    try {
-      warnings = await Api.fetchWarning(lat: city.lat, lon: city.lon);
-    } catch (_) {}
-    if (data != null) {
-      await cacheWeather(city, data, warnings);
-
-      // 如果是主城市（第一个城市），更新小部件
-      if (cities.isNotEmpty &&
-          cities.first.lat == city.lat &&
-          cities.first.lon == city.lon) {
-        await WidgetService.updateWidget(city: city, weatherData: data);
-      }
-    }
+    final data = await WeatherFetchService.getFreshWeatherData(city);
     if (!mounted) return;
     setState(() {
-      weatherMap[_getMapKey(city)] = data;
-      warningsMap[_getMapKey(city)] = warnings;
+      weatherMap[_getMapKey(city)] = data?['weather'];
+      warningsMap[_getMapKey(city)] = data?['warnings'] ?? [];
       loadingMap[_getMapKey(city)] = false;
     });
   }
