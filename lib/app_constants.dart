@@ -10,7 +10,7 @@ class AppConstants {
     'QWeather',
   ];
 
-  // API url (Lance免费特供，有一定用量限制，请勿滥用或攻击该服务器)
+  // API url (免费提供，有一定用量限制，请勿滥用或攻击该服务器)
   static const String weatherUrl = "http://zephyr.claret.space:3899/api/v1";
 }
 

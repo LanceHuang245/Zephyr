@@ -30,7 +30,7 @@ dependencies:
   workmanager:
   flutter_local_notifications: 
   timezone: 
-  permission_handler: ^12.0.1
+  permission_handler: 
   
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
 import Flutter
 import UIKit
-import workmanager
+import workmanager_apple
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -10,7 +10,7 @@ import workmanager
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
 
-    WorkmanagerPlugin.registerPeriodicTask(withIdentifier: "org.claret.easyweather.fetchWeatherTask")
+    WorkmanagerPlugin.registerPeriodicTask(withIdentifier: "org.claret.easyweather.fetchWeatherTask",frequency: NSNumber(value: 30 * 60))
 
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
