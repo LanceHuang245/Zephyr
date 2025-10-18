@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'dart:async';
+import '../import.dart';
 
 class AnimatedTextSwitcher extends StatefulWidget {
   final String text;

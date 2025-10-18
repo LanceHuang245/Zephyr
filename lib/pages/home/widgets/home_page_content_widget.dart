@@ -1,9 +1,4 @@
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import 'package:flutter/material.dart';
-import '../../../core/models/city.dart';
-import '../../../core/models/weather.dart';
-import '../../../core/models/weather_warning.dart';
-import 'weather_view.dart';
+import '../import.dart';
 
 class HomePageContentWidget extends StatefulWidget {
   final City city;

@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:zephyr/core/models/weather.dart';
-import 'package:zephyr/core/utils/weather_utils.dart';
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+import '../import.dart';
 
 class AirQualityCard extends StatelessWidget {
   final CurrentWeather current;

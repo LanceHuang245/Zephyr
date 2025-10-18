@@ -1,6 +1,4 @@
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import 'package:flutter/material.dart';
-import '../../../core/models/city.dart';
+import '../import.dart';
 
 class SearchResultsWidget extends StatelessWidget {
   final List<City> results;

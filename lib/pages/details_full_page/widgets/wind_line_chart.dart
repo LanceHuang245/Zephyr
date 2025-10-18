@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fl_chart/fl_chart.dart';
-import 'package:zephyr/core/models/weather.dart';
-import 'package:zephyr/l10n/generated/app_localizations.dart';
+import '../import.dart';
 
 class WindLineChartCard extends StatelessWidget {
   final List<HourlyWeather> hourly;

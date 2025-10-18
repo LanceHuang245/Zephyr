@@ -1,7 +1,4 @@
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import '../../../l10n/generated/app_localizations.dart';
+import '../import.dart';
 
 class ThemeModeSelectorWidget extends StatelessWidget {
   final ThemeMode? themeMode;

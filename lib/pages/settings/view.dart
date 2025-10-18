@@ -1,16 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zephyr/pages/settings/widgets/request_homewidget_widget.dart';
-import 'package:zephyr/pages/settings/widgets/ignore_battery_optimization_widget.dart';
-import 'package:zephyr/pages/settings/widgets/weather_sources_selector_widget.dart';
-import '../../core/models/city.dart';
-import '../../core/notifiers.dart';
-import '../../l10n/generated/app_localizations.dart';
-import 'widgets/city_manager_widget.dart';
-import 'widgets/temp_unit_selector_widget.dart';
-import 'widgets/theme_mode_selector_widget.dart';
-import 'widgets/about_app_widget.dart';
-import 'widgets/language_selector_widget.dart';
+import 'import.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

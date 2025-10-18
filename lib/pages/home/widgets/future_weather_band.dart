@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import '../../../core/notifiers.dart';
-import '../../../core/utils/weather_utils.dart';
+import '../import.dart';
 
 class FutureWeatherBand extends StatelessWidget {
   final List daily;

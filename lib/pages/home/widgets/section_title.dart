@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../import.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;

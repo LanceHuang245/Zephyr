@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'import.dart';
 
 final themeModeNotifier = ValueNotifier<ThemeMode>(ThemeMode.system);
 final tempUnitNotifier = ValueNotifier<String>('C');

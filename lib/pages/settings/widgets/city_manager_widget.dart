@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import '../../../core/models/city.dart';
-import '../../../l10n/generated/app_localizations.dart';
+import '../import.dart';
 
 class CityManagerWidget extends StatelessWidget {
   final List<City> cities;

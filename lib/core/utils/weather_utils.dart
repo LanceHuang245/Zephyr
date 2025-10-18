@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import '../../l10n/generated/app_localizations.dart';
+import '../import.dart';
 
 // 天气代码转图标
 IconData weatherIcon(int? code) {

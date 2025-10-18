@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import '../../core/models/weather.dart';
-import 'widgets/air_quality_widget.dart';
-import 'widgets/wind_line_chart.dart';
-import 'widgets/pressure_line_chart.dart';
+import 'import.dart';
 
 class DetailedDataFullPage extends StatelessWidget {
   final CurrentWeather? current;

@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../../core/models/weather_warning.dart';
+import '../import.dart';
 
 class WarningBanner extends StatefulWidget {
   final List<WeatherWarning> warnings;

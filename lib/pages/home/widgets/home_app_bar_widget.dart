@@ -1,7 +1,5 @@
-import 'package:zephyr/app_constants.dart';
-import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'animated_title_switcher.dart';
+import '../import.dart';
 
 class HomeAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String? currentCityName;

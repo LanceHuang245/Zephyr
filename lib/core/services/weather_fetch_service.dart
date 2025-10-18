@@ -1,12 +1,4 @@
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zephyr/core/services/notification_service.dart';
-import 'package:zephyr/core/services/widget_service.dart';
-import '../models/city.dart';
-import '../models/weather_warning.dart';
-import 'weather_cache.dart';
-import 'package:flutter/foundation.dart';
-import '../api/public.dart';
-import 'package:zephyr/core/notifiers.dart';
+import '../import.dart';
 
 class WeatherFetchService {
   static bool _isFetching = false;

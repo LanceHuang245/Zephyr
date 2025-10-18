@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:zephyr/app_constants.dart';
-import '../../../l10n/generated/app_localizations.dart';
-import '../../../core/notifiers.dart';
+import '../import.dart';
 
 class WeatherSourceSelectorWidget extends StatefulWidget {
   final String? weatherSource;

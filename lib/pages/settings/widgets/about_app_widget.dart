@@ -1,7 +1,4 @@
-import 'package:url_launcher/url_launcher.dart';
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import 'package:flutter/material.dart';
-import '../../../app_constants.dart';
+import '../import.dart';
 
 class AboutAppWidget extends StatelessWidget {
   const AboutAppWidget({super.key});

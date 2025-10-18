@@ -1,8 +1,4 @@
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import 'package:zephyr/pages/home/widgets/section_title.dart';
-import 'package:flutter/material.dart';
-import '../../../core/models/weather.dart';
-import 'package:fl_chart/fl_chart.dart';
+import '../import.dart';
 
 class Rainfall24hView extends StatelessWidget {
   final List<HourlyWeather> hourly;

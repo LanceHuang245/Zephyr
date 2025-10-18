@@ -1,12 +1,4 @@
-import 'dart:convert';
-import 'package:flutter/foundation.dart';
-import 'package:home_widget/home_widget.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../models/weather.dart';
-import '../models/city.dart';
-import '../notifiers.dart';
-import 'weather_cache.dart';
-import '../utils/weather_utils.dart';
+import '../import.dart';
 
 class WidgetService {
   static const String _widgetDataKey = 'flutter.weather_widget_data';

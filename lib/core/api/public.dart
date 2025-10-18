@@ -1,18 +1,5 @@
-import 'dart:async';
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zephyr/app_constants.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:zephyr/core/models/city.dart';
-import 'package:zephyr/core/models/weather.dart';
-import '../models/weather_warning.dart';
-import '../notifiers.dart';
-import '../utils/locale_language_map.dart';
-import '../languages.dart';
-
-// WARNING: This APIs is server by Lance's free server, which has usage limits.
-// Please do not abuse or attack this server.
+import '../import.dart';
 
 class Api {
   // 获取天气预警信息

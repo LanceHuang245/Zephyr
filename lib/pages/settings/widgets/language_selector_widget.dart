@@ -1,9 +1,4 @@
-import 'package:zephyr/app.dart';
-import 'package:flutter/material.dart';
-import '../../../l10n/generated/app_localizations.dart';
-import '../../../core/notifiers.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../../core/languages.dart';
+import '../import.dart';
 
 class LanguageSelectorWidget extends StatefulWidget {
   const LanguageSelectorWidget({super.key});

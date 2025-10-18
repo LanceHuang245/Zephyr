@@ -1,5 +1,4 @@
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import 'package:flutter/material.dart';
+import '../import.dart';
 
 class EmptyCityTip extends StatelessWidget {
   final VoidCallback? onLocate;

@@ -1,11 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workmanager/workmanager.dart';
-import 'package:zephyr/core/services/notification_service.dart';
-import 'package:zephyr/core/services/weather_fetch_service.dart';
-import 'notifiers.dart';
-import 'package:flutter/material.dart';
-import 'languages.dart';
+import 'import.dart';
 
 // 运行后台自动获取天气数据任务
 @pragma('vm:entry-point')

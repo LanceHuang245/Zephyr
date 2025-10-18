@@ -1,21 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../core/models/city.dart';
-import '../../core/models/weather.dart';
-import 'widgets/empty_city_tip.dart';
-import '../../core/services/weather_cache.dart';
-import '../../core/notifiers.dart';
-import 'widgets/home_app_bar_widget.dart';
-import 'widgets/home_page_content_widget.dart';
-import '../../core/services/location_service.dart';
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import '../../core/utils/notification_utils.dart';
-import '../../core/services/widget_service.dart';
-import 'widgets/weather_bg.dart';
-import '../../core/models/weather_warning.dart';
-import 'package:zephyr/core/services/weather_fetch_service.dart';
+import 'import.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

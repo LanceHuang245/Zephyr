@@ -1,7 +1,4 @@
-import 'package:zephyr/pages/home/weather_animations/rain.dart';
-import 'package:zephyr/pages/home/weather_animations/snow.dart';
-import 'package:zephyr/pages/home/weather_animations/thunder_flash.dart';
-import 'package:flutter/material.dart';
+import '../import.dart';
 
 // 天气渐变背景组件
 class WeatherBg extends StatefulWidget {

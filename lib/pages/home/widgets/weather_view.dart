@@ -1,19 +1,5 @@
-import 'package:zephyr/core/services/layout_service.dart';
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import 'package:flutter/material.dart';
-import '../../../core/models/city.dart';
-import '../../../core/models/weather.dart';
-import '../../../core/models/weather_warning.dart';
-import '../../../core/utils/weather_utils.dart';
-import '../../../core/notifiers.dart';
-import 'weather_info_tile.dart';
-import 'section_title.dart';
-import 'rainfall_24h_view.dart';
-import 'future_weather_band.dart';
-import 'details_widget.dart';
-import 'warning_banner.dart';
 import 'package:intl/intl.dart';
-import 'package:animations/animations.dart';
+import '../import.dart';
 
 class WeatherView extends StatefulWidget {
   final City city;

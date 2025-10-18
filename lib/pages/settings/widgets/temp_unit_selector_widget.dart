@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import '../../../l10n/generated/app_localizations.dart';
+import '../import.dart';
 
 class TempUnitSelectorWidget extends StatelessWidget {
   final String? tempUnit;

@@ -1,11 +1,4 @@
-import 'package:zephyr/core/api/public.dart';
-import 'package:zephyr/l10n/generated/app_localizations.dart';
-import 'package:flutter/material.dart';
-import 'dart:async';
-import '../../core/models/city.dart';
-import 'widgets/search_bar_widget.dart';
-import 'widgets/search_error_widget.dart';
-import 'widgets/search_results_widget.dart';
+import 'import.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

@@ -1,5 +1,4 @@
-import 'package:shared_preferences/shared_preferences.dart';
-import '../notifiers.dart';
+import '../import.dart';
 
 class LayoutService {
   static const String _layoutKey = 'home_layout';

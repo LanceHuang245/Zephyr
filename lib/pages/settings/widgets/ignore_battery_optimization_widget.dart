@@ -1,8 +1,4 @@
-import 'dart:io';
-import 'package:battery_optimization_helper/battery_optimization_helper.dart';
-import 'package:flutter/material.dart';
-import 'package:zephyr/core/utils/notification_utils.dart';
-import 'package:zephyr/l10n/generated/app_localizations.dart';
+import '../import.dart';
 
 class IgnoreBatteryOptimizationWidget extends StatelessWidget {
   final BuildContext? context;

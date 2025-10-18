@@ -1,8 +1,4 @@
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../models/city.dart';
-import '../models/weather.dart';
-import '../models/weather_warning.dart';
+import '../import.dart';
 
 // 加载缓存的天气数据(缓存28分钟避免后台刷新服务仍然加载缓存数据)
 Future<Map<String, dynamic>?> loadCachedWeather(City city,

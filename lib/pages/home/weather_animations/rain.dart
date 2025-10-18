@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'dart:math';
+import '../import.dart';
 import 'dart:ui';
 
 class RainAnimation extends StatefulWidget {

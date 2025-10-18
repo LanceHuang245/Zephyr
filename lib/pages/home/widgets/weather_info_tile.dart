@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../import.dart';
 
 class WeatherInfoTile extends StatelessWidget {
   final IconData icon;
