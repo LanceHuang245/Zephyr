@@ -9,6 +9,8 @@ import '../api/public.dart';
 import 'package:zephyr/core/notifiers.dart';
 
 class WeatherFetchService {
+  static bool _isFetching = false;
+
   static Future<Map<String, dynamic>?> getFreshWeatherData(City city) async {
     try {
       if (kDebugMode) debugPrint('获取城市天气: ${city.name}');
@@ -60,6 +62,12 @@ class WeatherFetchService {
   }
 
   static Future<void> fetchAndCacheWeather() async {
+    if (_isFetching) {
+      if (kDebugMode) debugPrint('已经在获取天气数据，跳过本次请求');
+      return;
+    }
+
+    _isFetching = true;
     try {
       if (kDebugMode) debugPrint('后台任务开始获取天气数据...');
 
@@ -86,11 +94,11 @@ class WeatherFetchService {
           final body = warnings.map((w) => w.text).join('\n');
           await NotificationService().showWarningNotification(title, body);
         }
-        await prefs.setString('last_background_fetch_timestamp',
-            DateTime.now().toIso8601String());
       }
     } catch (e) {
       if (kDebugMode) debugPrint('后台任务获取天气失败: $e');
+    } finally {
+      _isFetching = false;
     }
   }
 }
