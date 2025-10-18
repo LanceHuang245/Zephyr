@@ -50,8 +50,11 @@
 	<!-- 后台模式配置 -->
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>background-app-refresh</string>
-		<string>background-processing</string>
+		<string>processing</string>
+	</array>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>org.claret.easyweather.fetchWeatherTask</string>
 	</array>
 	<!-- 网络权限配置 -->
 	<key>NSAppTransportSecurity</key>
