@@ -143,7 +143,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get next7Days => 'Next 7 Days';
 
   @override
-  String get detailedData => 'Details';
+  String get detailedData => 'Detailed Data';
+
+  @override
+  String get customizeHomepage => 'Customize Homepage';
 
   @override
   String get settings => 'Settings';

@@ -73,26 +73,14 @@ class _HomePageContentWidgetState extends State<HomePageContentWidget>
         ),
       );
     } else {
-      return Stack(
-        children: [
-          RefreshIndicator(
-            displacement: kToolbarHeight + 75,
-            onRefresh: widget.onRefresh,
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Column(
-                children: [
-                  SizedBox(height: kToolbarHeight + 55),
-                  WeatherView(
-                    city: widget.city,
-                    weather: widget.weather!,
-                    warnings: widget.warnings,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+      return RefreshIndicator(
+        displacement: kToolbarHeight + 75,
+        onRefresh: widget.onRefresh,
+        child: WeatherView(
+          city: widget.city,
+          weather: widget.weather!,
+          warnings: widget.warnings,
+        ),
       );
     }
   }

@@ -371,8 +371,14 @@ abstract class AppLocalizations {
   /// No description provided for @detailedData.
   ///
   /// In en, this message translates to:
-  /// **'Details'**
+  /// **'Detailed Data'**
   String get detailedData;
+
+  /// No description provided for @customizeHomepage.
+  ///
+  /// In en, this message translates to:
+  /// **'Customize Homepage'**
+  String get customizeHomepage;
 
   /// No description provided for @settings.
   ///

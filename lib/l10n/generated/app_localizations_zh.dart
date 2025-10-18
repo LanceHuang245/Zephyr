@@ -146,6 +146,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get detailedData => '详细数据';
 
   @override
+  String get customizeHomepage => '自定义首页';
+
+  @override
   String get settings => '设置';
 
   @override

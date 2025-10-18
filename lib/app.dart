@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zephyr/app_constants.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zephyr/pages/settings/layout_settings_view.dart';
 import 'l10n/generated/app_localizations.dart';
 import 'core/notifiers.dart';
 import 'pages/home/view.dart';
@@ -99,6 +100,8 @@ class _ZephyrAppState extends State<ZephyrApp> {
                             routes: {
                               '/search': (_) => const SearchPage(),
                               '/settings': (_) => const SettingsPage(),
+                              '/layout-settings': (_) =>
+                                  const LayoutSettingsView(),
                             },
                           );
                         },

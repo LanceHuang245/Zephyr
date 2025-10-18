@@ -146,6 +146,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get detailedData => 'Données détaillées';
 
   @override
+  String get customizeHomepage => 'Customize Homepage';
+
+  @override
   String get settings => 'Paramètres';
 
   @override

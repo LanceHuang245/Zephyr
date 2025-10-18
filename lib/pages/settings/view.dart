@@ -202,6 +202,35 @@ class _SettingsPageState extends State<SettingsPage> {
               weatherSource: _weatherSource,
               onWeatherSourceChanged: _saveWeatherSources),
           const SizedBox(height: 16),
+          // 自定义主页面
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(24),
+            ),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(24),
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Row(
+                    children: [
+                      Icon(Icons.view_quilt,
+                          color: Theme.of(context).colorScheme.primary),
+                      const SizedBox(width: 8),
+                      Text(l10n.customizeHomepage,
+                          style: Theme.of(context).textTheme.titleMedium),
+                    ],
+                  ),
+                ),
+                onTap: () async {
+                  await Navigator.pushNamed(context, '/layout-settings');
+                },
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
           // 城市管理
           CityManagerWidget(
             cities: _cities,
@@ -235,6 +264,7 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 16),
           // 语言选择
           const LanguageSelectorWidget(),
+
           const SizedBox(height: 16),
           const RequestHomewidgetWidget(),
           const SizedBox(height: 16),
