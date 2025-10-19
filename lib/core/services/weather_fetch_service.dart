@@ -8,13 +8,10 @@ class WeatherFetchService {
       if (kDebugMode) debugPrint('获取城市天气: ${city.name}');
 
       final prefs = await SharedPreferences.getInstance();
-      final localeIndex = prefs.getInt('locale_index') ?? 0;
-      final languageCode = localeIndex == 0 ? 'en' : 'zh';
 
       final weather = await Api.fetchWeather(
         latitude: city.lat,
         longitude: city.lon,
-        lang: languageCode,
         units: tempUnitNotifier.value,
       );
 

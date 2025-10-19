@@ -258,6 +258,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get today => '今日';
+
+  @override
+  String get customizeHomepageDesc => '长按拖动来调整顺序，点击开关显示或隐藏组件。';
+
+  @override
+  String get customizeHomepageSaved => '主页布局已保存。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -514,4 +520,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get today => '今日';
+
+  @override
+  String get customizeHomepageDesc => '長按拖動來調整組件順序，點擊開關顯示或隱藏組件。';
+
+  @override
+  String get customizeHomepageSaved => '主頁佈局已保存。';
 }

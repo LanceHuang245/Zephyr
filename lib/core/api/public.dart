@@ -8,17 +8,18 @@ class Api {
     required double lon,
   }) async {
     // 获取当前locale并映射为API支持的lang
-    String qweatherLang = 'en';
+    String? lang;
     final localeKey =
         appLanguages.firstWhere((l) => l.code == localeCodeNotifier.value).code;
-    qweatherLang = localeToApiLang[localeKey] ?? 'en';
+    lang = localeToApiLang[localeKey] ?? 'en';
     final url = Uri.parse(
-      '$alertUrl?location=$lon,$lat&lang=$qweatherLang',
+      '$alertUrl?location=$lon,$lat&lang=$lang',
     );
     try {
       final response = await http.get(url).timeout(Duration(seconds: 8));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
+        kDebugMode ? debugPrint('Weather Alert response: $data') : null;
         if (data is Map<String, dynamic> && data['code'] == '200') {
           final List warnings = data['warning'] ?? [];
           return warnings.map((e) => WeatherWarning.fromJson(e)).toList();
@@ -34,11 +35,10 @@ class Api {
   static Future<WeatherData?> fetchWeather({
     required double latitude,
     required double longitude,
-    String lang = 'zh',
     required String units,
   }) async {
     // 根据当前语言设置API请求的语言参数
-    String lang = 'en-US';
+    String? lang;
     String? ws;
     final localeKey =
         appLanguages.firstWhere((l) => l.code == localeCodeNotifier.value).code;

@@ -89,5 +89,7 @@
   "weatherDataError": "無法獲取天氣數據",
   "checkNetworkAndRetry": "請檢查您的網路設定後重試",
   "today": "今日",
-  "customizeHomepage": "自定主頁"
+  "customizeHomepage": "自定主頁",
+  "customizeHomepageDesc": "長按拖動來調整組件順序，點擊開關顯示或隱藏組件。",
+  "customizeHomepageSaved": "主頁佈局已保存。"
 }

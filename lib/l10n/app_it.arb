@@ -89,5 +89,7 @@
   "weatherDataError": "Impossibile recuperare i dati meteorologici",
   "checkNetworkAndRetry": "Controlla la tua connessione di rete e riprova.",
   "today": "Oggi",
-  "customizeHomepage": "Personalizza la homepage"
+  "customizeHomepage": "Personalizza la homepage",
+  "customizeHomepageDesc": "Tieni premuto per trascinare e riorganizzare l'ordine. Tocca il pulsante per mostrare o nascondere i componenti.",
+  "customizeHomepageSaved": "Il layout della homepage è stato salvato."
 }

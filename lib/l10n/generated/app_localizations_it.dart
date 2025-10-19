@@ -258,4 +258,10 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get today => 'Oggi';
+
+  @override
+  String get customizeHomepageDesc => 'Tieni premuto per trascinare e riorganizzare l\'ordine. Tocca il pulsante per mostrare o nascondere i componenti.';
+
+  @override
+  String get customizeHomepageSaved => 'Il layout della homepage è stato salvato.';
 }

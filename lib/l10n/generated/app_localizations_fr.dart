@@ -258,4 +258,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get today => 'Auj.';
+
+  @override
+  String get customizeHomepageDesc => 'Appuyez et maintenez enfoncé pour faire glisser et réorganiser l\'ordre. Appuyez sur le bouton pour afficher ou masquer les composants.';
+
+  @override
+  String get customizeHomepageSaved => 'La mise en page de la page d\'accueil a été enregistrée.';
 }

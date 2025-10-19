@@ -258,4 +258,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get today => 'Today';
+
+  @override
+  String get customizeHomepageDesc => 'Long press and drag to reorder items. Tap the toggle to show or hide components.';
+
+  @override
+  String get customizeHomepageSaved => 'Homepage layout saved.';
 }

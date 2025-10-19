@@ -89,5 +89,7 @@
   "weatherDataError": "Échec de la récupération des données météorologiques",
   "checkNetworkAndRetry": "Veuillez vérifier votre connexion réseau et réessayer.",
   "today": "Auj.",
-  "customizeHomepage": "Personnaliser la page d'accueil"
+  "customizeHomepage": "Personnaliser la page d'accueil",
+  "customizeHomepageDesc": "Appuyez et maintenez enfoncé pour faire glisser et réorganiser l'ordre. Appuyez sur le bouton pour afficher ou masquer les composants.",
+  "customizeHomepageSaved": "La mise en page de la page d'accueil a été enregistrée."
 }

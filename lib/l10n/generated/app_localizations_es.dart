@@ -258,4 +258,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get today => 'Hoy';
+
+  @override
+  String get customizeHomepageDesc => 'Mantén pulsado para arrastrar y reorganizar el orden. Pulsa el botón para mostrar u ocultar componentes.';
+
+  @override
+  String get customizeHomepageSaved => 'Se ha guardado el diseño de la página de inicio.';
 }

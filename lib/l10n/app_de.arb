@@ -89,5 +89,7 @@
   "weatherDataError": "Wetterdaten konnten nicht abgerufen werden",
   "checkNetworkAndRetry": "Bitte überprüfen Sie Ihre Netzwerkverbindung und versuchen Sie es erneut.",
   "today": "Heute",
-  "customizeHomepage": "Homepage anpassen"
+  "customizeHomepage": "Homepage anpassen",
+  "customizeHomepageDesc": "Halten Sie gedrückt, um die Reihenfolge zu verschieben und neu anzuordnen. Tippen Sie auf die Umschaltfläche, um Komponenten ein- oder auszublenden.",
+  "customizeHomepageSaved": "Das Layout der Startseite wurde gespeichert."
 }

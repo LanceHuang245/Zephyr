@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'import.dart';
 
 class LayoutComponent {
@@ -55,7 +56,25 @@ class _LayoutSettingsViewState extends State<LayoutSettingsView> {
         _components.where((c) => c.isVisible).map((c) => c.id).toList();
     await _layoutService.saveLayout(visibleLayout);
     if (mounted) {
+      NotificationUtils.showSnackBar(
+          context, AppLocalizations.of(context).customizeHomepageSaved);
       Navigator.of(context).pop();
+    }
+  }
+
+  IconData _getComponentIcon(String id) {
+    // TODO: Add more components
+    switch (id) {
+      case 'hourly_forecast':
+        return Icons.access_time_rounded;
+      case 'rainfall_chart':
+        return Icons.water_drop_rounded;
+      case 'daily_forecast':
+        return Icons.calendar_today_rounded;
+      case 'details':
+        return Icons.info_outline_rounded;
+      default:
+        return Icons.dashboard_customize_rounded;
     }
   }
 
@@ -72,53 +91,246 @@ class _LayoutSettingsViewState extends State<LayoutSettingsView> {
   @override
   Widget build(BuildContext context) {
     final componentNames = _getComponentNames(context);
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).customizeHomepage),
+        elevation: 0,
+        scrolledUnderElevation: 2,
+        backgroundColor: colorScheme.surface,
+        surfaceTintColor: colorScheme.surfaceTint,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text(
+          AppLocalizations.of(context).customizeHomepage,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
+        ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.save),
-            onPressed: _saveLayout,
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: FilledButton.icon(
+              onPressed: _saveLayout,
+              icon: const Icon(Icons.check_rounded, size: 20),
+              label: Text(MaterialLocalizations.of(context).saveButtonLabel),
+              style: FilledButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              ),
+            ),
           ),
         ],
       ),
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : ReorderableListView.builder(
-              itemCount: _components.length,
-              itemBuilder: (context, index) {
-                final component = _components[index];
-                return SwitchListTile(
-                  key: Key(component.id),
-                  title: Row(
+          ? Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 3,
+                color: colorScheme.primary,
+              ),
+            )
+          : Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.fromLTRB(24, 16, 24, 16),
+                  decoration: BoxDecoration(
+                    color: colorScheme.surfaceContainerLowest,
+                    border: Border(
+                      bottom: BorderSide(
+                        color:
+                            colorScheme.outlineVariant.withValues(alpha: 0.5),
+                        width: 1,
+                      ),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(Icons.list),
-                      const SizedBox(width: 8),
-                      Text(componentNames[component.id] ?? component.id),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.info_outline_rounded,
+                            size: 20,
+                            color: colorScheme.primary,
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              AppLocalizations.of(context)
+                                  .customizeHomepageDesc,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
+                                    color: colorScheme.onSurfaceVariant,
+                                    height: 1.4,
+                                  ),
+                              maxLines: 3,
+                            ),
+                          )
+                        ],
+                      ),
                     ],
                   ),
-                  value: component.isVisible,
-                  onChanged: (bool value) {
-                    setState(() {
-                      component.isVisible = value;
-                      final visibleItems =
-                          _components.where((c) => c.isVisible).toList();
-                      final invisibleItems =
-                          _components.where((c) => !c.isVisible).toList();
-                      _components = [...visibleItems, ...invisibleItems];
-                    });
-                  },
-                );
-              },
-              onReorder: (int oldIndex, int newIndex) {
-                setState(() {
-                  if (oldIndex < newIndex) {
-                    newIndex -= 1;
-                  }
-                  final LayoutComponent item = _components.removeAt(oldIndex);
-                  _components.insert(newIndex, item);
-                });
-              },
+                ),
+                Expanded(
+                  child: ReorderableListView.builder(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    itemCount: _components.length,
+                    proxyDecorator: (child, index, animation) {
+                      return AnimatedBuilder(
+                        animation: animation,
+                        builder: (context, child) {
+                          final animValue =
+                              Curves.easeInOut.transform(animation.value);
+                          final elevation = lerpDouble(0, 8, animValue)!;
+                          final scale = lerpDouble(1, 1.02, animValue)!;
+                          return Transform.scale(
+                            scale: scale,
+                            child: Material(
+                              elevation: elevation,
+                              borderRadius: BorderRadius.circular(16),
+                              child: child,
+                            ),
+                          );
+                        },
+                        child: child,
+                      );
+                    },
+                    itemBuilder: (context, index) {
+                      final component = _components[index];
+                      final isVisible = component.isVisible;
+
+                      return Padding(
+                        key: Key(component.id),
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        child: Material(
+                          elevation: 0,
+                          borderRadius: BorderRadius.circular(16),
+                          color: isVisible
+                              ? colorScheme.surfaceContainerHigh
+                              : colorScheme.surfaceContainerLowest,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(16),
+                            onTap: () {
+                              setState(() {
+                                component.isVisible = !component.isVisible;
+                                final visibleItems = _components
+                                    .where((c) => c.isVisible)
+                                    .toList();
+                                final invisibleItems = _components
+                                    .where((c) => !c.isVisible)
+                                    .toList();
+                                _components = [
+                                  ...visibleItems,
+                                  ...invisibleItems
+                                ];
+                              });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 16,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                border: Border.all(
+                                  color: isVisible
+                                      ? colorScheme.primary
+                                          .withValues(alpha: 0.3)
+                                      : colorScheme.outlineVariant
+                                          .withValues(alpha: 0.5),
+                                  width: 1,
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.drag_handle_rounded,
+                                    color: colorScheme.onSurfaceVariant,
+                                    size: 24,
+                                  ),
+                                  const SizedBox(width: 16),
+                                  Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: isVisible
+                                          ? colorScheme.primaryContainer
+                                          : colorScheme.surfaceContainerHighest,
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Icon(
+                                      _getComponentIcon(component.id),
+                                      color: isVisible
+                                          ? colorScheme.onPrimaryContainer
+                                          : colorScheme.onSurfaceVariant,
+                                      size: 24,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 16),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          componentNames[component.id] ??
+                                              component.id,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge
+                                              ?.copyWith(
+                                                fontWeight: FontWeight.w500,
+                                                color: colorScheme.onSurface,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Switch(
+                                    value: component.isVisible,
+                                    onChanged: (bool value) {
+                                      setState(() {
+                                        component.isVisible = value;
+                                        final visibleItems = _components
+                                            .where((c) => c.isVisible)
+                                            .toList();
+                                        final invisibleItems = _components
+                                            .where((c) => !c.isVisible)
+                                            .toList();
+                                        _components = [
+                                          ...visibleItems,
+                                          ...invisibleItems
+                                        ];
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    onReorder: (int oldIndex, int newIndex) {
+                      setState(() {
+                        if (oldIndex < newIndex) {
+                          newIndex -= 1;
+                        }
+                        final LayoutComponent item =
+                            _components.removeAt(oldIndex);
+                        _components.insert(newIndex, item);
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
     );
   }

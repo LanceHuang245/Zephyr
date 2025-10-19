@@ -258,4 +258,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get today => 'Heute';
+
+  @override
+  String get customizeHomepageDesc => 'Halten Sie gedrückt, um die Reihenfolge zu verschieben und neu anzuordnen. Tippen Sie auf die Umschaltfläche, um Komponenten ein- oder auszublenden.';
+
+  @override
+  String get customizeHomepageSaved => 'Das Layout der Startseite wurde gespeichert.';
 }

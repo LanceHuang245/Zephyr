@@ -89,5 +89,7 @@
   "fahrenheit": "Fahrenheit",
   "weatherDataError": "Failed to fetch weather data",
   "checkNetworkAndRetry": "Please check your network connection and try again",
-  "today": "Today"
+  "today": "Today",
+  "customizeHomepageDesc": "Long press and drag to reorder items. Tap the toggle to show or hide components.",
+  "customizeHomepageSaved": "Homepage layout saved."
 }

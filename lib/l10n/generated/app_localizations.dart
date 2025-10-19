@@ -601,6 +601,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Today'**
   String get today;
+
+  /// No description provided for @customizeHomepageDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Long press and drag to reorder items. Tap the toggle to show or hide components.'**
+  String get customizeHomepageDesc;
+
+  /// No description provided for @customizeHomepageSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Homepage layout saved.'**
+  String get customizeHomepageSaved;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -89,5 +89,7 @@
   "weatherDataError": "No se pudieron obtener los datos meteorológicos.",
   "checkNetworkAndRetry": "Comprueba tu conexión a Internet e inténtalo de nuevo.",
   "today": "Hoy",
-  "customizeHomepage": "Personalizar la página de inicio"
+  "customizeHomepage": "Personalizar la página de inicio",
+  "customizeHomepageDesc": "Mantén pulsado para arrastrar y reorganizar el orden. Pulsa el botón para mostrar u ocultar componentes.",
+  "customizeHomepageSaved": "Se ha guardado el diseño de la página de inicio."
 }
