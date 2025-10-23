@@ -2,6 +2,10 @@ import Flutter
 import UIKit
 import workmanager_apple
 
+func registerPlugins(registry: FlutterPluginRegistry) {
+  GeneratedPluginRegistrant.register(with: registry)
+}
+
 @main
 @objc class AppDelegate: FlutterAppDelegate {
   override func application(
@@ -10,7 +14,14 @@ import workmanager_apple
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
 
-    WorkmanagerPlugin.registerPeriodicTask(withIdentifier: "org.claret.easyweather.fetchWeatherTask",frequency: NSNumber(value: 30 * 60))
+    // Enable background fetch.
+    UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+
+    // Register the background task with the scheduler.
+    WorkmanagerPlugin.registerBGTaskScheduler(withIdentifier: "org.claret.easyweather.fetchWeatherTask")
+
+    // Set the plugin registrant callback to register plugins in the background isolate.
+    WorkmanagerPlugin.setPluginRegistrantCallback(registerPlugins)
 
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }

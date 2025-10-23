@@ -63,8 +63,8 @@ Future<void> initAppSettings() async {
   );
 
   Workmanager().registerPeriodicTask(
-    "1",
-    "fetchWeatherTask",
+    "org.claret.easyweather.fetchWeatherTask", // This unique name MUST match the identifier in Info.plist
+    "fetchWeatherTask", // This is the task name used in the callback dispatcher
     frequency: const Duration(minutes: 30),
   );
 }
