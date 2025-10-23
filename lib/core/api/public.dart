@@ -2,21 +2,43 @@ import 'package:http/http.dart' as http;
 import '../import.dart';
 
 class Api {
+  static String _getApiLang([String defaultLang = 'en-US']) {
+    final localeKey = appLanguages
+        .firstWhere((l) => l.code == localeCodeNotifier.value,
+            orElse: () => appLanguages.first)
+        .code;
+    return localeToApiLang[localeKey] ?? defaultLang;
+  }
+
+  static Future<String?> _getWeatherSource() async {
+    final prefs = await SharedPreferences.getInstance();
+    final source = prefs.getString('weather_source');
+    if (source == 'QWeather') {
+      return 'qweather';
+    } else if (source == 'OpenMeteo') {
+      return 'om';
+    }
+    return null;
+  }
+
+  static String _getUnitParameter({required String units, String? ws}) {
+    if (ws == 'om') {
+      return units == 'F' ? 'fahrenheit' : 'celsius';
+    }
+    return units == 'F' ? 'i' : 'm';
+  }
+
   // 获取天气预警信息
   static Future<List<WeatherWarning>> fetchWarning({
     required double lat,
     required double lon,
   }) async {
-    // 获取当前locale并映射为API支持的lang
-    String? lang;
-    final localeKey =
-        appLanguages.firstWhere((l) => l.code == localeCodeNotifier.value).code;
-    lang = localeToApiLang[localeKey] ?? 'en';
-    final url = Uri.parse(
-      '$alertUrl?location=$lon,$lat&lang=$lang',
-    );
     try {
-      final response = await http.get(url).timeout(Duration(seconds: 8));
+      final lang = _getApiLang('en');
+      final url = Uri.parse(
+        '${AppConstants.alertUrl}?location=$lon,$lat&lang=$lang',
+      );
+      final response = await http.get(url).timeout(const Duration(seconds: 8));
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
         kDebugMode ? debugPrint('Weather Alert response: $data') : null;
@@ -37,54 +59,43 @@ class Api {
     required double longitude,
     required String units,
   }) async {
-    // 根据当前语言设置API请求的语言参数
-    String? lang;
-    String? ws;
-    final localeKey =
-        appLanguages.firstWhere((l) => l.code == localeCodeNotifier.value).code;
-    lang = localeToApiLang[localeKey] ?? 'en-US';
-    final prefs = await SharedPreferences.getInstance();
-    if (prefs.getString('weather_source') == 'QWeather') {
-      ws = 'qweather';
-    } else if (prefs.getString('weather_source') == 'OpenMeteo') {
-      ws = 'om';
-    }
-    final url = Uri.parse('$forecastUrl'
-        '?latitude=$latitude'
-        '&longitude=$longitude'
-        '&accept-language=$lang'
-        '&source=$ws'
-        '&unit=${ws == 'om' ? units == 'F' ? 'fahrenheit' : 'celsius' : units == 'F' ? 'i' : 'm'}');
+    try {
+      final lang = _getApiLang();
+      final ws = await _getWeatherSource();
+      final unitParam = _getUnitParameter(units: units, ws: ws);
 
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      kDebugMode ? debugPrint('Weather API response: ${response.body}') : null;
-      return WeatherData.fromJson(json.decode(response.body));
-    } else {
-      kDebugMode
-          ? debugPrint('Weather API fetch error: ${response.body}')
-          : null;
+      final url = Uri.parse('${AppConstants.forecastUrl}'
+          '?latitude=$latitude'
+          '&longitude=$longitude'
+          '&accept-language=$lang'
+          '&source=$ws'
+          '&unit=$unitParam');
+
+      final response = await http.get(url).timeout(const Duration(seconds: 8));
+      if (response.statusCode == 200) {
+        kDebugMode
+            ? debugPrint('Weather API response: ${response.body}')
+            : null;
+        return WeatherData.fromJson(json.decode(response.body));
+      } else {
+        kDebugMode
+            ? debugPrint('Weather API fetch error: ${response.body}')
+            : null;
+      }
+    } catch (e) {
+      if (kDebugMode) debugPrint('Weather API fetch error: $e');
     }
     return null;
   }
 
+  // 搜索城市
   static Future<List<City>> searchCity(String query) async {
-    // 根据当前语言设置API请求的语言参数
-    String lang = 'en-US';
-    String? ws;
-    final localeKey =
-        appLanguages.firstWhere((l) => l.code == localeCodeNotifier.value).code;
-    lang = localeToApiLang[localeKey] ?? 'en-US';
-    final prefs = await SharedPreferences.getInstance();
-    if (prefs.getString('weather_source') == 'QWeather') {
-      ws = 'qweather';
-    } else if (prefs.getString('weather_source') == 'OpenMeteo') {
-      ws = 'om';
-    }
-    final url =
-        Uri.parse('$searchUrl?query=$query&accept-language=$lang&source=$ws');
     try {
-      final response = await http.get(url).timeout(Duration(seconds: 8));
+      final lang = _getApiLang();
+      final ws = await _getWeatherSource();
+      final url = Uri.parse(
+          '${AppConstants.searchUrl}?query=$query&accept-language=$lang&source=$ws');
+      final response = await http.get(url).timeout(const Duration(seconds: 8));
       if (response.statusCode == 200) {
         final List data = json.decode(response.body);
         return data
@@ -104,7 +115,7 @@ class Api {
             .where((e) => e.lat != 0 && e.lon != 0)
             .toList();
       }
-    } on TimeoutException catch (e) {
+    } catch (e) {
       if (kDebugMode) debugPrint('Weather Search fetch error: $e');
     }
     return [];

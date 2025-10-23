@@ -1,3 +1,5 @@
+import 'package:zephyr/core/import.dart';
+
 import 'import.dart';
 
 class HomePage extends StatefulWidget {
@@ -114,7 +116,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _refreshWeather(City city) async {
-    final data = await WeatherFetchService.getFreshWeatherData(city);
+    Map<String, dynamic>? data;
+    try {
+      data = await WeatherFetchService.getFreshWeatherData(city);
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint('Failed to refresh weather: $e');
+      }
+    }
+
     if (!mounted) return;
     setState(() {
       weatherMap[_getMapKey(city)] = data?['weather'];

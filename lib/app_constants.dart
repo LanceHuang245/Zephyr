@@ -12,13 +12,13 @@ class AppConstants {
 
   // API url (免费提供，有一定用量限制，请勿滥用或攻击该服务器)
   static const String weatherUrl = "http://zephyr.claret.space:3899/api/v1";
+
+  // Forecast API Url 用于获取天气数据
+  static const String forecastUrl = '$weatherUrl/weather/forecast';
+
+  // Alerts API Url 用于获取全球天气预警
+  static const String alertUrl = '$weatherUrl/weather/alert';
+
+  // City Search API Url 用于城市搜索
+  static const String searchUrl = '$weatherUrl/city/search';
 }
-
-// Forecast API Url 用于获取天气数据
-String forecastUrl = '${AppConstants.weatherUrl}/weather/forecast';
-
-// Alerts API Url 用于获取全球天气预警
-String alertUrl = '${AppConstants.weatherUrl}/weather/alert';
-
-// City Search API Url 用于城市搜索
-String searchUrl = '${AppConstants.weatherUrl}/city/search';
