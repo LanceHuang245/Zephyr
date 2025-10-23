@@ -91,7 +91,7 @@ class _WeatherViewState extends State<WeatherView>
 
     return ListView.builder(
       padding: const EdgeInsets.only(
-          left: 12, right: 12, top: kToolbarHeight + 55, bottom: 16),
+          left: 12, right: 12, top: kToolbarHeight + 72, bottom: 16),
       itemCount: _layout.length + 1,
       itemBuilder: (context, index) {
         if (index == 0) {

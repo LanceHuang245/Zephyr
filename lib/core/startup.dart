@@ -4,7 +4,11 @@ import 'import.dart';
 @pragma('vm:entry-point')
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
+    WidgetsFlutterBinding.ensureInitialized();
+
     await NotificationService().init();
+    final prefs = await SharedPreferences.getInstance();
+    localeCodeNotifier.value = prefs.getString('locale_code') ?? 'en';
 
     switch (task) {
       case "fetchWeatherTask":
@@ -63,8 +67,8 @@ Future<void> initAppSettings() async {
   );
 
   Workmanager().registerPeriodicTask(
-    "org.claret.easyweather.fetchWeatherTask", // This unique name MUST match the identifier in Info.plist
-    "fetchWeatherTask", // This is the task name used in the callback dispatcher
+    "org.claret.easyweather.fetchWeatherTask",
+    "fetchWeatherTask",
     frequency: const Duration(minutes: 30),
   );
 }

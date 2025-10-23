@@ -34,7 +34,7 @@ class Api {
     required double lon,
   }) async {
     try {
-      final lang = _getApiLang('en');
+      final lang = _getApiLang();
       final url = Uri.parse(
         '${AppConstants.alertUrl}?location=$lon,$lat&lang=$lang',
       );
