@@ -36,7 +36,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get main => '主城市';
 
   @override
-  String get noCitiesAdded => '暂无已添加的城市';
+  String get noCitiesAdded => '暂无城市';
 
   @override
   String deleteCityMessage(String cityName) {

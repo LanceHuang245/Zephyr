@@ -9,7 +9,7 @@
   "cityManager": "城市管理",
   "cities": "个城市",
   "main": "主城市",
-  "noCitiesAdded": "暂无已添加的城市",
+  "noCitiesAdded": "暂无城市",
   "deleteCityMessage": "确定要删除 \"{cityName}\" 吗？",
   "@deleteCityMessage": {
     "placeholders": {
