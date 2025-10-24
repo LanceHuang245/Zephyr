@@ -91,5 +91,6 @@
   "today": "Oggi",
   "customizeHomepage": "Personalizza la homepage",
   "customizeHomepageDesc": "Tieni premuto per trascinare e riorganizzare l'ordine. Tocca il pulsante per mostrare o nascondere i componenti.",
-  "customizeHomepageSaved": "Il layout della homepage è stato salvato."
+  "customizeHomepageSaved": "Il layout della homepage è stato salvato.",
+  "lastUpdated": "Ultimo aggiornamento"
 }

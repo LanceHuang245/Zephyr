@@ -91,5 +91,6 @@
   "today": "Heute",
   "customizeHomepage": "Homepage anpassen",
   "customizeHomepageDesc": "Halten Sie gedrückt, um die Reihenfolge zu verschieben und neu anzuordnen. Tippen Sie auf die Umschaltfläche, um Komponenten ein- oder auszublenden.",
-  "customizeHomepageSaved": "Das Layout der Startseite wurde gespeichert."
+  "customizeHomepageSaved": "Das Layout der Startseite wurde gespeichert.",
+  "lastUpdated": "Zuletzt aktualisiert"
 }

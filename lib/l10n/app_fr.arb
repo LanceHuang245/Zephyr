@@ -91,5 +91,6 @@
   "today": "Auj.",
   "customizeHomepage": "Personnaliser la page d'accueil",
   "customizeHomepageDesc": "Appuyez et maintenez enfoncé pour faire glisser et réorganiser l'ordre. Appuyez sur le bouton pour afficher ou masquer les composants.",
-  "customizeHomepageSaved": "La mise en page de la page d'accueil a été enregistrée."
+  "customizeHomepageSaved": "La mise en page de la page d'accueil a été enregistrée.",
+  "lastUpdated": "Dernière mise à jour"
 }

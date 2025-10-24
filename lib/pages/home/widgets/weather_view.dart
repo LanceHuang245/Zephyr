@@ -137,7 +137,7 @@ class _WeatherViewState extends State<WeatherView>
                   borderRadius: BorderRadius.circular(24)),
               color: colorScheme.primaryContainer,
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(18.0),
                 child: Column(
                   children: [
                     Icon(weatherIcon(current.weatherCode),
@@ -201,6 +201,22 @@ class _WeatherViewState extends State<WeatherView>
                         ),
                       ],
                     ),
+                    if (widget.weather.lastUpdated != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              '${AppLocalizations.of(context).lastUpdated}: ${DateFormat('HH:mm').format(widget.weather.lastUpdated!)}',
+                              style: textTheme.bodySmall?.copyWith(
+                                color: colorScheme.onPrimaryContainer
+                                    .withValues(alpha: 0.7),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                   ],
                 ),
               ),

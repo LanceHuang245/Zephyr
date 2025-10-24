@@ -264,4 +264,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get customizeHomepageSaved => 'Homepage layout saved.';
+
+  @override
+  String get lastUpdated => 'Last Updated';
 }

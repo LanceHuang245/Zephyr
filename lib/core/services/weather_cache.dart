@@ -16,6 +16,9 @@ Future<Map<String, dynamic>?> loadCachedWeather(City city,
   }
   try {
     final weather = WeatherData.fromJson(map['data']);
+    if (ts != null) {
+      weather.lastUpdated = DateTime.fromMillisecondsSinceEpoch(ts);
+    }
     final warningsRaw = map['warnings'] as List<dynamic>?;
     final warnings = warningsRaw == null
         ? <WeatherWarning>[]
@@ -27,8 +30,8 @@ Future<Map<String, dynamic>?> loadCachedWeather(City city,
 }
 
 // 缓存天气数据
-Future<void> cacheWeather(
-    City city, WeatherData data, List<WeatherWarning> warnings) async {
+Future<void> cacheWeather(City city, WeatherData data,
+    List<WeatherWarning> warnings, DateTime timestamp) async {
   final prefs = await SharedPreferences.getInstance();
   final weatherSource = prefs.getString('weather_source') ?? 'OpenMeteo';
   final key = 'weather_${city.lat}_${city.lon}_$weatherSource';
@@ -37,7 +40,7 @@ Future<void> cacheWeather(
     json.encode({
       'data': data.toJson(),
       'warnings': warnings.map((w) => w.toJson()).toList(),
-      'ts': DateTime.now().millisecondsSinceEpoch,
+      'ts': timestamp.millisecondsSinceEpoch,
     }),
   );
 }

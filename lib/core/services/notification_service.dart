@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 
 @pragma('vm:entry-point')
 void notificationTapBackground(NotificationResponse notificationResponse) {
-  // handle action
   if (kDebugMode) {
     print(
         "Handling notification tap in background: ${notificationResponse.payload}");
@@ -53,8 +52,6 @@ class NotificationService {
         },
         onDidReceiveBackgroundNotificationResponse: notificationTapBackground,
       );
-      // TODO: iOS测试通知待删除
-      await NotificationService().showWarningNotification("TEST", "TEst");
     } catch (e) {
       if (kDebugMode) {
         debugPrint("Error initializing NotificationService: $e");

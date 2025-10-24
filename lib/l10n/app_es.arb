@@ -91,5 +91,6 @@
   "today": "Hoy",
   "customizeHomepage": "Personalizar la página de inicio",
   "customizeHomepageDesc": "Mantén pulsado para arrastrar y reorganizar el orden. Pulsa el botón para mostrar u ocultar componentes.",
-  "customizeHomepageSaved": "Se ha guardado el diseño de la página de inicio."
+  "customizeHomepageSaved": "Se ha guardado el diseño de la página de inicio.",
+  "lastUpdated": "Última actualización"
 }

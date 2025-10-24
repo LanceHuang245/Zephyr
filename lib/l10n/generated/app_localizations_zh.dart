@@ -264,6 +264,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get customizeHomepageSaved => '主页布局已保存。';
+
+  @override
+  String get lastUpdated => '上次更新';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -526,4 +529,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get customizeHomepageSaved => '主頁佈局已保存。';
+
+  @override
+  String get lastUpdated => '最後更新';
 }

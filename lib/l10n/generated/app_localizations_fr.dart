@@ -264,4 +264,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get customizeHomepageSaved => 'La mise en page de la page d\'accueil a été enregistrée.';
+
+  @override
+  String get lastUpdated => 'Dernière mise à jour';
 }

@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late final AppLifecycleListener _listener;
   List<City> cities = [];
   int pageIndex = 0;
   Map<String, WeatherData?> weatherMap = {};
@@ -28,10 +29,21 @@ class _HomePageState extends State<HomePage> {
     tempUnitNotifier.addListener(_onUnitChanged);
     weatherSourceNotifier.addListener(_onSourceChanged);
     _loadCities();
+
+    _listener = AppLifecycleListener(
+      onResume: () {
+        if (cities.isNotEmpty) {
+          for (var city in cities) {
+            _loadWeather(city, force: false);
+          }
+        }
+      },
+    );
   }
 
   @override
   void dispose() {
+    _listener.dispose();
     _isFabVisibleNotifier.dispose();
     tempUnitNotifier.removeListener(_onUnitChanged);
     weatherSourceNotifier.removeListener(_onSourceChanged);

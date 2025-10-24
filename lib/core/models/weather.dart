@@ -7,8 +7,9 @@ class WeatherData {
   final CurrentWeather? current;
   final List<HourlyWeather> hourly;
   final List<DailyWeather> daily;
+  DateTime? lastUpdated;
 
-  WeatherData({this.current, required this.hourly, required this.daily});
+  WeatherData({this.current, required this.hourly, required this.daily, this.lastUpdated});
 
   factory WeatherData.fromJson(Map<String, dynamic> json) =>
       _$WeatherDataFromJson(json);

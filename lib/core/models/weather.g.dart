@@ -16,6 +16,9 @@ WeatherData _$WeatherDataFromJson(Map<String, dynamic> json) => WeatherData(
       daily: (json['daily'] as List<dynamic>)
           .map((e) => DailyWeather.fromJson(e as Map<String, dynamic>))
           .toList(),
+      lastUpdated: json['lastUpdated'] == null
+          ? null
+          : DateTime.parse(json['lastUpdated'] as String),
     );
 
 Map<String, dynamic> _$WeatherDataToJson(WeatherData instance) =>
@@ -23,6 +26,7 @@ Map<String, dynamic> _$WeatherDataToJson(WeatherData instance) =>
       'current': instance.current,
       'hourly': instance.hourly,
       'daily': instance.daily,
+      'lastUpdated': instance.lastUpdated?.toIso8601String(),
     };
 
 CurrentWeather _$CurrentWeatherFromJson(Map<String, dynamic> json) =>

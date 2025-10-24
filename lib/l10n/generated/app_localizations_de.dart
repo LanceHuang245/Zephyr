@@ -264,4 +264,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get customizeHomepageSaved => 'Das Layout der Startseite wurde gespeichert.';
+
+  @override
+  String get lastUpdated => 'Zuletzt aktualisiert';
 }

@@ -26,7 +26,9 @@ class WeatherFetchService {
       }
 
       if (weather != null) {
-        await cacheWeather(city, weather, warnings);
+        final timestamp = DateTime.now();
+        await cacheWeather(city, weather, warnings, timestamp);
+        weather.lastUpdated = timestamp;
         if (kDebugMode) debugPrint('天气数据获取并缓存成功 for ${city.name}');
 
         final citiesStr = prefs.getString('cities');
