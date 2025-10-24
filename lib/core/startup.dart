@@ -11,7 +11,7 @@ void callbackDispatcher() {
     localeCodeNotifier.value = prefs.getString('locale_code') ?? 'en';
 
     switch (task) {
-      case "fetchWeatherTask":
+      case "org.claret.easyweather.fetchWeatherTask":
         await WeatherFetchService.fetchAndCacheWeather();
         break;
     }
@@ -68,7 +68,7 @@ Future<void> initAppSettings() async {
 
   Workmanager().registerPeriodicTask(
     "org.claret.easyweather.fetchWeatherTask",
-    "fetchWeatherTask",
+    "org.claret.easyweather.fetchWeatherTask",
     frequency: const Duration(minutes: 30),
   );
 }

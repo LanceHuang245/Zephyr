@@ -63,16 +63,7 @@
 		<false/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>api.open-meteo.com</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<false/>
-				<key>NSExceptionMinimumTLSVersion</key>
-				<string>TLSv1.2</string>
-				<key>NSExceptionRequiresForwardSecrecy</key>
-				<true/>
-			</dict>
-			<key>nominatim.openstreetmap.org</key>
+			<key>zephyr.claret.space</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<false/>

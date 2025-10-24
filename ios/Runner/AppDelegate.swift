@@ -20,7 +20,7 @@ import UserNotifications
 
         // Set the notification center delegate.
         if #available(iOS 10.0, *) {
-          UNUserNotificationCenter.current().delegate = self as UNUserNotificationCenterDelegate
+          UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         }
 
         // WorkManager setup
