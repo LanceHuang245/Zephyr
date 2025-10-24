@@ -21,6 +21,11 @@ class WeatherFetchService {
           lat: city.lat,
           lon: city.lon,
         );
+        if (warnings.isNotEmpty) {
+          final title = warnings.first.title;
+          final body = warnings.map((w) => w.text).join('\n');
+          await NotificationService().showWarningNotification(title, body);
+        }
       } catch (e) {
         if (kDebugMode) debugPrint('获取天气预警失败: $e');
       }
