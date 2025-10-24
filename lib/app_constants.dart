@@ -11,7 +11,7 @@ class AppConstants {
   ];
 
   // API url (免费提供，有一定用量限制，请勿滥用或攻击该服务器)
-  static const String weatherUrl = "http://zephyr.claret.space:3899/api/v1";
+  static const String weatherUrl = "https://zephyr.claret.space:3899/api/v1";
 
   // Forecast API Url 用于获取天气数据
   static const String forecastUrl = '$weatherUrl/weather/forecast';
