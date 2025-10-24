@@ -9,7 +9,6 @@ void callbackDispatcher() {
     await NotificationService().init();
     final prefs = await SharedPreferences.getInstance();
     localeCodeNotifier.value = prefs.getString('locale_code') ?? 'en';
-
     switch (task) {
       case "org.claret.easyweather.fetchWeatherTask":
         await WeatherFetchService.fetchAndCacheWeather();
