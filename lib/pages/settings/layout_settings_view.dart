@@ -96,20 +96,18 @@ class _LayoutSettingsViewState extends State<LayoutSettingsView> {
     return Scaffold(
       backgroundColor: colorScheme.surface,
       appBar: AppBar(
-        elevation: 0,
-        scrolledUnderElevation: 2,
         backgroundColor: colorScheme.surface,
+        elevation: 0,
         surfaceTintColor: colorScheme.surfaceTint,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text(
-          AppLocalizations.of(context).customizeHomepage,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-        ),
+        title: Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              AppLocalizations.of(context).customizeHomepage,
+            )),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
