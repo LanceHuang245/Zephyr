@@ -27,9 +27,14 @@ import UserNotifications
         WorkmanagerPlugin.setPluginRegistrantCallback { registry in
             GeneratedPluginRegistrant.register(with: registry)
         }
+        // 设置后台任务最小刷新间隔
+        if #available(iOS 13.0, *) {
+            UIApplication.shared.setMinimumBackgroundFetchInterval(TimeInterval(15 * 60)) // 15分钟最小间隔
+        }
+
         WorkmanagerPlugin.registerPeriodicTask(
             withIdentifier: "org.claret.easyweather.fetchWeatherTask",
-            frequency: NSNumber(value: 30 * 60) // 30 分钟
+            frequency: NSNumber(value: 30 * 60) // 30 分钟（iOS实际执行时间由系统决定）
         )
 
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)

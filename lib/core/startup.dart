@@ -1,20 +1,36 @@
+import 'package:zephyr/pages/settings/import.dart';
+
 import 'import.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 // 运行后台自动获取天气数据任务
 @pragma('vm:entry-point')
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
-    WidgetsFlutterBinding.ensureInitialized();
+    try {
+      debugPrint('WorkManager任务开始: $task');
+      WidgetsFlutterBinding.ensureInitialized();
 
-    await NotificationService().init();
-    final prefs = await SharedPreferences.getInstance();
-    localeCodeNotifier.value = prefs.getString('locale_code') ?? 'en';
-    switch (task) {
-      case "org.claret.easyweather.fetchWeatherTask":
-        await WeatherFetchService.fetchAndCacheWeather();
-        break;
+      await NotificationService().init();
+      final prefs = await SharedPreferences.getInstance();
+      localeCodeNotifier.value = prefs.getString('locale_code') ?? 'en';
+
+      switch (task) {
+        case "org.claret.easyweather.fetchWeatherTask":
+          debugPrint('开始获取天气数据...');
+          await WeatherFetchService.fetchAndCacheWeather();
+          debugPrint('天气数据获取完成');
+          break;
+        default:
+          debugPrint('未知任务: $task');
+      }
+      return Future.value(true);
+    } catch (e, stackTrace) {
+      debugPrint('WorkManager任务失败: $task');
+      debugPrint('错误: $e');
+      debugPrint('堆栈: $stackTrace');
+      return Future.value(false);
     }
-    return Future.value(true);
   });
 }
 
@@ -67,9 +83,23 @@ Future<void> initAppSettings() async {
     callbackDispatcher,
   );
 
+  // 检查iOS后台权限
+  if (Platform.isIOS) {
+    final status = await Permission.backgroundRefresh.status;
+    if (status != PermissionStatus.granted) {
+      debugPrint('⚠️ iOS后台App刷新权限未授予，WorkManager无法正常工作');
+    } else {
+      debugPrint('✅ iOS后台App刷新权限已授予');
+    }
+  }
+
   Workmanager().registerPeriodicTask(
     "org.claret.easyweather.fetchWeatherTask",
     "org.claret.easyweather.fetchWeatherTask",
     frequency: const Duration(minutes: 30),
+    constraints: Constraints(
+      networkType: NetworkType.connected,
+      requiresCharging: false,
+    ),
   );
 }

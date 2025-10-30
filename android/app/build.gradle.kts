@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "org.claret.zephyr"
-    compileSdk = 36
+    compileSdk = flutter.compileSdkVersion
     ndkVersion = "29.0.14206865"
 
     compileOptions {
