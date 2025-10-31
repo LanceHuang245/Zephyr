@@ -1,19 +1,25 @@
-import 'package:zephyr/pages/settings/import.dart';
-
-import 'import.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'import.dart';
 
 // 运行后台自动获取天气数据任务
 @pragma('vm:entry-point')
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
     try {
-      debugPrint('WorkManager任务开始: $task');
+      debugPrint('WorkManager任务开始: $task at ${DateTime.now()}');
       WidgetsFlutterBinding.ensureInitialized();
 
-      await NotificationService().init();
+      // 轻量级初始化 - 避免重复初始化通知服务
       final prefs = await SharedPreferences.getInstance();
-      localeCodeNotifier.value = prefs.getString('locale_code') ?? 'en';
+
+      // 只在必要时初始化通知服务
+      bool notificationInitialized =
+          prefs.getBool('notification_initialized_bg') ?? false;
+      if (!notificationInitialized) {
+        await NotificationService().init();
+        await prefs.setBool('notification_initialized_bg', true);
+        debugPrint('后台任务：通知服务初始化完成');
+      }
 
       switch (task) {
         case "org.claret.easyweather.fetchWeatherTask":
@@ -87,19 +93,40 @@ Future<void> initAppSettings() async {
   if (Platform.isIOS) {
     final status = await Permission.backgroundRefresh.status;
     if (status != PermissionStatus.granted) {
-      debugPrint('⚠️ iOS后台App刷新权限未授予，WorkManager无法正常工作');
+      debugPrint('iOS后台App刷新权限未授予，WorkManager无法正常工作');
     } else {
-      debugPrint('✅ iOS后台App刷新权限已授予');
+      debugPrint('iOS后台App刷新权限已授予');
     }
+    // 针对iOS 启动时获取网络权限
+    await Api.testConnectivity();
   }
 
-  Workmanager().registerPeriodicTask(
-    "org.claret.easyweather.fetchWeatherTask",
-    "org.claret.easyweather.fetchWeatherTask",
-    frequency: const Duration(minutes: 30),
-    constraints: Constraints(
-      networkType: NetworkType.connected,
-      requiresCharging: false,
-    ),
-  );
+  // 避免重复注册WorkManager任务
+  await _registerWeatherFetchTaskIfNotExists();
+}
+
+// 安全注册WorkManager任务，避免重复注册
+Future<void> _registerWeatherFetchTaskIfNotExists() async {
+  try {
+    await Workmanager()
+        .cancelByUniqueName("org.claret.easyweather.fetchWeatherTask");
+
+    // 等待一小段时间确保取消操作完成
+    await Future.delayed(const Duration(milliseconds: 100));
+
+    await Workmanager().registerPeriodicTask(
+      "org.claret.easyweather.fetchWeatherTask",
+      "org.claret.easyweather.fetchWeatherTask",
+      frequency: const Duration(minutes: 30),
+      constraints: Constraints(
+        networkType: NetworkType.connected,
+        requiresCharging: false,
+      ),
+      existingWorkPolicy: ExistingPeriodicWorkPolicy.replace, // 确保替换现有任务
+    );
+
+    debugPrint('✅ WorkManager天气任务注册/替换成功');
+  } catch (e) {
+    debugPrint('⚠️ WorkManager任务操作失败: $e');
+  }
 }

@@ -1,6 +1,6 @@
 class AppConstants {
   static const String appName = 'Zephyr';
-  static const String appVersion = 'v2.2.1';
+  static const String appVersion = 'v2.2.2';
   static const String appDescription =
       'Simple and fast real-time weather forecast software.';
   static const String appUrl = 'https://github.com/LanceHuang245/Zephyr';
@@ -21,4 +21,7 @@ class AppConstants {
 
   // City Search API Url 用于城市搜索
   static const String searchUrl = '$weatherUrl/city/search';
+
+  // HealthCheck API Url 用于检查服务器是否正常
+  static const String healthCheckUrl = '$weatherUrl/healthcheck';
 }

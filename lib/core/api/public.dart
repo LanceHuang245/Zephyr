@@ -120,4 +120,25 @@ class Api {
     }
     return [];
   }
+
+  // 连通性测试
+  static Future<bool> testConnectivity() async {
+    try {
+      final url = Uri.parse(AppConstants.healthCheckUrl);
+      // 客户端Header验证
+      final sendHeaders = {
+        'Application': 'Zephyr',
+        'User-Agent': 'Zephyr/${AppConstants.appVersion}'
+      };
+      final response = await http
+          .get(url, headers: sendHeaders)
+          .timeout(const Duration(seconds: 8));
+      if (response.statusCode == 200) {
+        return true;
+      }
+    } catch (e) {
+      if (kDebugMode) debugPrint('Weather API connectivity test error: $e');
+    }
+    return false;
+  }
 }
