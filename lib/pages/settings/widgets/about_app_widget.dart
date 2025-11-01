@@ -3,8 +3,8 @@ import '../import.dart';
 class AboutAppWidget extends StatelessWidget {
   const AboutAppWidget({super.key});
 
-  Future<void> _launchUrl() async {
-    await launchUrl(Uri.parse(AppConstants.appUrl));
+  Future<void> _launchUrl(String url) async {
+    await launchUrl(Uri.parse(url));
   }
 
   @override
@@ -22,11 +22,6 @@ class AboutAppWidget extends StatelessWidget {
           onTap: () {
             showAboutDialog(
                 context: context,
-                applicationIcon: Image.asset(
-                  'assets/images/zephyr.png',
-                  width: 64,
-                  height: 64,
-                ),
                 applicationName: AppConstants.appName,
                 applicationVersion: AppConstants.appVersion,
                 applicationLegalese: AppConstants.appDescription,
@@ -34,6 +29,7 @@ class AboutAppWidget extends StatelessWidget {
                   const SizedBox(height: 16),
                   Container(
                       decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.circular(24),
                       ),
                       child: Material(
@@ -41,7 +37,7 @@ class AboutAppWidget extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(24),
                             onTap: () async {
-                              await _launchUrl();
+                              await _launchUrl(AppConstants.appUrl);
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -58,7 +54,35 @@ class AboutAppWidget extends StatelessWidget {
                                 ],
                               ),
                             ),
-                          )))
+                          ))),
+                  const SizedBox(height: 6),
+                  Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.surface,
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(24),
+                            onTap: () async {
+                              await _launchUrl(AppConstants.backendUrl);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 20, horizontal: 16),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.electric_bolt,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
+                                  const SizedBox(width: 8),
+                                  Text("Zeus", style: textTheme.titleMedium),
+                                ],
+                              ),
+                            ),
+                          ))),
                 ]);
           },
           child: Padding(

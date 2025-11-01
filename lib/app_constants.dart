@@ -4,6 +4,7 @@ class AppConstants {
   static const String appDescription =
       'Simple and fast real-time weather forecast software.';
   static const String appUrl = 'https://github.com/LanceHuang245/Zephyr';
+  static const String backendUrl = 'https://github.com/LanceHuang245/Zeus';
 
   static const List<String> weatherSources = [
     'OpenMeteo',
