@@ -125,8 +125,8 @@ Future<void> _registerWeatherFetchTaskIfNotExists() async {
       existingWorkPolicy: ExistingPeriodicWorkPolicy.replace, // 确保替换现有任务
     );
 
-    debugPrint('✅ WorkManager天气任务注册/替换成功');
+    debugPrint('WorkManager天气任务注册/替换成功');
   } catch (e) {
-    debugPrint('⚠️ WorkManager任务操作失败: $e');
+    debugPrint('WorkManager任务操作失败: $e');
   }
 }
