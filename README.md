@@ -16,7 +16,8 @@ The backend is powered by the open-source [Zeus](https://github.com/LanceHuang24
 ---
 ## Features
 - Real-time weather query for multiple cities
-- City management: add, delete, set default
+- Custom weather source
+- City management
 - 7-day/24-Hour weather forecast
 - Background auto update
 - Weather warnings
@@ -24,6 +25,9 @@ The backend is powered by the open-source [Zeus](https://github.com/LanceHuang24
 - Theme settings with dynamic color support
 - Temperature unit switch (°C/°F)
 - Localization (l10n) support (English, Deutch, French, Spanish, Italian, Chinese)
+
+## Roadmap
+Visit the [Wiki](https://github.com/LanceHuang245/Zephyr/wiki) to see the features Zephyr is currently working to support.
 
 ## Usage
 1. Tap the search button in the top right corner to search for a city. Select a city to return to the main screen and save it to city list, or tap the location button to get weather data of your local city
@@ -63,4 +67,4 @@ We welcome community users to contribute! Feel free to fork this repository, sub
 </table>
 
 ## License
-[MIT License](LICENSE) © Huang LinXing
+[MIT License](LICENSE) © Lance Huang
