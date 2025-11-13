@@ -8,15 +8,17 @@ English | [简体中文](README_CN.md)
 
 # Zephyr
 
-A simple and beautiful weather app built with Flutter, powered by the OpenMeteo API, Qweather API and the search functionality is provided by the OpenStreetMap API.
+A simple and beautiful weather app built with Flutter, powered by the OpenMeteo API, Qweather API and the search functionality is provided by the OpenStreetMap API.\
+The backend is powered by the open-source [Zeus](https://github.com/LanceHuang245/Zeus), which aggregates service provider APIs and provides intelligent data caching, classification, and data transformation capabilities to deliver Zephyr services.
 > **Note** 
 > 
-> This project is only for learning and communication use, please do not use for commercial purposes. And each API has a certain dosage limit, please do not abuse.
+> This project is only for learning and communication use, please do not use for commercial purposes. All API interfaces have usage limits; please refrain from excessive or abusive use.
 ---
 ## Features
 - Real-time weather query for multiple cities
 - City management: add, delete, set default
-- 7-day weather forecast
+- 7-day/24-Hour weather forecast
+- Background auto update
 - Weather warnings
 - Dynamic weather icons and backgrounds
 - Theme settings with dynamic color support
@@ -24,9 +26,10 @@ A simple and beautiful weather app built with Flutter, powered by the OpenMeteo 
 - Localization (l10n) support (English, Deutch, French, Spanish, Italian, Chinese)
 
 ## Usage
-1. Tap the search button in the top right corner to search for a city. Select a city to return to the main screen and save it to city list, or tap the location button to get weather data of your local city.
-2. Manage saved cities in the settings page: set default or delete.
-3. Switch theme, language, and temperature unit in settings.
+1. Tap the search button in the top right corner to search for a city. Select a city to return to the main screen and save it to city list, or tap the location button to get weather data of your local city
+2. Manage saved cities in the settings page: set default or delete
+3. Switch theme, language, and temperature unit in settings
+4. Customize the main page layout in the settings page.
 
 ## Contributing
 We welcome community users to contribute! Feel free to fork this repository, submit Pull Requests, and make suggestions and report bugs through Issues.
@@ -39,26 +42,25 @@ We welcome community users to contribute! Feel free to fork this repository, sub
 5. (Mandatory) add language in lib/core/languages.dart in the format
 6. Push your code and commit [Pull Request](https://github.com/ClaretWheel1481/Zephyr/pulls)
 
+## Download
+[Zephyr Release](https://github.com/LanceHuang245/Zephyr/releases/latest) \
+[Zephyr Action(Experiment)](https://github.com/LanceHuang245/Zephyr/actions/workflows/build.yml)
+
 ## Screenshots
 <table>
   <tr>
-    <td><img src="./public/sample_main_light.png" width="200"/></td>
-    <td><img src="./public/sample_main2_light.png" width="200"/></td>
-    <td><img src="./public/sample_main_alert_light.png" width="200"/></td>
-    <td><img src="./public/sample_settings_light.png" width="200"/></td>
+    <td><img src="./public/sample_main_light.jpg" width="200"/></td>
+    <td><img src="./public/sample_main2_light.jpg" width="200"/></td>
+    <td><img src="./public/sample_main_alert_light.jpg" width="200"/></td>
+    <td><img src="./public/sample_settings_light.jpg" width="200"/></td>
   </tr>
   <tr>
-    <td><img src="./public/sample_main_dark.png" width="200"/></td>
-    <td><img src="./public/sample_main2_dark.png" width="200"/></td>
-    <td><img src="./public/sample_main_alert_dark.png" width="200"/></td>
-    <td><img src="./public/sample_settings_dark.png" width="200"/></td>
+    <td><img src="./public/sample_main_dark.jpg" width="200"/></td>
+    <td><img src="./public/sample_main2_dark.jpg" width="200"/></td>
+    <td><img src="./public/sample_main_alert_dark.jpg" width="200"/></td>
+    <td><img src="./public/sample_settings_dark.jpg" width="200"/></td>
   </tr>
 </table>
-
-More screenshots in [Public Folder](https://github.com/LanceHuang245/Zephyr/tree/master/public)
-
-## Download
-[Click here to download the latest version of Zephyr](https://github.com/LanceHuang245/Zephyr/releases/latest)
 
 ## License
 [MIT License](LICENSE) © Huang LinXing

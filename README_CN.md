@@ -8,25 +8,29 @@
 
 # Zephyr
 
-一款简洁美观的天气应用，基于 Flutter 开发，数据来源于 OpenMeteo API 与 QWeather API，搜索功能由 OpenStreetMap API 提供。
+一款简洁美观的天气应用，基于 Flutter 开发，数据来源于 OpenMeteo API 与 QWeather API，搜索功能由 OpenStreetMap API 提供。\
+后端由[Zeus](https://github.com/LanceHuang245/Zeus)开源提供，该后端聚合了服务商的API并提供了合理的数据缓存、分类、数据转换等功能以提供Zephyr服务。
 > **注意**
 > 
-> 本项目仅供学习交流使用，请勿用于商业用途。且每个API接口都有一定用量限制，请勿滥用。
+> 本项目仅供学习交流使用，请勿用于商业用途。API接口都有一定用量限制，请勿滥用。
 ---
 ## 功能特性
 - 实时天气查询：支持多城市天气信息获取
 - 城市管理：可添加、删除、设为默认
 - 7天天气预报：未来一周天气趋势一目了然
-- 天气预警：实时天气预警信息
+- 24小时天气查询：支持24小时温度、降雨查询
+- 天气预警：实时天气预警信息，并通知您
+- 后台自动更新：缓存数据，自动更新数据
 - 多样天气图标与动态背景
 - 主题设置：支持Monet取色
 - 温度单位切换（℃/℉）
 - 多语言本地化（l10n）(简体中文、繁体中文、英语、德语、西班牙语、法语、意大利语)
 
 ## 使用方法
-1. 点击右上角搜索按钮，输入城市名进行搜索，选择城市后自动返回主界面并保存至城市列表，或使用定位功能自动获取您所在地的天气信息。
-2. 在设置页面可管理已保存城市，支持设为默认和删除操作。
-3. 可在设置中切换主题、语言和温度单位。
+1. 点击右上角搜索按钮，输入城市名进行搜索，选择城市后自动返回主界面并保存至城市列表，或使用定位功能自动获取您所在地的天气信息
+2. 在设置页面可管理已保存城市，支持设为默认和删除操作
+3. 可在设置中切换主题、语言和温度单位
+4. 可在设置页面中自定义主页面布局
 
 ## 贡献
 欢迎社区用户参与贡献！您可以自由 Fork 本仓库，提交 Pull Request，或通过 Issue 提出建议和报告 Bug。
@@ -39,26 +43,25 @@
 5. (必须)在lib/core/languages.dart中按照格式添加语言
 6. 推送你的代码并提交 [Pull Request](https://github.com/ClaretWheel1481/Zephyr/pulls)
 
+## 下载
+[Zephyr Release](https://github.com/LanceHuang245/Zephyr/releases/latest) \
+[Zephyr Action(Experiment)](https://github.com/LanceHuang245/Zephyr/actions/workflows/build.yml)
+
 ## 截图
 <table>
   <tr>
-    <td><img src="./public/sample_main_light.png" width="200"/></td>
-    <td><img src="./public/sample_main2_light.png" width="200"/></td>
-    <td><img src="./public/sample_main_alert_light.png" width="200"/></td>
-    <td><img src="./public/sample_settings_light.png" width="200"/></td>
+    <td><img src="./public/sample_main_light.jpg" width="200"/></td>
+    <td><img src="./public/sample_main2_light.jpg" width="200"/></td>
+    <td><img src="./public/sample_main_alert_light.jpg" width="200"/></td>
+    <td><img src="./public/sample_settings_light.jpg" width="200"/></td>
   </tr>
   <tr>
-    <td><img src="./public/sample_main_dark.png" width="200"/></td>
-    <td><img src="./public/sample_main2_dark.png" width="200"/></td>
-    <td><img src="./public/sample_main_alert_dark.png" width="200"/></td>
-    <td><img src="./public/sample_settings_dark.png" width="200"/></td>
+    <td><img src="./public/sample_main_dark.jpg" width="200"/></td>
+    <td><img src="./public/sample_main2_dark.jpg" width="200"/></td>
+    <td><img src="./public/sample_main_alert_dark.jpg" width="200"/></td>
+    <td><img src="./public/sample_settings_dark.jpg" width="200"/></td>
   </tr>
 </table>
-
-更多详细请查看[图片文件夹](https://github.com/LanceHuang245/Zephyr/tree/master/public)
-
-## 下载
-[点击前往下载最新版本](https://github.com/LanceHuang245/Zephyr/releases/latest)
 
 ## 许可
 [MIT License](LICENSE) © Huang LinXing
