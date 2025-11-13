@@ -176,7 +176,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get locationPermissionDenied => '无法获取定位权限或定位服务未开启';
 
   @override
-  String get locationNotRecognized => '无法识别当前位置';
+  String get locationNotRecognized => '无法获取当前位置';
 
   @override
   String get locatingSuccess => '获取位置信息成功，请稍后...';
@@ -209,10 +209,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get ignoreBatteryOptimization => '忽略电池优化';
 
   @override
-  String get iBODesc => '使Zephyr在后台可自动更新天气';
+  String get iBODesc => '使Zephyr在后台时可自动更新天气';
 
   @override
-  String get iBODisabled => '电池优化已经关闭';
+  String get iBODisabled => '电池优化已关闭';
 
   @override
   String get starUs => '给我们点个Star';
@@ -224,13 +224,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get hourly_windSpeed => '逐小时风速';
 
   @override
-  String get hourly_windSpeed_Desc => '每小时的风速。可以手动滑动图表查看每小时的详细风速数据。';
+  String get hourly_windSpeed_Desc => '每小时的风速。可滑动图表查看每小时的详细风速数据。';
 
   @override
   String get hourly_pressure => '逐小时气压';
 
   @override
-  String get hourly_pressure_Desc => '每小时的海平面气压与地面气压，hPa为气压单位。可以手动滑动图表查看每小时的详细气压数据。';
+  String get hourly_pressure_Desc => '每小时的海平面气压与地面气压。可滑动图表查看每小时的详细气压数据。';
 
   @override
   String get eAQIGrading => '空气质量分级';
