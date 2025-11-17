@@ -27,15 +27,8 @@ class WidgetService {
       kDebugMode ? debugPrint('Language: $lang') : null;
       final weatherDesc = getWeatherDescForWidget(current.weatherCode, lang);
 
-      // 根据温度单位格式化温度显示
-      final tempUnit = tempUnitNotifier.value;
-      String temperature;
-
-      if (tempUnit == 'F') {
-        temperature = '${current.temperature.round()}°F';
-      } else {
-        temperature = '${current.temperature.round()}°C';
-      }
+      // API返回的温度已经是根据用户设置转换过的
+      final temperature = '${current.temperature.round()}°';
 
       // 准备小部件数据
       final widgetData = {
@@ -43,7 +36,7 @@ class WidgetService {
         'weather_desc': weatherDesc,
         'temperature': temperature,
         'weather_code': current.weatherCode,
-        'temp_unit': tempUnit,
+        'temp_unit': tempUnitNotifier.value,
         'timestamp': DateTime.now().millisecondsSinceEpoch,
       };
 

@@ -1,4 +1,5 @@
 import 'package:zephyr/core/import.dart';
+import 'package:zephyr/core/services/forecast_widget_service.dart';
 
 import 'import.dart';
 
@@ -102,7 +103,10 @@ class _HomePageState extends State<HomePage> {
       final mainCity = cities.first;
       final weather = weatherMap[_getMapKey(mainCity)];
       if (weather != null) {
-        await WidgetService.updateWidget(city: mainCity, weatherData: weather);
+        await ForecastWidgetService.updateAllWidgets(
+          city: mainCity,
+          weatherData: weather,
+        );
       }
     }
   }

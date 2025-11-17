@@ -619,6 +619,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Last Updated'**
   String get lastUpdated;
+
+  /// No description provided for @selectWidgetType.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Widget Type'**
+  String get selectWidgetType;
+
+  /// No description provided for @currentWeatherWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Weather Widget'**
+  String get currentWeatherWidget;
+
+  /// No description provided for @currentWeatherWidgetDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Displays the current weather conditions of the selected city.'**
+  String get currentWeatherWidgetDesc;
+
+  /// No description provided for @forecastWeatherWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'Forecast Widget'**
+  String get forecastWeatherWidget;
+
+  /// No description provided for @forecastWeatherWidgetDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Displays the weather forecast for the next 7 days.'**
+  String get forecastWeatherWidgetDesc;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

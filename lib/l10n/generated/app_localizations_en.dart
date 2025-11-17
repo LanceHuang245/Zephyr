@@ -267,4 +267,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lastUpdated => 'Last Updated';
+
+  @override
+  String get selectWidgetType => 'Select Widget Type';
+
+  @override
+  String get currentWeatherWidget => 'Current Weather Widget';
+
+  @override
+  String get currentWeatherWidgetDesc => 'Displays the current weather conditions of the selected city.';
+
+  @override
+  String get forecastWeatherWidget => 'Forecast Widget';
+
+  @override
+  String get forecastWeatherWidgetDesc => 'Displays the weather forecast for the next 7 days.';
 }

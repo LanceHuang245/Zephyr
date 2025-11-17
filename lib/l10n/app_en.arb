@@ -92,5 +92,10 @@
   "today": "Today",
   "customizeHomepageDesc": "Long press and drag to reorder items. Tap the toggle to show or hide components.",
   "customizeHomepageSaved": "Homepage layout saved.",
-  "lastUpdated": "Last Updated"
+  "lastUpdated": "Last Updated",
+  "selectWidgetType": "Select Widget Type",
+  "currentWeatherWidget": "Current Weather Widget",
+  "currentWeatherWidgetDesc": "Displays the current weather conditions of the selected city.",
+  "forecastWeatherWidget": "Forecast Widget",
+  "forecastWeatherWidgetDesc": "Displays the weather forecast for the next 7 days."
 }

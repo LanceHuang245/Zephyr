@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/forecast_widget_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@drawable/widget_gradient_background">
+
+    <!-- 城市名称标题 -->
+    <TextView
+        android:id="@+id/forecast_city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginBottom="12dp" />
+
+    <!-- 7日预报网格容器 - 竖排横向排列 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 第一行：第1-4天 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp">
+
+            <!-- 第一天 -->
+            <LinearLayout
+                android:id="@+id/forecast_day_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/forecast_date_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="周一"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginBottom="2dp" />
+
+                <ImageView
+                    android:id="@+id/forecast_icon_1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/ic_weather_sunny"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/forecast_temp_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15°/25°"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+            <!-- 第二天 -->
+            <LinearLayout
+                android:id="@+id/forecast_day_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/forecast_date_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="周二"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginBottom="2dp" />
+
+                <ImageView
+                    android:id="@+id/forecast_icon_2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/ic_weather_cloudy"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/forecast_temp_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16°/26°"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+            <!-- 第三天 -->
+            <LinearLayout
+                android:id="@+id/forecast_day_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/forecast_date_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="周三"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginBottom="2dp" />
+
+                <ImageView
+                    android:id="@+id/forecast_icon_3"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/ic_weather_rainy"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/forecast_temp_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="14°/24°"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+            <!-- 第四天 -->
+            <LinearLayout
+                android:id="@+id/forecast_day_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/forecast_date_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="周四"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginBottom="2dp" />
+
+                <ImageView
+                    android:id="@+id/forecast_icon_4"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/ic_weather_cloudy"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/forecast_temp_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13°/23°"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 第二行：第5-7天 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <!-- 第五天 -->
+            <LinearLayout
+                android:id="@+id/forecast_day_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/forecast_date_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="周五"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginBottom="2dp" />
+
+                <ImageView
+                    android:id="@+id/forecast_icon_5"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/ic_weather_sunny"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/forecast_temp_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="17°/27°"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+            <!-- 第六天 -->
+            <LinearLayout
+                android:id="@+id/forecast_day_6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/forecast_date_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="周六"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginBottom="2dp" />
+
+                <ImageView
+                    android:id="@+id/forecast_icon_6"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/ic_weather_cloudy"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/forecast_temp_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18°/28°"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+            <!-- 第七天 -->
+            <LinearLayout
+                android:id="@+id/forecast_day_7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/forecast_date_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="周日"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginBottom="2dp" />
+
+                <ImageView
+                    android:id="@+id/forecast_icon_7"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/ic_weather_sunny"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/forecast_temp_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="19°/29°"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+            <!-- 空白占位 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="4dp"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="占位"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

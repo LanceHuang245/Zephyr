@@ -1,1 +1,49 @@
-{}
+{
+  "de": [
+    "selectWidgetType",
+    "currentWeatherWidget",
+    "currentWeatherWidgetDesc",
+    "forecastWeatherWidget",
+    "forecastWeatherWidgetDesc"
+  ],
+
+  "es": [
+    "selectWidgetType",
+    "currentWeatherWidget",
+    "currentWeatherWidgetDesc",
+    "forecastWeatherWidget",
+    "forecastWeatherWidgetDesc"
+  ],
+
+  "fr": [
+    "selectWidgetType",
+    "currentWeatherWidget",
+    "currentWeatherWidgetDesc",
+    "forecastWeatherWidget",
+    "forecastWeatherWidgetDesc"
+  ],
+
+  "it": [
+    "selectWidgetType",
+    "currentWeatherWidget",
+    "currentWeatherWidgetDesc",
+    "forecastWeatherWidget",
+    "forecastWeatherWidgetDesc"
+  ],
+
+  "zh": [
+    "selectWidgetType",
+    "currentWeatherWidget",
+    "currentWeatherWidgetDesc",
+    "forecastWeatherWidget",
+    "forecastWeatherWidgetDesc"
+  ],
+
+  "zh_TW": [
+    "selectWidgetType",
+    "currentWeatherWidget",
+    "currentWeatherWidgetDesc",
+    "forecastWeatherWidget",
+    "forecastWeatherWidgetDesc"
+  ]
+}

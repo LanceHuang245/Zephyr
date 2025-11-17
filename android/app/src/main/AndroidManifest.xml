@@ -46,6 +46,18 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/weather_widget_info" />
         </receiver>
+
+        <!-- Forecast Widget -->
+        <receiver
+            android:name=".ForecastWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/forecast_widget_info" />
+        </receiver>
         <service
         android:name="com.pravera.flutter_foreground_task.service.ForegroundService"
         android:exported="false"

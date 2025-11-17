@@ -1,3 +1,5 @@
+import 'package:zephyr/core/services/forecast_widget_service.dart';
+
 import '../import.dart';
 
 class WeatherFetchService {
@@ -42,7 +44,10 @@ class WeatherFetchService {
           if (cities.isNotEmpty &&
               cities.first.lat == city.lat &&
               cities.first.lon == city.lon) {
-            await WidgetService.updateWidget(city: city, weatherData: weather);
+            await ForecastWidgetService.updateAllWidgets(
+              city: city,
+              weatherData: weather,
+            );
           }
         }
 
