@@ -123,15 +123,16 @@ class ForecastWidgetProvider : AppWidgetProvider() {
 
                 calendar.time = date
 
-                val dayOfWeek = SimpleDateFormat("E", Locale.getDefault()).format(date)
+                // Force English Locale for abbreviations (Mon, Tue, etc.)
+                val dayOfWeek = SimpleDateFormat("E", Locale.ENGLISH).format(date)
 
-                // 如果是今天或明天，显示特殊标识
+                // Check if it's today or tomorrow
                 when {
                     calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
-                    calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR) -> "今天"
+                    calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR) -> "Today"
 
                     calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
-                    calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR) + 1 -> "明天"
+                    calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR) + 1 -> "Tomorrow"
 
                     else -> dayOfWeek
                 }

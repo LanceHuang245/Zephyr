@@ -10,5 +10,5 @@
     android:widgetCategory="home_screen"
     android:widgetFeatures="reconfigurable|configuration_optional"
     android:description="@string/forecast_widget_description"
-    android:previewImage="@android:drawable/ic_menu_gallery">
+    android:previewImage="@drawable/forcast_widget_preview">
 </appwidget-provider>
