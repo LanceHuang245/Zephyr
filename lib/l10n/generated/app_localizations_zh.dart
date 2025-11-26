@@ -269,19 +269,19 @@ class AppLocalizationsZh extends AppLocalizations {
   String get lastUpdated => '上次更新';
 
   @override
-  String get selectWidgetType => 'Select Widget Type';
+  String get selectWidgetType => '选择要添加的小部件';
 
   @override
-  String get currentWeatherWidget => 'Current Weather Widget';
+  String get currentWeatherWidget => '当前天气小部件';
 
   @override
-  String get currentWeatherWidgetDesc => 'Displays the current weather conditions of the selected city.';
+  String get currentWeatherWidgetDesc => '显示主城市的当前天气信息。';
 
   @override
-  String get forecastWeatherWidget => 'Forecast Widget';
+  String get forecastWeatherWidget => '预报天气小部件';
 
   @override
-  String get forecastWeatherWidgetDesc => 'Displays the weather forecast for the next 7 days.';
+  String get forecastWeatherWidgetDesc => '显示主城市的7日天气预报。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -547,4 +547,19 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get lastUpdated => '最後更新';
+
+  @override
+  String get selectWidgetType => '選擇要添加的小部件';
+
+  @override
+  String get currentWeatherWidget => '當前天氣小部件';
+
+  @override
+  String get currentWeatherWidgetDesc => '顯示主城市的當前天氣資訊。';
+
+  @override
+  String get forecastWeatherWidget => '預報天氣小部件';
+
+  @override
+  String get forecastWeatherWidgetDesc => '顯示主城市的7日天氣預報。';
 }

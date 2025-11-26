@@ -269,17 +269,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get lastUpdated => 'Última actualización';
 
   @override
-  String get selectWidgetType => 'Select Widget Type';
+  String get selectWidgetType => 'Selecciona el tipo de widget que deseas añadir';
 
   @override
-  String get currentWeatherWidget => 'Current Weather Widget';
+  String get currentWeatherWidget => 'Widget del tiempo actual';
 
   @override
-  String get currentWeatherWidgetDesc => 'Displays the current weather conditions of the selected city.';
+  String get currentWeatherWidgetDesc => 'Muestra la información meteorológica actual de la ciudad principal.';
 
   @override
-  String get forecastWeatherWidget => 'Forecast Widget';
+  String get forecastWeatherWidget => 'Widget de previsión del tiempo';
 
   @override
-  String get forecastWeatherWidgetDesc => 'Displays the weather forecast for the next 7 days.';
+  String get forecastWeatherWidgetDesc => 'Muestra la previsión meteorológica a 7 días de la ciudad principal.';
 }

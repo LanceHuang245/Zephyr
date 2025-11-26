@@ -92,5 +92,10 @@
   "today": "今日",
   "customizeHomepageDesc": "长按拖动来调整顺序，点击开关显示或隐藏组件。",
   "customizeHomepageSaved": "主页布局已保存。",
-  "lastUpdated": "上次更新"
+  "lastUpdated": "上次更新",
+  "selectWidgetType": "选择要添加的小部件",
+  "currentWeatherWidget": "当前天气小部件",
+  "currentWeatherWidgetDesc": "显示主城市的当前天气信息。",
+  "forecastWeatherWidget": "预报天气小部件",
+  "forecastWeatherWidgetDesc": "显示主城市的7日天气预报。"
 }

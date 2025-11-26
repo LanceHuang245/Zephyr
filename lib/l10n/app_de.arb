@@ -92,5 +92,10 @@
   "customizeHomepage": "Homepage anpassen",
   "customizeHomepageDesc": "Halten Sie gedrückt, um die Reihenfolge zu verschieben und neu anzuordnen. Tippen Sie auf die Umschaltfläche, um Komponenten ein- oder auszublenden.",
   "customizeHomepageSaved": "Das Layout der Startseite wurde gespeichert.",
-  "lastUpdated": "Zuletzt aktualisiert"
+  "lastUpdated": "Zuletzt aktualisiert",
+  "selectWidgetType": "Wähle den Widget-Typ aus, den du hinzufügen möchtest",
+  "currentWeatherWidget": "Aktuelles Wetter-Widget",
+  "currentWeatherWidgetDesc": "Zeigt die aktuellen Wetterinformationen der Hauptstadt an.",
+  "forecastWeatherWidget": "Wettervorhersage-Widget",
+  "forecastWeatherWidgetDesc": "Zeigt die 7-Tage-Wettervorhersage der Hauptstadt an."
 }

@@ -92,5 +92,10 @@
   "customizeHomepage": "自定主頁",
   "customizeHomepageDesc": "長按拖動來調整組件順序，點擊開關顯示或隱藏組件。",
   "customizeHomepageSaved": "主頁佈局已保存。",
-  "lastUpdated": "最後更新"
+  "lastUpdated": "最後更新",
+  "selectWidgetType": "選擇要添加的小部件",
+  "currentWeatherWidget": "當前天氣小部件",
+  "currentWeatherWidgetDesc": "顯示主城市的當前天氣資訊。",
+  "forecastWeatherWidget": "預報天氣小部件",
+  "forecastWeatherWidgetDesc": "顯示主城市的7日天氣預報。"
 }

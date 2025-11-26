@@ -92,5 +92,10 @@
   "customizeHomepage": "Personnaliser la page d'accueil",
   "customizeHomepageDesc": "Appuyez et maintenez enfoncé pour faire glisser et réorganiser l'ordre. Appuyez sur le bouton pour afficher ou masquer les composants.",
   "customizeHomepageSaved": "La mise en page de la page d'accueil a été enregistrée.",
-  "lastUpdated": "Dernière mise à jour"
+  "lastUpdated": "Dernière mise à jour",
+  "selectWidgetType": "Sélectionnez le type de widget à ajouter",
+  "currentWeatherWidget": "Widget météo actuelle",
+  "currentWeatherWidgetDesc": "Affiche les informations météo actuelles de la ville principale.",
+  "forecastWeatherWidget": "Widget prévisions météo",
+  "forecastWeatherWidgetDesc": "Affiche les prévisions météo sur 7 jours de la ville principale."
 }
