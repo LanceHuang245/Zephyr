@@ -21,7 +21,8 @@ class RequestHomewidgetWidget extends StatelessWidget {
             color: Colors.transparent,
             child: InkWell(
               borderRadius: BorderRadius.circular(24),
-              onTap: supported ? () => _showWidgetSelectionDialog(context) : null,
+              onTap:
+                  supported ? () => _showWidgetSelectionDialog(context) : null,
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
@@ -99,7 +100,8 @@ class RequestHomewidgetWidget extends StatelessWidget {
               _buildWidgetOption(
                 context,
                 title: AppLocalizations.of(context).forecastWeatherWidget,
-                subtitle: AppLocalizations.of(context).forecastWeatherWidgetDesc,
+                subtitle:
+                    AppLocalizations.of(context).forecastWeatherWidgetDesc,
                 icon: Icons.calendar_view_week,
                 onTap: () => _requestWidget(context, WidgetType.forecast),
               ),
@@ -136,7 +138,7 @@ class RequestHomewidgetWidget extends StatelessWidget {
             border: Border.all(
               color: colorScheme.outline.withValues(alpha: 0.2),
             ),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(18),
           ),
           child: Row(
             children: [
@@ -144,7 +146,7 @@ class RequestHomewidgetWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: colorScheme.primary.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Icon(
                   icon,

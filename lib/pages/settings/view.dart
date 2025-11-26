@@ -190,6 +190,21 @@ class _SettingsPageState extends State<SettingsPage> {
               weatherSource: _weatherSource,
               onWeatherSourceChanged: _saveWeatherSources),
           const SizedBox(height: 16),
+          // 城市管理
+          CityManagerWidget(
+            cities: _cities,
+            mainCityIndex: _mainCityIndex,
+            cityLoading: _cityLoading,
+            cityManagerExpanded: _cityManagerExpanded,
+            onSetMainCity: _setMainCity,
+            onRemoveCity: _removeCity,
+            onToggleExpand: () {
+              setState(() {
+                _cityManagerExpanded = !_cityManagerExpanded;
+              });
+            },
+          ),
+          const SizedBox(height: 16),
           // 自定义主页面
           Container(
             decoration: BoxDecoration(
@@ -217,21 +232,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 },
               ),
             ),
-          ),
-          const SizedBox(height: 16),
-          // 城市管理
-          CityManagerWidget(
-            cities: _cities,
-            mainCityIndex: _mainCityIndex,
-            cityLoading: _cityLoading,
-            cityManagerExpanded: _cityManagerExpanded,
-            onSetMainCity: _setMainCity,
-            onRemoveCity: _removeCity,
-            onToggleExpand: () {
-              setState(() {
-                _cityManagerExpanded = !_cityManagerExpanded;
-              });
-            },
           ),
           const SizedBox(height: 16),
           // 温度单位
