@@ -144,8 +144,9 @@ class ForecastWidgetProvider : AppWidgetProvider() {
         private fun getWeatherIcon(weatherCode: Int): Int {
             return when (weatherCode) {
                 0 -> R.drawable.ic_weather_sunny // 晴天
-                1, 2 -> R.drawable.ic_weather_cloudy // 多云
-                3, 45, 48 -> R.drawable.ic_weather_foggy // 雾天
+                1, 2 -> R.drawable.ic_weather_cloudy // 多云 (中空云)
+                3 -> R.drawable.ic_weather_overcast // 阴天 (实心云)
+                45, 48 -> R.drawable.ic_weather_foggy // 雾天 (线条)
                 51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82 -> R.drawable.ic_weather_rainy // 雨天
                 71, 73, 75, 77, 85, 86 -> R.drawable.ic_weather_snowy // 雪天
                 95, 96, 99 -> R.drawable.ic_weather_thunder // 雷暴
@@ -163,9 +164,13 @@ class ForecastWidgetProvider : AppWidgetProvider() {
                     // 多云 - 浅蓝色渐变
                     views.setInt(R.id.forecast_widget_container, "setBackgroundResource", R.drawable.widget_gradient_background)
                 }
-                3, 45, 48 -> {
-                    // 雾天 - 浅灰色
-                    views.setInt(R.id.forecast_widget_container, "setBackgroundColor", Color.parseColor("#ECEFF1"))
+                3 -> {
+                    // 阴天 - 深灰色渐变
+                    views.setInt(R.id.forecast_widget_container, "setBackgroundResource", R.drawable.widget_thunder_gradient)
+                }
+                45, 48 -> {
+                    // 雾天 - 深灰色渐变
+                    views.setInt(R.id.forecast_widget_container, "setBackgroundResource", R.drawable.widget_thunder_gradient)
                 }
                 51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82 -> {
                     // 雨天 - 深蓝色渐变
