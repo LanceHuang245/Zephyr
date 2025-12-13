@@ -282,4 +282,31 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get forecastWeatherWidgetDesc => 'Zeigt die 7-Tage-Wettervorhersage der Hauptstadt an.';
+
+  @override
+  String get test => 'Test';
+
+  @override
+  String get llmConfiguration => 'LLM Configuration';
+
+  @override
+  String get llmProviders => 'Providers';
+
+  @override
+  String get llmAddProvider => 'Add Provider';
+
+  @override
+  String get llmNoProviders => 'No providers yet.\nClick + to add one.';
+
+  @override
+  String get llmModelName => 'Model Name';
+
+  @override
+  String get llmSaved => 'LLM configuration saved';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get template => 'Template';
 }

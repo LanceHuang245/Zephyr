@@ -5,6 +5,7 @@ part 'ai_config.g.dart';
 @JsonSerializable()
 class AIConfig {
   final String provider;
+  final String? providerName;
   final String apiKey;
   final String customEndpoint;
   final String model;
@@ -13,6 +14,7 @@ class AIConfig {
 
   const AIConfig({
     required this.provider,
+    this.providerName,
     required this.apiKey,
     this.customEndpoint = '',
     this.model = '',
@@ -27,6 +29,7 @@ class AIConfig {
 
   AIConfig copyWith({
     String? provider,
+    String? providerName,
     String? apiKey,
     String? customEndpoint,
     String? model,
@@ -35,6 +38,7 @@ class AIConfig {
   }) {
     return AIConfig(
       provider: provider ?? this.provider,
+      providerName: providerName ?? this.providerName,
       apiKey: apiKey ?? this.apiKey,
       customEndpoint: customEndpoint ?? this.customEndpoint,
       model: model ?? this.model,

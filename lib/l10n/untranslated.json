@@ -1,1 +1,73 @@
-{}
+{
+  "de": [
+    "test",
+    "llmConfiguration",
+    "llmProviders",
+    "llmAddProvider",
+    "llmNoProviders",
+    "llmModelName",
+    "llmSaved",
+    "name",
+    "template"
+  ],
+
+  "es": [
+    "test",
+    "llmConfiguration",
+    "llmProviders",
+    "llmAddProvider",
+    "llmNoProviders",
+    "llmModelName",
+    "llmSaved",
+    "name",
+    "template"
+  ],
+
+  "fr": [
+    "test",
+    "llmConfiguration",
+    "llmProviders",
+    "llmAddProvider",
+    "llmNoProviders",
+    "llmModelName",
+    "llmSaved",
+    "name",
+    "template"
+  ],
+
+  "it": [
+    "test",
+    "llmConfiguration",
+    "llmProviders",
+    "llmAddProvider",
+    "llmNoProviders",
+    "llmModelName",
+    "llmSaved",
+    "name",
+    "template"
+  ],
+
+  "zh": [
+    "test",
+    "llmConfiguration",
+    "llmProviders",
+    "llmAddProvider",
+    "llmNoProviders",
+    "llmModelName",
+    "llmSaved",
+    "name",
+    "template"
+  ],
+
+  "zh_TW": [
+    "test",
+    "llmConfiguration",
+    "llmProviders",
+    "llmAddProvider",
+    "llmNoProviders",
+    "llmModelName",
+    "llmSaved",
+    "name",
+    "template"
+  ]
+}

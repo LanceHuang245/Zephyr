@@ -649,6 +649,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Displays the weather forecast for the next 7 days.'**
   String get forecastWeatherWidgetDesc;
+
+  /// No description provided for @test.
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get test;
+
+  /// No description provided for @llmConfiguration.
+  ///
+  /// In en, this message translates to:
+  /// **'LLM Configuration'**
+  String get llmConfiguration;
+
+  /// No description provided for @llmProviders.
+  ///
+  /// In en, this message translates to:
+  /// **'Providers'**
+  String get llmProviders;
+
+  /// No description provided for @llmAddProvider.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Provider'**
+  String get llmAddProvider;
+
+  /// No description provided for @llmNoProviders.
+  ///
+  /// In en, this message translates to:
+  /// **'No providers yet.\nClick + to add one.'**
+  String get llmNoProviders;
+
+  /// No description provided for @llmModelName.
+  ///
+  /// In en, this message translates to:
+  /// **'Model Name'**
+  String get llmModelName;
+
+  /// No description provided for @llmSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'LLM configuration saved'**
+  String get llmSaved;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @template.
+  ///
+  /// In en, this message translates to:
+  /// **'Template'**
+  String get template;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

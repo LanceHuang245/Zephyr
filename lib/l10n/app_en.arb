@@ -97,5 +97,14 @@
   "currentWeatherWidget": "Current Weather Widget",
   "currentWeatherWidgetDesc": "Displays the current weather conditions of the selected city.",
   "forecastWeatherWidget": "Forecast Widget",
-  "forecastWeatherWidgetDesc": "Displays the weather forecast for the next 7 days."
+  "forecastWeatherWidgetDesc": "Displays the weather forecast for the next 7 days.",
+  "test": "Test",
+  "llmConfiguration": "LLM Configuration",
+  "llmProviders": "Providers",
+  "llmAddProvider": "Add Provider",
+  "llmNoProviders": "No providers yet.\nClick + to add one.",
+  "llmModelName": "Model Name",
+  "llmSaved": "LLM configuration saved",
+  "name": "Name",
+  "template": "Template"
 }

@@ -47,7 +47,7 @@ class LLMSelectorWidget extends StatelessWidget {
                           Icons.psychology,
                           color: enabled ? primaryColor : disabledColor,
                         ),
-                        const SizedBox(width: 16),
+                        const SizedBox(width: 8),
                         Expanded(
                           child: Text(
                             'LLM Configuration',

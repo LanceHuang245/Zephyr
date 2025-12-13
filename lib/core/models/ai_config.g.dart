@@ -8,6 +8,7 @@ part of 'ai_config.dart';
 
 AIConfig _$AIConfigFromJson(Map<String, dynamic> json) => AIConfig(
       provider: json['provider'] as String,
+      providerName: json['providerName'] as String?,
       apiKey: json['apiKey'] as String,
       customEndpoint: json['customEndpoint'] as String? ?? '',
       model: json['model'] as String? ?? '',
@@ -20,6 +21,7 @@ AIConfig _$AIConfigFromJson(Map<String, dynamic> json) => AIConfig(
 
 Map<String, dynamic> _$AIConfigToJson(AIConfig instance) => <String, dynamic>{
       'provider': instance.provider,
+      'providerName': instance.providerName,
       'apiKey': instance.apiKey,
       'customEndpoint': instance.customEndpoint,
       'model': instance.model,

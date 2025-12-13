@@ -28,7 +28,7 @@ class AIAdvisorService {
     final json = config.toJson();
     return await prefs.setString(_aiConfigKey, jsonEncode(json));
   }
-
+  // TODO: 缓存待启用
   // 获取缓存的建议
   // static Future<AIAdvice?> getCachedAdvice(String city) async {
   //   final prefs = await SharedPreferences.getInstance();
@@ -71,11 +71,11 @@ class AIAdvisorService {
 
       final config = await getConfig();
       if (config == null || !config.enabled) {
-        return AIAdviceResponse.error('AI功能未启用');
+        return AIAdviceResponse.error('LLM feature disabled');
       }
 
       if (config.customEndpoint.isEmpty) {
-        return AIAdviceResponse.error('未配置AI服务端点地址');
+        return AIAdviceResponse.error('No LLM providers');
       }
 
       final prompt = PromptBuilder.buildHealthPrompt(weather, cityName);
@@ -87,14 +87,13 @@ class AIAdvisorService {
           // await cacheAdvice(advice);
           return AIAdviceResponse.success(advice);
         } else {
-          return AIAdviceResponse.error('解析AI响应失败');
+          return AIAdviceResponse.error('Failed to parse AI response');
         }
       } else {
-        return AIAdviceResponse.error('AI请求失败: ${response.statusCode}');
+        return AIAdviceResponse.error('Request failed: ${response.statusCode}');
       }
     } catch (e) {
-      debugPrint('获取AI建议时出错: $e');
-      return AIAdviceResponse.error('获取AI建议时出错: $e');
+      return AIAdviceResponse.error('Failed to parse suggestion: $e');
     }
   }
 
@@ -103,7 +102,6 @@ class AIAdvisorService {
     String prompt,
     AIConfig config,
   ) async {
-    debugPrint('发送请求到AI服务: $prompt');
     String endpoint = config.customEndpoint;
     final model = config.model.isNotEmpty ? config.model : 'default';
     final provider = config.provider.toLowerCase();
@@ -226,7 +224,7 @@ class AIAdvisorService {
       }
 
       if (suggestionText.isEmpty) {
-        throw Exception('无法从响应中提取建议内容');
+        throw Exception('Can\'t find suggestion in response');
       }
 
       return AIAdvice(
@@ -235,7 +233,7 @@ class AIAdvisorService {
         city: cityName,
       );
     } catch (e) {
-      debugPrint('解析AI响应失败: $e');
+      debugPrint('Failed to parse JSON: $e');
       return null;
     }
   }
