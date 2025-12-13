@@ -308,9 +308,11 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
                         adviceResponse.advice != null) {
                       debugPrint(
                           'AI Advice Success: ${adviceResponse.advice!.suggestion}');
+                      NotificationUtils.showSnackBar(context, "测试成功");
                     } else {
                       debugPrint('AI Advice Error: ${adviceResponse.error}');
-                      NotificationUtils.showSnackBar(context, "获取建议失败");
+                      NotificationUtils.showSnackBar(
+                          context, "获取建议失败，Error：${adviceResponse.error}");
                     }
                   },
                   child: const Text('Test'),

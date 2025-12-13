@@ -14,8 +14,8 @@ Weather Data：
 - Weather：${getWeatherDescForWidget(weather.current!.weatherCode, 'en')}
 - Visibility：${weather.current!.visibility} km
 
-Please provide recommendations based on location and weather conditions in the following areas: Clothing suggestions, Exercise recommendations, Travel advice, Health reminders
-Keep your response friendly and warm, without formal greetings. Please use the ${localeCodeNotifier.value} in your reply. Keep your reply around 160 characters.
+Please provide recommendations based on location and weather conditions in the following areas: Clothing suggestions, Exercise recommendations, Travel advice, Health reminders.
+Keep your response warm and friendly after synthesizing multiple areas, without greetings. Please use the ${localeCodeNotifier.value} in your reply. Keep your reply around 160 characters.
 Please strictly adhere to the following JSON format when replying. No extra text or fences.
 Example Output:
 {
