@@ -3,32 +3,23 @@ import 'package:zephyr/core/import.dart';
 class PromptBuilder {
   static String buildHealthPrompt(WeatherData weather, String cityName) {
     return '''
-你是一个专业的健康生活顾问，请根据以下天气数据提供简明扼要的建议。
+Act as a professional health and wellness advisor API. Please provide recommendations based on the following weather data.
 
-天气信息：
-- 城市：$cityName
-- 温度：${weather.current!.temperature}°C（体感温度 ${weather.current!.apparentTemperature}°C）
-- 湿度：${weather.current!.humidity}%
-- 风速：${weather.current!.windSpeed} m/s
-- 降水量：${weather.hourly[0].precipitation} mm
-- 天气状况：${getWeatherDescForWidget(weather.current!.weatherCode, 'zh_CN')}
-- 能见度：${weather.current!.visibility} km
+Weather Data：
+- City：$cityName
+- Temperature：${weather.current!.temperature}°（Feels Like ${weather.current!.apparentTemperature}°）
+- Humidity：${weather.current!.humidity}%
+- WindSpeed：${weather.current!.windSpeed} m/s
+- Precipitation：${weather.hourly[0].precipitation} mm
+- Weather：${getWeatherDescForWidget(weather.current!.weatherCode, 'en')}
+- Visibility：${weather.current!.visibility} km
 
-请根据地理位置与天气情况，提供以下四个方面的建议：
-
-1. 穿衣建议
-2. 运动建议
-3. 出行建议
-4. 健康提醒
-
-请严格按照以下JSON格式回复，不要添加任何其他文字，内容语言为：“${localeCodeNotifier.value}”：
+Please provide recommendations based on location and weather conditions in the following areas: Clothing suggestions, Exercise recommendations, Travel advice, Health reminders
+Keep your response friendly and warm, without formal greetings. Please use the ${localeCodeNotifier.value} in your reply. Keep your reply around 160 characters.
+Please strictly adhere to the following JSON format when replying. No extra text or fences.
+Example Output:
 {
-  "suggestion": "示例回复"
-}
-
-示例：
-{
-  "suggestion": "穿轻薄长袖，带件薄外套....，适合户外慢跑，注意防晒....，适宜出行，携带雨具以防万一....，紫外线强，记得涂抹防晒霜...."
+  "suggestion": "Today's temperature is 20°C, with comfortable conditions but strong winds. We recommend wearing long sleeves and pants, paired with a lightweight windproof jacket or windbreaker to effectively ward off the chill. Outdoor activities are not ideal. With low humidity, opt for breathable fabrics in your clothing choices. Consider bringing a thin scarf to prevent catching a chill from the wind."
 }
 ''';
   }

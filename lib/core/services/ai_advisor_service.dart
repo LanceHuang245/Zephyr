@@ -1,10 +1,10 @@
 import 'package:http/http.dart' as http;
-import 'package:zephyr/core/import.dart';
+import '../import.dart';
 
 class AIAdvisorService {
   static const String _aiConfigKey = 'ai_config';
-  static const String _adviceCacheKey = 'ai_advice_cache_';
-  static const Duration _cacheDuration = Duration(hours: 2);
+  // static const String _adviceCacheKey = 'ai_advice_cache_';
+  // static const Duration _cacheDuration = Duration(hours: 2);
 
   // 获取AI配置
   static Future<AIConfig?> getConfig() async {
@@ -16,7 +16,7 @@ class AIAdvisorService {
         final Map<String, dynamic> json = jsonDecode(configJson);
         return AIConfig.fromJson(json);
       } catch (e) {
-        debugPrint('解析AI配置失败: $e');
+        debugPrint('Unmarshal failed: $e');
       }
     }
     return null;
@@ -30,33 +30,33 @@ class AIAdvisorService {
   }
 
   // 获取缓存的建议
-  static Future<AIAdvice?> getCachedAdvice(String city) async {
-    final prefs = await SharedPreferences.getInstance();
-    final cacheKey = _adviceCacheKey + city;
-    final adviceJson = prefs.getString(cacheKey);
+  // static Future<AIAdvice?> getCachedAdvice(String city) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final cacheKey = _adviceCacheKey + city;
+  //   final adviceJson = prefs.getString(cacheKey);
 
-    if (adviceJson != null) {
-      try {
-        final Map<String, dynamic> json = jsonDecode(adviceJson);
-        final advice = AIAdvice.fromJson(json);
+  //   if (adviceJson != null) {
+  //     try {
+  //       final Map<String, dynamic> json = jsonDecode(adviceJson);
+  //       final advice = AIAdvice.fromJson(json);
 
-        if (DateTime.now().difference(advice.timestamp) < _cacheDuration) {
-          return advice;
-        }
-      } catch (e) {
-        debugPrint('解析缓存建议失败: $e');
-      }
-    }
-    return null;
-  }
+  //       if (DateTime.now().difference(advice.timestamp) < _cacheDuration) {
+  //         return advice;
+  //       }
+  //     } catch (e) {
+  //       debugPrint('解析缓存建议失败: $e');
+  //     }
+  //   }
+  //   return null;
+  // }
 
   // 缓存建议
-  static Future<bool> cacheAdvice(AIAdvice advice) async {
-    final prefs = await SharedPreferences.getInstance();
-    final cacheKey = _adviceCacheKey + advice.city;
-    final json = advice.toJson();
-    return await prefs.setString(cacheKey, jsonEncode(json));
-  }
+  // static Future<bool> cacheAdvice(AIAdvice advice) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final cacheKey = _adviceCacheKey + advice.city;
+  //   final json = advice.toJson();
+  //   return await prefs.setString(cacheKey, jsonEncode(json));
+  // }
 
   // 获取AI建议
   static Future<AIAdviceResponse> getAdvice(
@@ -64,10 +64,10 @@ class AIAdvisorService {
     String cityName,
   ) async {
     try {
-      final cachedAdvice = await getCachedAdvice(cityName);
-      if (cachedAdvice != null) {
-        return AIAdviceResponse.success(cachedAdvice);
-      }
+      // final cachedAdvice = await getCachedAdvice(cityName);
+      // if (cachedAdvice != null) {
+      //   return AIAdviceResponse.success(cachedAdvice);
+      // }
 
       final config = await getConfig();
       if (config == null || !config.enabled) {
@@ -79,12 +79,12 @@ class AIAdvisorService {
       }
 
       final prompt = PromptBuilder.buildHealthPrompt(weather, cityName);
-      final response = await _makeAIRequest(prompt, config);
+      final response = await _sendRequest(prompt, config);
 
       if (response.statusCode == 200) {
         final advice = _parseAIResponse(response.body, cityName);
         if (advice != null) {
-          await cacheAdvice(advice);
+          // await cacheAdvice(advice);
           return AIAdviceResponse.success(advice);
         } else {
           return AIAdviceResponse.error('解析AI响应失败');
@@ -99,26 +99,38 @@ class AIAdvisorService {
   }
 
   // 发送请求到AI服务
-  static Future<http.Response> _makeAIRequest(
+  static Future<http.Response> _sendRequest(
     String prompt,
     AIConfig config,
   ) async {
-    final endpoint = config.customEndpoint;
+    debugPrint('发送请求到AI服务: $prompt');
+    String endpoint = config.customEndpoint;
     final model = config.model.isNotEmpty ? config.model : 'default';
+    final provider = config.provider.toLowerCase();
 
-    final headers = <String, String>{};
+    final headers = <String, String>{
+      'Content-Type': 'application/json',
+    };
     headers.addAll(config.customHeaders);
 
+    // 处理不同提供商的特定逻辑 (URL参数替换, Headers)
+    if (provider == AIProviderTemplates.claude) {
+      headers['x-api-key'] = config.apiKey;
+      headers['anthropic-version'] = '2023-06-01';
+    } else {
+      if (!headers.containsKey('Authorization')) {
+        headers['Authorization'] = 'Bearer ${config.apiKey}';
+      }
+    }
+
+    // 替换Header中的占位符 (如果用户在Custom Headers里用了)
     for (final key in headers.keys) {
       if (headers[key]!.contains('{api_key}')) {
         headers[key] = headers[key]!.replaceAll('{api_key}', config.apiKey);
       }
     }
 
-    headers['Content-Type'] = 'application/json';
-
-    Map<String, dynamic> body =
-        _buildRequestBody(prompt, model, config.provider);
+    final body = _buildRequestBody(prompt, model, provider);
 
     return await http.post(
       Uri.parse(endpoint),
@@ -133,7 +145,16 @@ class AIAdvisorService {
     String model,
     String provider,
   ) {
-    switch (provider.toLowerCase()) {
+    switch (provider) {
+      case AIProviderTemplates.claude:
+        return {
+          'model': model,
+          'max_tokens': 1024,
+          'messages': [
+            {'role': 'user', 'content': prompt}
+          ],
+        };
+      case AIProviderTemplates.openAI:
       default:
         return {
           'model': model,
@@ -157,48 +178,51 @@ class AIAdvisorService {
         if (match != null) {
           content = jsonDecode(match.group(0)!);
         } else {
-          throw Exception('无法从响应中提取JSON');
+          throw Exception('Unable to parse JSON');
         }
       }
 
       String suggestionText = '';
 
-      if (content.containsKey('choices')) {
+      // Gemini Response Format
+      if (content.containsKey('candidates')) {
+        final parts = content['candidates']?[0]?['content']?['parts'];
+        if (parts != null && parts is List && parts.isNotEmpty) {
+          suggestionText = parts[0]['text'] ?? '';
+        }
+      }
+      // OpenAI / Generic Format
+      else if (content.containsKey('choices')) {
         final messageContent = content['choices']?[0]?['message']?['content'];
         if (messageContent != null) {
-          final suggestionJson = _extractJsonFromText(messageContent);
-          if (suggestionJson != null) {
-            content = suggestionJson;
-          } else {
-            suggestionText = messageContent;
-          }
+          suggestionText = messageContent;
         }
       } else if (content.containsKey('content')) {
-        final text = content['content']?[0]?['text'];
-        if (text != null) {
-          final suggestionJson = _extractJsonFromText(text);
-          if (suggestionJson != null) {
-            content = suggestionJson;
-          } else {
-            suggestionText = text;
-          }
+        // Claude returning list of content blocks
+        final contentList = content['content'];
+        if (contentList is List && contentList.isNotEmpty) {
+          suggestionText = contentList[0]['text'] ?? '';
+        } else if (contentList is String) {
+          suggestionText = contentList;
         }
       } else if (content.containsKey('message')) {
         final messageContent = content['message']?['content'];
         if (messageContent != null) {
-          final suggestionJson = _extractJsonFromText(messageContent);
-          if (suggestionJson != null) {
-            content = suggestionJson;
-          } else {
-            suggestionText = messageContent;
-          }
+          suggestionText = messageContent;
         }
       } else if (content.containsKey('response')) {
         suggestionText = content['response'];
+      } else if (content.containsKey('suggestion')) {
+        suggestionText = content['suggestion'];
       }
 
-      if (content.containsKey('suggestion')) {
-        suggestionText = content['suggestion'];
+      // 尝试从文本中提取JSON
+      if (suggestionText.isNotEmpty) {
+        final suggestionJson = _extractJsonFromText(suggestionText);
+        if (suggestionJson != null &&
+            suggestionJson.containsKey('suggestion')) {
+          suggestionText = suggestionJson['suggestion'];
+        }
       }
 
       if (suggestionText.isEmpty) {
@@ -226,19 +250,19 @@ class AIAdvisorService {
         return jsonDecode(match.group(0)!);
       }
     } catch (e) {
-      debugPrint('从文本提取JSON失败: $e');
+      debugPrint('Extract json failed: $e');
     }
     return null;
   }
 
   // 清除所有缓存
-  static Future<void> clearCache() async {
-    final prefs = await SharedPreferences.getInstance();
-    final keys = prefs.getKeys();
-    for (final key in keys) {
-      if (key.startsWith(_adviceCacheKey)) {
-        await prefs.remove(key);
-      }
-    }
-  }
+  // static Future<void> clearCache() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final keys = prefs.getKeys();
+  //   for (final key in keys) {
+  //     if (key.startsWith(_adviceCacheKey)) {
+  //       await prefs.remove(key);
+  //     }
+  //   }
+  // }
 }

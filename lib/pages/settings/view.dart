@@ -15,6 +15,9 @@ class _SettingsPageState extends State<SettingsPage> {
   String? _weatherSource;
   Color _customColor = Colors.blue;
 
+  // LLM Settings
+  bool _llmEnabled = false;
+
   // 城市管理相关
   List<City> _cities = [];
   int _mainCityIndex = 0;
@@ -30,6 +33,9 @@ class _SettingsPageState extends State<SettingsPage> {
 
   Future<void> _loadSettings() async {
     final prefs = await SharedPreferences.getInstance();
+
+    final aiConfig = await AIAdvisorService.getConfig();
+
     setState(() {
       _themeMode = ThemeMode.values[prefs.getInt('theme_mode') ?? 0];
       _tempUnit = prefs.getString('temp_unit') ?? 'C';
@@ -38,6 +44,9 @@ class _SettingsPageState extends State<SettingsPage> {
       final customColorValue =
           prefs.getInt('custom_color') ?? Colors.blue.toARGB32();
       _customColor = Color(customColorValue);
+
+      _llmEnabled = aiConfig?.enabled ?? false;
+
       _loading = false;
     });
 
@@ -158,6 +167,18 @@ class _SettingsPageState extends State<SettingsPage> {
     customColorNotifier.value = color;
   }
 
+  Future<void> _saveLLMEnabled(bool enabled) async {
+    final config = await AIAdvisorService.getConfig();
+    final newConfig = config?.copyWith(enabled: enabled) ??
+        AIConfig(provider: '', apiKey: '', enabled: enabled);
+
+    await AIAdvisorService.saveConfig(newConfig);
+
+    setState(() {
+      _llmEnabled = enabled;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
@@ -202,6 +223,19 @@ class _SettingsPageState extends State<SettingsPage> {
               setState(() {
                 _cityManagerExpanded = !_cityManagerExpanded;
               });
+            },
+          ),
+          const SizedBox(height: 16),
+          // LLM Settings
+          LLMSelectorWidget(
+            enabled: _llmEnabled,
+            onEnabledChanged: _saveLLMEnabled,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const LLMSettingsPage()),
+              );
             },
           ),
           const SizedBox(height: 16),
