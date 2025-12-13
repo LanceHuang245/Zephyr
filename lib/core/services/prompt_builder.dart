@@ -14,27 +14,21 @@ class PromptBuilder {
 - 天气状况：${getWeatherDescForWidget(weather.current!.weatherCode, 'zh_CN')}
 - 能见度：${weather.current!.visibility} km
 
-请提供以下四个方面的建议（每条建议不超过20个字，简洁实用）：
+请根据地理位置与天气情况，提供以下四个方面的建议：
 
 1. 穿衣建议
 2. 运动建议
 3. 出行建议
 4. 健康提醒
 
-请严格按照以下JSON格式回复，不要添加任何其他文字：
+请严格按照以下JSON格式回复，不要添加任何其他文字，内容语言为：“${localeCodeNotifier.value}”：
 {
-  "clothing": "建议内容",
-  "exercise": "建议内容",
-  "travel": "建议内容",
-  "health": "建议内容"
+  "suggestion": "示例回复"
 }
 
 示例：
 {
-  "clothing": "穿轻薄长袖，带件薄外套....",
-  "exercise": "适合户外慢跑，注意防晒....",
-  "travel": "适宜出行，携带雨具以防万一....",
-  "health": "紫外线强，记得涂抹防晒霜...."
+  "suggestion": "穿轻薄长袖，带件薄外套....，适合户外慢跑，注意防晒....，适宜出行，携带雨具以防万一....，紫外线强，记得涂抹防晒霜...."
 }
 ''';
   }

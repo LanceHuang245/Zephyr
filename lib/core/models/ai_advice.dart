@@ -4,18 +4,12 @@ part 'ai_advice.g.dart';
 
 @JsonSerializable()
 class AIAdvice {
-  final String clothing;
-  final String exercise;
-  final String travel;
-  final String health;
+  final String suggestion;
   final DateTime timestamp;
   final String city;
 
   const AIAdvice({
-    required this.clothing,
-    required this.exercise,
-    required this.travel,
-    required this.health,
+    required this.suggestion,
     required this.timestamp,
     required this.city,
   });
