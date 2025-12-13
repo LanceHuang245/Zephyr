@@ -16,7 +16,7 @@ export 'widgets/weather_bg.dart';
 export '../../core/models/weather_warning.dart';
 export 'package:zephyr/core/services/weather_fetch_service.dart';
 export 'package:animations/animations.dart';
-export 'package:zephyr/pages/details_full_page/view.dart';
+export 'package:zephyr/pages/home/details/view.dart';
 export '../../../core/utils/weather_utils.dart';
 export 'package:zephyr/app_constants.dart';
 export 'package:zephyr/pages/home/widgets/animated_title_switcher.dart';
