@@ -58,6 +58,7 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
   final TextEditingController _modelController = TextEditingController();
 
   bool _loading = true;
+  bool _isTesting = false;
 
   @override
   void initState() {
@@ -504,43 +505,66 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
               children: [
                 Expanded(
                   child: OutlinedButton(
-                    onPressed: () async {
-                      // 测试前先暂存当前输入
-                      _saveCurrentInputToMemory();
+                    onPressed: _isTesting
+                        ? null
+                        : () async {
+                            setState(() {
+                              _isTesting = true;
+                            });
 
-                      // 执行保存操作，确保测试的是最新数据
-                      await _saveAndActivate();
+                            try {
+                              // 测试前先暂存当前输入
+                              _saveCurrentInputToMemory();
 
-                      final mockWeather = WeatherData(
-                        current: CurrentWeather(
-                          temperature: 20,
-                          weatherCode: 48,
-                          windSpeed: 10,
-                          apparentTemperature: 24,
-                          humidity: 20,
-                          visibility: 1,
-                        ),
-                        hourly: [HourlyWeather(time: "7:00", precipitation: 0)],
-                        daily: [],
-                      );
+                              // 执行保存操作，确保测试的是最新数据
+                              await _saveAndActivate();
 
-                      final adviceResponse = await AIAdvisorService.getAdvice(
-                          mockWeather, "Beijing");
+                              final mockWeather = WeatherData(
+                                current: CurrentWeather(
+                                  temperature: 20,
+                                  weatherCode: 48,
+                                  windSpeed: 10,
+                                  apparentTemperature: 24,
+                                  humidity: 20,
+                                  visibility: 1,
+                                ),
+                                hourly: [
+                                  HourlyWeather(time: "7:00", precipitation: 0)
+                                ],
+                                daily: [],
+                              );
 
-                      if (adviceResponse.success &&
-                          adviceResponse.advice != null) {
-                        if (mounted) {
-                          NotificationUtils.showSnackBar(
-                              context, "Test Success: Advice received");
-                        }
-                      } else {
-                        if (mounted) {
-                          NotificationUtils.showSnackBar(
-                              context, "Test Failed: ${adviceResponse.error}");
-                        }
-                      }
-                    },
-                    child: Text(AppLocalizations.of(context).test),
+                              final adviceResponse =
+                                  await AIAdvisorService.getAdvice(
+                                      mockWeather, "Beijing");
+
+                              if (adviceResponse.success &&
+                                  adviceResponse.advice != null) {
+                                if (mounted) {
+                                  NotificationUtils.showSnackBar(context,
+                                      AppLocalizations.of(context).testSuccess);
+                                }
+                              } else {
+                                if (mounted) {
+                                  NotificationUtils.showSnackBar(context,
+                                      "${AppLocalizations.of(context).testError}: ${adviceResponse.error}");
+                                }
+                              }
+                            } finally {
+                              if (mounted) {
+                                setState(() {
+                                  _isTesting = false;
+                                });
+                              }
+                            }
+                          },
+                    child: _isTesting
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          )
+                        : Text(AppLocalizations.of(context).test),
                   ),
                 ),
                 const SizedBox(width: 16),

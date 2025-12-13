@@ -284,31 +284,37 @@ class AppLocalizationsZh extends AppLocalizations {
   String get forecastWeatherWidgetDesc => '显示主城市的7日天气预报。';
 
   @override
-  String get test => 'Test';
+  String get test => '测试';
 
   @override
-  String get llmConfiguration => 'LLM Configuration';
+  String get llmConfiguration => 'LLM配置';
 
   @override
-  String get llmProviders => 'Providers';
+  String get llmProviders => 'LLM供应商';
 
   @override
-  String get llmAddProvider => 'Add Provider';
+  String get llmAddProvider => '添加供应商';
 
   @override
-  String get llmNoProviders => 'No providers yet.\nClick + to add one.';
+  String get llmNoProviders => '暂无供应商\n点击添加按钮添加供应商';
 
   @override
-  String get llmModelName => 'Model Name';
+  String get llmModelName => '模型名称';
 
   @override
-  String get llmSaved => 'LLM configuration saved';
+  String get llmSaved => 'LLM配置已保存';
 
   @override
-  String get name => 'Name';
+  String get name => '名称';
 
   @override
-  String get template => 'Template';
+  String get template => '模板';
+
+  @override
+  String get testSuccess => 'Test successful';
+
+  @override
+  String get testError => 'Test error';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).

@@ -8,7 +8,9 @@
     "llmModelName",
     "llmSaved",
     "name",
-    "template"
+    "template",
+    "testSuccess",
+    "testError"
   ],
 
   "es": [
@@ -20,7 +22,9 @@
     "llmModelName",
     "llmSaved",
     "name",
-    "template"
+    "template",
+    "testSuccess",
+    "testError"
   ],
 
   "fr": [
@@ -32,7 +36,9 @@
     "llmModelName",
     "llmSaved",
     "name",
-    "template"
+    "template",
+    "testSuccess",
+    "testError"
   ],
 
   "it": [
@@ -44,19 +50,14 @@
     "llmModelName",
     "llmSaved",
     "name",
-    "template"
+    "template",
+    "testSuccess",
+    "testError"
   ],
 
   "zh": [
-    "test",
-    "llmConfiguration",
-    "llmProviders",
-    "llmAddProvider",
-    "llmNoProviders",
-    "llmModelName",
-    "llmSaved",
-    "name",
-    "template"
+    "testSuccess",
+    "testError"
   ],
 
   "zh_TW": [
@@ -68,6 +69,8 @@
     "llmModelName",
     "llmSaved",
     "name",
-    "template"
+    "template",
+    "testSuccess",
+    "testError"
   ]
 }

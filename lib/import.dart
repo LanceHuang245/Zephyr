@@ -11,3 +11,4 @@ export 'pages/home/view.dart';
 export 'pages/search/view.dart';
 export 'pages/settings/view.dart';
 export 'core/languages.dart';
+export 'package:zephyr/pages/settings/llm/llm_settings_view.dart';

@@ -102,9 +102,11 @@
   "llmConfiguration": "LLM Configuration",
   "llmProviders": "Providers",
   "llmAddProvider": "Add Provider",
-  "llmNoProviders": "No providers yet.\nClick + to add one.",
+  "llmNoProviders": "No providers yet.\nClick + to add one",
   "llmModelName": "Model Name",
   "llmSaved": "LLM configuration saved",
   "name": "Name",
-  "template": "Template"
+  "template": "Template",
+  "testSuccess": "Test successful",
+  "testError": "Test error"
 }

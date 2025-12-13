@@ -50,7 +50,7 @@ class LLMSelectorWidget extends StatelessWidget {
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            'LLM Configuration',
+                            AppLocalizations.of(context).llmConfiguration,
                             style: textTheme.titleMedium?.copyWith(
                               color: enabled ? activeColor : disabledColor,
                             ),

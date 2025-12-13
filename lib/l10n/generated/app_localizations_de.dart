@@ -296,7 +296,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get llmAddProvider => 'Add Provider';
 
   @override
-  String get llmNoProviders => 'No providers yet.\nClick + to add one.';
+  String get llmNoProviders => 'No providers yet.\nClick + to add one';
 
   @override
   String get llmModelName => 'Model Name';
@@ -309,4 +309,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get template => 'Template';
+
+  @override
+  String get testSuccess => 'Test successful';
+
+  @override
+  String get testError => 'Test error';
 }

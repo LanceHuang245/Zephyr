@@ -92,6 +92,7 @@ class _ZephyrAppState extends State<ZephyrApp> {
                               '/settings': (_) => const SettingsPage(),
                               '/layout-settings': (_) =>
                                   const LayoutSettingsView(),
+                              '/llm-settings': (_) => const LLMSettingsPage(),
                             },
                           );
                         },
@@ -136,6 +137,7 @@ class _ZephyrAppState extends State<ZephyrApp> {
                           '/search': (_) => const SearchPage(),
                           '/settings': (_) => const SettingsPage(),
                           '/layout-settings': (_) => const LayoutSettingsView(),
+                          '/llm-settings': (_) => const LLMSettingsPage(),
                         },
                       );
                     }

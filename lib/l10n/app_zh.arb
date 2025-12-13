@@ -97,5 +97,14 @@
   "currentWeatherWidget": "当前天气小部件",
   "currentWeatherWidgetDesc": "显示主城市的当前天气信息。",
   "forecastWeatherWidget": "预报天气小部件",
-  "forecastWeatherWidgetDesc": "显示主城市的7日天气预报。"
+  "forecastWeatherWidgetDesc": "显示主城市的7日天气预报。",
+  "test": "测试",
+    "llmConfiguration": "LLM配置",
+    "llmProviders": "LLM供应商",
+    "llmAddProvider": "添加供应商",
+    "llmNoProviders":"暂无供应商\n点击添加按钮添加供应商",
+    "llmModelName": "模型名称",
+    "llmSaved": "LLM配置已保存",
+    "name": "名称",
+    "template": "模板"
 }

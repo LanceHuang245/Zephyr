@@ -677,7 +677,7 @@ abstract class AppLocalizations {
   /// No description provided for @llmNoProviders.
   ///
   /// In en, this message translates to:
-  /// **'No providers yet.\nClick + to add one.'**
+  /// **'No providers yet.\nClick + to add one'**
   String get llmNoProviders;
 
   /// No description provided for @llmModelName.
@@ -703,6 +703,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Template'**
   String get template;
+
+  /// No description provided for @testSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Test successful'**
+  String get testSuccess;
+
+  /// No description provided for @testError.
+  ///
+  /// In en, this message translates to:
+  /// **'Test error'**
+  String get testError;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

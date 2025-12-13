@@ -230,12 +230,8 @@ class _SettingsPageState extends State<SettingsPage> {
           LLMSelectorWidget(
             enabled: _llmEnabled,
             onEnabledChanged: _saveLLMEnabled,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const LLMSettingsPage()),
-              );
+            onTap: () async {
+              await Navigator.pushNamed(context, '/llm-settings');
             },
           ),
           const SizedBox(height: 16),
