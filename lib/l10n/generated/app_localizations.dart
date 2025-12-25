@@ -524,29 +524,29 @@ abstract class AppLocalizations {
   /// **'Alerts'**
   String get alert;
 
-  /// No description provided for @hourly_windSpeed.
+  /// No description provided for @hourlyWindSpeed.
   ///
   /// In en, this message translates to:
   /// **'Hourly Wind Speed'**
-  String get hourly_windSpeed;
+  String get hourlyWindSpeed;
 
-  /// No description provided for @hourly_windSpeed_Desc.
+  /// No description provided for @hourlyWindSpeedDesc.
   ///
   /// In en, this message translates to:
   /// **'Hourly wind speed. You can manually scroll the chart to view detailed hourly wind speed data.'**
-  String get hourly_windSpeed_Desc;
+  String get hourlyWindSpeedDesc;
 
-  /// No description provided for @hourly_pressure.
+  /// No description provided for @hourlyPressure.
   ///
   /// In en, this message translates to:
   /// **'Hourly Air Pressure'**
-  String get hourly_pressure;
+  String get hourlyPressure;
 
-  /// No description provided for @hourly_pressure_Desc.
+  /// No description provided for @hourlyPressureDesc.
   ///
   /// In en, this message translates to:
   /// **'Hourly air pressure at sea level and surface pressure at ground level, hPa is the unit of air pressure. You can manually slide the chart to see detailed hourly barometric pressure data.'**
-  String get hourly_pressure_Desc;
+  String get hourlyPressureDesc;
 
   /// No description provided for @eAQIGrading.
   ///

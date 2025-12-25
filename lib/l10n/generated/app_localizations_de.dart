@@ -221,16 +221,16 @@ class AppLocalizationsDe extends AppLocalizations {
   String get alert => 'Warnungen';
 
   @override
-  String get hourly_windSpeed => 'Stündliche Windgeschwindigkeit';
+  String get hourlyWindSpeed => 'Stündliche Windgeschwindigkeit';
 
   @override
-  String get hourly_windSpeed_Desc => 'Stündliche Windgeschwindigkeit. Sie können die Karte manuell scrollen, um detaillierte stündliche Windgeschwindigkeitsdaten anzuzeigen.';
+  String get hourlyWindSpeedDesc => 'Stündliche Windgeschwindigkeit. Sie können die Karte manuell scrollen, um detaillierte stündliche Windgeschwindigkeitsdaten anzuzeigen.';
 
   @override
-  String get hourly_pressure => 'Stündlicher Luftdruck';
+  String get hourlyPressure => 'Stündlicher Luftdruck';
 
   @override
-  String get hourly_pressure_Desc => 'Stündlicher Luftdruck auf Meereshöhe und Oberflächendruck auf Bodenhöhe, hPa ist die Einheit des Luftdrucks. Sie können das Diagramm manuell verschieben, um detaillierte stündliche Luftdruckdaten zu sehen.';
+  String get hourlyPressureDesc => 'Stündlicher Luftdruck auf Meereshöhe und Oberflächendruck auf Bodenhöhe, hPa ist die Einheit des Luftdrucks. Sie können das Diagramm manuell verschieben, um detaillierte stündliche Luftdruckdaten zu sehen.';
 
   @override
   String get eAQIGrading => 'Bewertung des Luftqualitätsindex';
@@ -287,32 +287,32 @@ class AppLocalizationsDe extends AppLocalizations {
   String get test => 'Test';
 
   @override
-  String get llmConfiguration => 'LLM Configuration';
+  String get llmConfiguration => 'LLM Konfiguration';
 
   @override
-  String get llmProviders => 'Providers';
+  String get llmProviders => 'LLM Anbieter';
 
   @override
-  String get llmAddProvider => 'Add Provider';
+  String get llmAddProvider => 'LLM Anbieter hinzufügen';
 
   @override
-  String get llmNoProviders => 'No providers yet.\nClick + to add one';
+  String get llmNoProviders => 'Noch keine Anbieter.\nKlicken Sie auf +, um einen hinzuzufügen.';
 
   @override
-  String get llmModelName => 'Model Name';
+  String get llmModelName => 'LLM Modellname';
 
   @override
-  String get llmSaved => 'LLM configuration saved';
+  String get llmSaved => 'LLM gespeichert';
 
   @override
   String get name => 'Name';
 
   @override
-  String get template => 'Template';
+  String get template => 'Vorlage';
 
   @override
-  String get testSuccess => 'Test successful';
+  String get testSuccess => 'Test erfolgreich';
 
   @override
-  String get testError => 'Test error';
+  String get testError => 'Test fehlgeschlagen';
 }

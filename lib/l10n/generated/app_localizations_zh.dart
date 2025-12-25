@@ -221,16 +221,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get alert => '预警';
 
   @override
-  String get hourly_windSpeed => '逐小时风速';
+  String get hourlyWindSpeed => '逐小时风速';
 
   @override
-  String get hourly_windSpeed_Desc => '每小时的风速。可滑动图表查看每小时的详细风速数据。';
+  String get hourlyWindSpeedDesc => '每小时的风速。可滑动图表查看每小时的详细风速数据。';
 
   @override
-  String get hourly_pressure => '逐小时气压';
+  String get hourlyPressure => '逐小时气压';
 
   @override
-  String get hourly_pressure_Desc => '每小时的海平面气压与地面气压。可滑动图表查看每小时的详细气压数据。';
+  String get hourlyPressureDesc => '每小时的海平面气压与地面气压。可滑动图表查看每小时的详细气压数据。';
 
   @override
   String get eAQIGrading => '空气质量分级';
@@ -311,10 +311,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get template => '模板';
 
   @override
-  String get testSuccess => 'Test successful';
+  String get testSuccess => '测试成功';
 
   @override
-  String get testError => 'Test error';
+  String get testError => '测试失败';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -534,16 +534,16 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get alert => '預警';
 
   @override
-  String get hourly_windSpeed => '逐小時風速';
+  String get hourlyWindSpeed => '逐小時風速';
 
   @override
-  String get hourly_windSpeed_Desc => '每小時風速。可以手動滑動图表查看每小时的详细风速数据。';
+  String get hourlyWindSpeedDesc => '每小時風速。可以手動滑動图表查看每小时的详细风速数据。';
 
   @override
-  String get hourly_pressure => '逐小時氣壓';
+  String get hourlyPressure => '逐小時氣壓';
 
   @override
-  String get hourly_pressure_Desc => '每小時的海平面氣壓和地面氣壓，hPa為氣壓單位。可以手動滑動图表查看每小时的详细氣壓数据。';
+  String get hourlyPressureDesc => '每小時的海平面氣壓和地面氣壓，hPa為氣壓單位。可以手動滑動图表查看每小时的详细氣壓数据。';
 
   @override
   String get eAQIGrading => '空氣品質分級';
@@ -595,4 +595,37 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get forecastWeatherWidgetDesc => '顯示主城市的7日天氣預報。';
+
+  @override
+  String get test => '測試';
+
+  @override
+  String get llmConfiguration => 'LLM配置';
+
+  @override
+  String get llmProviders => 'LLM提供者';
+
+  @override
+  String get llmAddProvider => '添加LLM提供者';
+
+  @override
+  String get llmNoProviders => '暫無已添加的LLM提供者\n點擊右上角添加按鈕添加提供者';
+
+  @override
+  String get llmModelName => 'LLM模型名稱';
+
+  @override
+  String get llmSaved => 'LLM配置已保存';
+
+  @override
+  String get name => '名稱';
+
+  @override
+  String get template => '模板';
+
+  @override
+  String get testSuccess => '測試成功';
+
+  @override
+  String get testError => '測試失敗';
 }

@@ -32,7 +32,7 @@ class WindLineChartCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  AppLocalizations.of(context).hourly_windSpeed,
+                  AppLocalizations.of(context).hourlyWindSpeed,
                   style: textTheme.titleLarge?.copyWith(
                     color: colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
@@ -43,15 +43,15 @@ class WindLineChartCard extends StatelessWidget {
                     Icons.info_outline,
                     color: colorScheme.onSurfaceVariant,
                   ),
-                  tooltip: AppLocalizations.of(context).hourly_windSpeed,
+                  tooltip: AppLocalizations.of(context).hourlyWindSpeed,
                   onPressed: () {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
                         title:
-                            Text(AppLocalizations.of(context).hourly_windSpeed),
+                            Text(AppLocalizations.of(context).hourlyWindSpeed),
                         content: Text(
-                            AppLocalizations.of(context).hourly_windSpeed_Desc),
+                            AppLocalizations.of(context).hourlyWindSpeedDesc),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(),

@@ -77,7 +77,7 @@ class PressureLineChartCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  AppLocalizations.of(context).hourly_pressure,
+                  AppLocalizations.of(context).hourlyPressure,
                   style: textTheme.titleLarge?.copyWith(
                     color: colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
@@ -93,9 +93,9 @@ class PressureLineChartCard extends StatelessWidget {
                       context: context,
                       builder: (context) => AlertDialog(
                         title:
-                            Text(AppLocalizations.of(context).hourly_pressure),
+                            Text(AppLocalizations.of(context).hourlyPressure),
                         content: Text(
-                            AppLocalizations.of(context).hourly_pressure_Desc),
+                            AppLocalizations.of(context).hourlyPressureDesc),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(),

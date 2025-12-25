@@ -221,16 +221,16 @@ class AppLocalizationsIt extends AppLocalizations {
   String get alert => 'Avvertire';
 
   @override
-  String get hourly_windSpeed => 'Velocità oraria del vento';
+  String get hourlyWindSpeed => 'Velocità oraria del vento';
 
   @override
-  String get hourly_windSpeed_Desc => 'Velocità del vento oraria. È possibile scorrere manualmente il grafico per visualizzare i dati dettagliati relativi alla velocità del vento oraria.';
+  String get hourlyWindSpeedDesc => 'Velocità del vento oraria. È possibile scorrere manualmente il grafico per visualizzare i dati dettagliati relativi alla velocità del vento oraria.';
 
   @override
-  String get hourly_pressure => 'Pressione oraria dell\'aria';
+  String get hourlyPressure => 'Pressione oraria dell\'aria';
 
   @override
-  String get hourly_pressure_Desc => 'Pressione oraria dell\'aria al livello del mare e pressione superficiale al livello del suolo, hPa è l\'unità di misura della pressione dell\'aria. È possibile far scorrere manualmente il grafico per visualizzare i dati dettagliati della pressione barometrica oraria.';
+  String get hourlyPressureDesc => 'Pressione oraria dell\'aria al livello del mare e pressione superficiale al livello del suolo, hPa è l\'unità di misura della pressione dell\'aria. È possibile far scorrere manualmente il grafico per visualizzare i dati dettagliati della pressione barometrica oraria.';
 
   @override
   String get eAQIGrading => 'Classificazione dell\'indice di qualità dell\'aria';
@@ -287,32 +287,32 @@ class AppLocalizationsIt extends AppLocalizations {
   String get test => 'Test';
 
   @override
-  String get llmConfiguration => 'LLM Configuration';
+  String get llmConfiguration => 'Configurazione LLM';
 
   @override
-  String get llmProviders => 'Providers';
+  String get llmProviders => 'Fornitori LLM';
 
   @override
-  String get llmAddProvider => 'Add Provider';
+  String get llmAddProvider => 'Aggiungi fornitore LLM';
 
   @override
-  String get llmNoProviders => 'No providers yet.\nClick + to add one';
+  String get llmNoProviders => 'Nessun fornitore ancora disponibile\nClicca su + per aggiungerne uno.';
 
   @override
-  String get llmModelName => 'Model Name';
+  String get llmModelName => 'Nome modello';
 
   @override
-  String get llmSaved => 'LLM configuration saved';
+  String get llmSaved => 'Configurazione salvata';
 
   @override
-  String get name => 'Name';
+  String get name => 'Nome';
 
   @override
-  String get template => 'Template';
+  String get template => 'Modello';
 
   @override
-  String get testSuccess => 'Test successful';
+  String get testSuccess => 'Test completato con successo';
 
   @override
-  String get testError => 'Test error';
+  String get testError => 'Test fallito';
 }
