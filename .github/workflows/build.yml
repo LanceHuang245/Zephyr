@@ -2,19 +2,19 @@ name: Build Zephyr Apk & IPA
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
     paths:
-      - '**/*'
-      - '!README.md'
-      - '!README_CN.md'
-      - 'public/**'
+      - "**/*"
+      - "!README.md"
+      - "!README_CN.md"
+      - "public/**"
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
     paths:
-      - '**/*'
-      - '!README.md'
-      - '!README_CN.md'
-      - 'public/**'
+      - "**/*"
+      - "!README.md"
+      - "!README_CN.md"
+      - "public/**"
 
 jobs:
   build_android:
@@ -28,7 +28,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.38.5'
+          flutter-version: "3.38.7"
           channel: stable
 
       - name: Install dependencies
@@ -54,7 +54,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.38.5'
+          flutter-version: "3.38.7"
           channel: stable
 
       - name: Install dependencies
