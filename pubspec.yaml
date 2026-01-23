@@ -1,12 +1,12 @@
 name: zephyr
 description: zephyr by claret
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 2.2.3+1
 
 environment:
-  sdk: '>=3.0.3 <4.0.0'
+  sdk: ">=3.0.3 <4.0.0"
 
 dependencies:
   flutter:
@@ -14,31 +14,31 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   shared_preferences:
-  http: 
+  http:
   dynamic_color:
-  geolocator: 
-  geocoding: 
+  geolocator:
+  geocoding:
   home_widget:
-  url_launcher: 
-  intl: 
-  battery_optimization_helper: 
-  animations: 
-  fl_chart: 
-  percent_indicator: 
-  flutter_colorpicker:  
-  json_annotation: 
+  url_launcher:
+  intl:
+  android_battery_optimizations:
+  animations:
+  fl_chart:
+  percent_indicator:
+  flutter_colorpicker:
+  json_annotation:
   workmanager:
-  flutter_local_notifications: 
-  timezone: 
-  permission_handler: 
-  
+  flutter_local_notifications:
+  timezone:
+  permission_handler:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints:
-  json_serializable: 
-  build_runner: 
+  json_serializable:
+  build_runner:
 
 flutter:
   generate: true

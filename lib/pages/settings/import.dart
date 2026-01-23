@@ -20,7 +20,6 @@ export 'package:zephyr/pages/settings/widgets/weather_sources_selector_widget.da
 export 'package:zephyr/core/services/layout_service.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:zephyr/app_constants.dart';
-export 'package:battery_optimization_helper/battery_optimization_helper.dart';
 export 'package:zephyr/core/utils/notification_utils.dart';
 export 'package:zephyr/app.dart';
 export 'package:home_widget/home_widget.dart';
@@ -28,3 +27,4 @@ export 'package:flutter_colorpicker/flutter_colorpicker.dart';
 export 'dart:io';
 export 'package:zephyr/core/models/ai_provider_template.dart';
 export 'package:zephyr/core/models/weather.dart';
+export 'package:android_battery_optimizations/android_battery_optimizations.dart';

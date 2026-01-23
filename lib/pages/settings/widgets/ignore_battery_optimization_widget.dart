@@ -11,10 +11,9 @@ class IgnoreBatteryOptimizationWidget extends StatelessWidget {
   Future<void> _requestIgnoreBatteryOptimization(BuildContext context) async {
     if (Platform.isAndroid) {
       try {
-        bool isEnabled =
-            await BatteryOptimizationHelper.isBatteryOptimizationEnabled();
+        bool isEnabled = await AndroidBatteryOptimizations.isEnabled();
         if (isEnabled) {
-          await BatteryOptimizationHelper.openBatteryOptimizationSettings();
+          await AndroidBatteryOptimizations.showPermissionDialog();
         } else {
           if (context.mounted) {
             NotificationUtils.showSnackBar(
