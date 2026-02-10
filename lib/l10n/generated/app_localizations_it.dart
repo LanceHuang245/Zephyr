@@ -315,4 +315,19 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get testError => 'Test fallito';
+
+  @override
+  String get aiAdviceTitle => 'AI Advice';
+
+  @override
+  String get aiAdviceNotConfigured => 'You have not configured AI advice yet';
+
+  @override
+  String get aiAdviceGoConfigure => 'Configure AI';
+
+  @override
+  String get aiAdviceServiceDisabled => 'AI advice service is disabled. Please enable it in Settings.';
+
+  @override
+  String get aiAdviceServiceEnabled => 'AI advice service is enabled';
 }

@@ -5,6 +5,7 @@ class LayoutService {
 
   // TODO: Add more components
   static final List<String> layout = [
+    'ai_advice',
     'hourly_forecast',
     'rainfall_chart',
     'daily_forecast',

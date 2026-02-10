@@ -71,6 +71,8 @@ class _LayoutSettingsViewState extends State<LayoutSettingsView> {
         return Icons.water_drop_rounded;
       case 'daily_forecast':
         return Icons.calendar_today_rounded;
+      case 'ai_advice':
+        return Icons.psychology_rounded;
       case 'details':
         return Icons.info_outline_rounded;
       default:
@@ -84,6 +86,7 @@ class _LayoutSettingsViewState extends State<LayoutSettingsView> {
       'hourly_forecast': AppLocalizations.of(context).hourlyForecast,
       'rainfall_chart': AppLocalizations.of(context).precipitation,
       'daily_forecast': AppLocalizations.of(context).next7Days,
+      'ai_advice': AppLocalizations.of(context).aiAdviceTitle,
       'details': AppLocalizations.of(context).detailedData,
     };
   }

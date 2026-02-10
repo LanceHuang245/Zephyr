@@ -715,6 +715,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Test error'**
   String get testError;
+
+  /// No description provided for @aiAdviceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Advice'**
+  String get aiAdviceTitle;
+
+  /// No description provided for @aiAdviceNotConfigured.
+  ///
+  /// In en, this message translates to:
+  /// **'You have not configured AI advice yet'**
+  String get aiAdviceNotConfigured;
+
+  /// No description provided for @aiAdviceGoConfigure.
+  ///
+  /// In en, this message translates to:
+  /// **'Configure AI'**
+  String get aiAdviceGoConfigure;
+
+  /// No description provided for @aiAdviceServiceDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'AI advice service is disabled. Please enable it in Settings.'**
+  String get aiAdviceServiceDisabled;
+
+  /// No description provided for @aiAdviceServiceEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'AI advice service is enabled'**
+  String get aiAdviceServiceEnabled;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
