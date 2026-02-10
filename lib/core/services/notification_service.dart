@@ -43,7 +43,7 @@ class NotificationService {
       );
 
       await _notificationsPlugin.initialize(
-        initializationSettings,
+        settings: initializationSettings,
         onDidReceiveNotificationResponse:
             (NotificationResponse response) async {
           if (kDebugMode) {
@@ -81,10 +81,10 @@ class NotificationService {
 
     try {
       await _notificationsPlugin.show(
-        0,
-        title,
-        body,
-        platformChannelSpecifics,
+        id: 0,
+        title: title,
+        body: body,
+        notificationDetails: platformChannelSpecifics,
         payload: 'weather_warning',
       );
       if (kDebugMode) {
