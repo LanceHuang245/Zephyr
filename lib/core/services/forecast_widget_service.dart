@@ -96,7 +96,6 @@ class ForecastWidgetService {
     }
   }
 
-  
   // 显示无数据时的7日预报小部件
   static Future<void> _showNoForecastDataWidget(City city) async {
     try {

@@ -236,7 +236,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get eAQIGrading => '空气质量分级';
 
   @override
-  String get eAQIDesc => '该数值越高，对人体健康的潜在危害就越大。若数据源为OpenMeteo，则采用欧洲标准空气质量分类；否则遵循当地质量分级标准。';
+  String get eAQIDesc =>
+      '该数值越高，对人体健康的潜在危害就越大。若数据源为OpenMeteo，则采用欧洲标准空气质量分类；否则遵循当地质量分级标准。';
 
   @override
   String get weatherSource => '自定义天气源';
@@ -326,7 +327,8 @@ class AppLocalizationsZh extends AppLocalizations {
   String get aiAdviceGoConfigure => 'Configure AI';
 
   @override
-  String get aiAdviceServiceDisabled => 'AI advice service is disabled. Please enable it in Settings.';
+  String get aiAdviceServiceDisabled =>
+      'AI advice service is disabled. Please enable it in Settings.';
 
   @override
   String get aiAdviceServiceEnabled => 'AI advice service is enabled';
@@ -334,7 +336,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
 class AppLocalizationsZhTw extends AppLocalizationsZh {
-  AppLocalizationsZhTw(): super('zh_TW');
+  AppLocalizationsZhTw() : super('zh_TW');
 
   @override
   String get about => '關於';
@@ -558,13 +560,15 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get hourlyPressure => '逐小時氣壓';
 
   @override
-  String get hourlyPressureDesc => '每小時的海平面氣壓和地面氣壓，hPa為氣壓單位。可以手動滑動图表查看每小时的详细氣壓数据。';
+  String get hourlyPressureDesc =>
+      '每小時的海平面氣壓和地面氣壓，hPa為氣壓單位。可以手動滑動图表查看每小时的详细氣壓数据。';
 
   @override
   String get eAQIGrading => '空氣品質分級';
 
   @override
-  String get eAQIDesc => '此數值越高，對人體健康的潛在危害就越大。若您的數據來源為OpenMeteo，則採用歐洲標準空氣品質分級；否則將遵循當地品質分級標準。';
+  String get eAQIDesc =>
+      '此數值越高，對人體健康的潛在危害就越大。若您的數據來源為OpenMeteo，則採用歐洲標準空氣品質分級；否則將遵循當地品質分級標準。';
 
   @override
   String get weatherSource => '自定天氣源';

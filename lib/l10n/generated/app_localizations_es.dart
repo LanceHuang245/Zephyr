@@ -173,7 +173,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get locating => 'Obteniendo ubicación...';
 
   @override
-  String get locationPermissionDenied => 'Permiso de ubicación denegado o servicio desactivado';
+  String get locationPermissionDenied =>
+      'Permiso de ubicación denegado o servicio desactivado';
 
   @override
   String get locationNotRecognized => 'Ubicación actual no reconocida';
@@ -209,7 +210,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get ignoreBatteryOptimization => 'Ignorar Optimización de Batería';
 
   @override
-  String get iBODesc => 'Permite a Zephyr actualizar los datos meteorológicos en segundo plano';
+  String get iBODesc =>
+      'Permite a Zephyr actualizar los datos meteorológicos en segundo plano';
 
   @override
   String get iBODisabled => 'Optimización de batería desactivada';
@@ -224,19 +226,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get hourlyWindSpeed => 'Velocidad horaria del viento';
 
   @override
-  String get hourlyWindSpeedDesc => 'Velocidad del viento por hora. Puede desplazarse manualmente por el gráfico para ver datos detallados sobre la velocidad del viento por hora.';
+  String get hourlyWindSpeedDesc =>
+      'Velocidad del viento por hora. Puede desplazarse manualmente por el gráfico para ver datos detallados sobre la velocidad del viento por hora.';
 
   @override
   String get hourlyPressure => 'Presión atmosférica horaria';
 
   @override
-  String get hourlyPressureDesc => 'Presión atmosférica horaria a nivel del mar y presión superficial a nivel del suelo, hPa es la unidad de presión atmosférica. Puede deslizar manualmente el gráfico para ver los datos detallados de la presión barométrica horaria.';
+  String get hourlyPressureDesc =>
+      'Presión atmosférica horaria a nivel del mar y presión superficial a nivel del suelo, hPa es la unidad de presión atmosférica. Puede deslizar manualmente el gráfico para ver los datos detallados de la presión barométrica horaria.';
 
   @override
   String get eAQIGrading => 'Clasificación del índice de calidad del aire';
 
   @override
-  String get eAQIDesc => 'Cuanto mayor sea esta cifra, mayor será el daño potencial para la salud humana. Si su fuente de datos es OpenMeteo, utiliza la clasificación europea estándar de calidad del aire; de lo contrario, sigue las normas locales de clasificación de calidad.';
+  String get eAQIDesc =>
+      'Cuanto mayor sea esta cifra, mayor será el daño potencial para la salud humana. Si su fuente de datos es OpenMeteo, utiliza la clasificación europea estándar de calidad del aire; de lo contrario, sigue las normas locales de clasificación de calidad.';
 
   @override
   String get weatherSource => 'Fuente meteorológica';
@@ -251,37 +256,44 @@ class AppLocalizationsEs extends AppLocalizations {
   String get fahrenheit => 'Fahrenheit';
 
   @override
-  String get weatherDataError => 'No se pudieron obtener los datos meteorológicos.';
+  String get weatherDataError =>
+      'No se pudieron obtener los datos meteorológicos.';
 
   @override
-  String get checkNetworkAndRetry => 'Comprueba tu conexión a Internet e inténtalo de nuevo.';
+  String get checkNetworkAndRetry =>
+      'Comprueba tu conexión a Internet e inténtalo de nuevo.';
 
   @override
   String get today => 'Hoy';
 
   @override
-  String get customizeHomepageDesc => 'Mantén pulsado para arrastrar y reorganizar el orden. Pulsa el botón para mostrar u ocultar componentes.';
+  String get customizeHomepageDesc =>
+      'Mantén pulsado para arrastrar y reorganizar el orden. Pulsa el botón para mostrar u ocultar componentes.';
 
   @override
-  String get customizeHomepageSaved => 'Se ha guardado el diseño de la página de inicio.';
+  String get customizeHomepageSaved =>
+      'Se ha guardado el diseño de la página de inicio.';
 
   @override
   String get lastUpdated => 'Última actualización';
 
   @override
-  String get selectWidgetType => 'Selecciona el tipo de widget que deseas añadir';
+  String get selectWidgetType =>
+      'Selecciona el tipo de widget que deseas añadir';
 
   @override
   String get currentWeatherWidget => 'Widget del tiempo actual';
 
   @override
-  String get currentWeatherWidgetDesc => 'Muestra la información meteorológica actual de la ciudad principal.';
+  String get currentWeatherWidgetDesc =>
+      'Muestra la información meteorológica actual de la ciudad principal.';
 
   @override
   String get forecastWeatherWidget => 'Widget de previsión del tiempo';
 
   @override
-  String get forecastWeatherWidgetDesc => 'Muestra la previsión meteorológica a 7 días de la ciudad principal.';
+  String get forecastWeatherWidgetDesc =>
+      'Muestra la previsión meteorológica a 7 días de la ciudad principal.';
 
   @override
   String get test => 'Test';
@@ -296,7 +308,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get llmAddProvider => 'Añadir proveedor';
 
   @override
-  String get llmNoProviders => 'Aún no hay proveedores.\nHaga clic en + para añadir uno.';
+  String get llmNoProviders =>
+      'Aún no hay proveedores.\nHaga clic en + para añadir uno.';
 
   @override
   String get llmModelName => 'Nombre del modelo';
@@ -326,7 +339,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get aiAdviceGoConfigure => 'Configure AI';
 
   @override
-  String get aiAdviceServiceDisabled => 'AI advice service is disabled. Please enable it in Settings.';
+  String get aiAdviceServiceDisabled =>
+      'AI advice service is disabled. Please enable it in Settings.';
 
   @override
   String get aiAdviceServiceEnabled => 'AI advice service is enabled';

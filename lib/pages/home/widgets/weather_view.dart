@@ -1,4 +1,4 @@
-import 'package:intl/intl.dart';
+﻿import 'package:intl/intl.dart';
 import 'package:zephyr/core/models/ai_advice.dart';
 import 'package:zephyr/core/models/ai_config.dart';
 import 'package:zephyr/core/services/ai_advisor_service.dart';
@@ -68,7 +68,8 @@ class _WeatherViewState extends State<WeatherView>
       return true;
     }
 
-    return _weatherSignature(oldWidget.weather) != _weatherSignature(widget.weather);
+    return _weatherSignature(oldWidget.weather) !=
+        _weatherSignature(widget.weather);
   }
 
   String _weatherSignature(WeatherData weather) {
@@ -102,7 +103,8 @@ class _WeatherViewState extends State<WeatherView>
       return _AiAdviceLoadResult(config: config);
     }
 
-    final response = await AIAdvisorService.getAdvice(widget.weather, widget.city.name);
+    final response =
+        await AIAdvisorService.getAdvice(widget.weather, widget.city.name);
     return _AiAdviceLoadResult(config: config, adviceResponse: response);
   }
 
@@ -481,7 +483,7 @@ class _WeatherViewState extends State<WeatherView>
             color: colorScheme.surface,
             child: Padding(
               padding: const EdgeInsets.all(16),
-            child: FutureBuilder<_AiAdviceLoadResult>(
+              child: FutureBuilder<_AiAdviceLoadResult>(
                 future: _aiAdviceFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {

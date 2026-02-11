@@ -173,13 +173,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get locating => 'Getting location information...';
 
   @override
-  String get locationPermissionDenied => 'Unable to get location permission or location service is disabled';
+  String get locationPermissionDenied =>
+      'Unable to get location permission or location service is disabled';
 
   @override
-  String get locationNotRecognized => 'Unable to recognize the current location';
+  String get locationNotRecognized =>
+      'Unable to recognize the current location';
 
   @override
-  String get locatingSuccess => 'Location obtained successfully, please wait...';
+  String get locatingSuccess =>
+      'Location obtained successfully, please wait...';
 
   @override
   String get airQuality => 'Air Quality';
@@ -209,7 +212,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ignoreBatteryOptimization => 'Ignore Battery Optimization';
 
   @override
-  String get iBODesc => 'Allows Zephyr to update weather data in the background';
+  String get iBODesc =>
+      'Allows Zephyr to update weather data in the background';
 
   @override
   String get iBODisabled => 'Battery Optimization is disabled';
@@ -224,19 +228,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hourlyWindSpeed => 'Hourly Wind Speed';
 
   @override
-  String get hourlyWindSpeedDesc => 'Hourly wind speed. You can manually scroll the chart to view detailed hourly wind speed data.';
+  String get hourlyWindSpeedDesc =>
+      'Hourly wind speed. You can manually scroll the chart to view detailed hourly wind speed data.';
 
   @override
   String get hourlyPressure => 'Hourly Air Pressure';
 
   @override
-  String get hourlyPressureDesc => 'Hourly air pressure at sea level and surface pressure at ground level, hPa is the unit of air pressure. You can manually slide the chart to see detailed hourly barometric pressure data.';
+  String get hourlyPressureDesc =>
+      'Hourly air pressure at sea level and surface pressure at ground level, hPa is the unit of air pressure. You can manually slide the chart to see detailed hourly barometric pressure data.';
 
   @override
   String get eAQIGrading => 'Air Quality Index Grading';
 
   @override
-  String get eAQIDesc => 'The higher this figure, the greater the potential harm to human health. If your data source is OpenMeteo, it uses the European standard air quality classification; otherwise, it follows local quality grading standards.';
+  String get eAQIDesc =>
+      'The higher this figure, the greater the potential harm to human health. If your data source is OpenMeteo, it uses the European standard air quality classification; otherwise, it follows local quality grading standards.';
 
   @override
   String get weatherSource => 'Weather Source';
@@ -254,13 +261,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get weatherDataError => 'Failed to fetch weather data';
 
   @override
-  String get checkNetworkAndRetry => 'Please check your network connection and try again';
+  String get checkNetworkAndRetry =>
+      'Please check your network connection and try again';
 
   @override
   String get today => 'Today';
 
   @override
-  String get customizeHomepageDesc => 'Long press and drag to reorder items. Tap the toggle to show or hide components.';
+  String get customizeHomepageDesc =>
+      'Long press and drag to reorder items. Tap the toggle to show or hide components.';
 
   @override
   String get customizeHomepageSaved => 'Homepage layout saved.';
@@ -275,13 +284,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get currentWeatherWidget => 'Current Weather Widget';
 
   @override
-  String get currentWeatherWidgetDesc => 'Displays the current weather conditions of the selected city.';
+  String get currentWeatherWidgetDesc =>
+      'Displays the current weather conditions of the selected city.';
 
   @override
   String get forecastWeatherWidget => 'Forecast Widget';
 
   @override
-  String get forecastWeatherWidgetDesc => 'Displays the weather forecast for the next 7 days.';
+  String get forecastWeatherWidgetDesc =>
+      'Displays the weather forecast for the next 7 days.';
 
   @override
   String get test => 'Test';
@@ -326,7 +337,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get aiAdviceGoConfigure => 'Configure AI';
 
   @override
-  String get aiAdviceServiceDisabled => 'AI advice service is disabled. Please enable it in Settings.';
+  String get aiAdviceServiceDisabled =>
+      'AI advice service is disabled. Please enable it in Settings.';
 
   @override
   String get aiAdviceServiceEnabled => 'AI advice service is enabled';
