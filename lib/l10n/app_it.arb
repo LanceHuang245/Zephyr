@@ -108,5 +108,10 @@
   "name": "Nome",
   "template": "Modello",
   "testSuccess": "Test completato con successo",
-  "testError": "Test fallito"
+  "testError": "Test fallito",
+  "aiAdviceTitle": "Consulenza IA",
+  "aiAdviceNotConfigured": "Il servizio di consulenza IA si basa su LLM, non hai configurato LLM",
+  "aiAdviceGoConfigure": "Configurazione LLM",
+  "aiAdviceServiceDisabled": "Il servizio di consulenza IA non è abilitato",
+  "aiAdviceServiceEnabled": "Il servizio di consulenza IA è abilitato"
 }

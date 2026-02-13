@@ -108,5 +108,10 @@
   "name": "名称",
   "template": "模板",
   "testSuccess": "测试成功",
-  "testError": "测试失败"
+  "testError": "测试失败",
+  "aiAdviceTitle": "AI建议",
+  "aiAdviceNotConfigured": "AI建议服务依赖于LLM，您没有配置LLM",
+  "aiAdviceGoConfigure": "LLM配置",
+  "aiAdviceServiceDisabled": "AI建议服务未启用",
+  "aiAdviceServiceEnabled": "AI建议服务已启用"
 }

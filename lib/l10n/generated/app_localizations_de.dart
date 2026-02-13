@@ -53,8 +53,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get searchHint => 'Stadtname eingeben...';
 
   @override
-  String get searchHintOnSurface =>
-      'Geben Sie einen Städtenamen ein, um die Suche zu starten';
+  String get searchHintOnSurface => 'Geben Sie einen Städtenamen ein, um die Suche zu starten';
 
   @override
   String get noResults => 'Keine Ergebnisse gefunden';
@@ -174,15 +173,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get locating => 'Standort wird ermittelt...';
 
   @override
-  String get locationPermissionDenied =>
-      'Standortberechtigung verweigert oder Ortungsdienst nicht aktiviert';
+  String get locationPermissionDenied => 'Standortberechtigung verweigert oder Ortungsdienst nicht aktiviert';
 
   @override
   String get locationNotRecognized => 'Aktueller Standort nicht erkannt';
 
   @override
-  String get locatingSuccess =>
-      'Standort erfolgreich ermittelt, bitte warten...';
+  String get locatingSuccess => 'Standort erfolgreich ermittelt, bitte warten...';
 
   @override
   String get airQuality => 'Luftqual.';
@@ -212,8 +209,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get ignoreBatteryOptimization => 'Batterieoptimierung ignorieren';
 
   @override
-  String get iBODesc =>
-      'Ermöglicht Zephyr die automatische Wetteraktualisierung im Hintergrund';
+  String get iBODesc => 'Ermöglicht Zephyr die automatische Wetteraktualisierung im Hintergrund';
 
   @override
   String get iBODisabled => 'Batterieoptimierung ist bereits deaktiviert';
@@ -228,22 +224,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get hourlyWindSpeed => 'Stündliche Windgeschwindigkeit';
 
   @override
-  String get hourlyWindSpeedDesc =>
-      'Stündliche Windgeschwindigkeit. Sie können die Karte manuell scrollen, um detaillierte stündliche Windgeschwindigkeitsdaten anzuzeigen.';
+  String get hourlyWindSpeedDesc => 'Stündliche Windgeschwindigkeit. Sie können die Karte manuell scrollen, um detaillierte stündliche Windgeschwindigkeitsdaten anzuzeigen.';
 
   @override
   String get hourlyPressure => 'Stündlicher Luftdruck';
 
   @override
-  String get hourlyPressureDesc =>
-      'Stündlicher Luftdruck auf Meereshöhe und Oberflächendruck auf Bodenhöhe, hPa ist die Einheit des Luftdrucks. Sie können das Diagramm manuell verschieben, um detaillierte stündliche Luftdruckdaten zu sehen.';
+  String get hourlyPressureDesc => 'Stündlicher Luftdruck auf Meereshöhe und Oberflächendruck auf Bodenhöhe, hPa ist die Einheit des Luftdrucks. Sie können das Diagramm manuell verschieben, um detaillierte stündliche Luftdruckdaten zu sehen.';
 
   @override
   String get eAQIGrading => 'Bewertung des Luftqualitätsindex';
 
   @override
-  String get eAQIDesc =>
-      'Je höher dieser Wert ist, desto größer ist das potenzielle Gesundheitsrisiko für den Menschen. Wenn Ihre Datenquelle OpenMeteo ist, wird die europäische Standardklassifizierung für Luftqualität verwendet; andernfalls gelten die lokalen Qualitätsbewertungsstandards.';
+  String get eAQIDesc => 'Je höher dieser Wert ist, desto größer ist das potenzielle Gesundheitsrisiko für den Menschen. Wenn Ihre Datenquelle OpenMeteo ist, wird die europäische Standardklassifizierung für Luftqualität verwendet; andernfalls gelten die lokalen Qualitätsbewertungsstandards.';
 
   @override
   String get weatherSource => 'Wetterquelle';
@@ -261,40 +254,34 @@ class AppLocalizationsDe extends AppLocalizations {
   String get weatherDataError => 'Wetterdaten konnten nicht abgerufen werden';
 
   @override
-  String get checkNetworkAndRetry =>
-      'Bitte überprüfen Sie Ihre Netzwerkverbindung und versuchen Sie es erneut.';
+  String get checkNetworkAndRetry => 'Bitte überprüfen Sie Ihre Netzwerkverbindung und versuchen Sie es erneut.';
 
   @override
   String get today => 'Heute';
 
   @override
-  String get customizeHomepageDesc =>
-      'Halten Sie gedrückt, um die Reihenfolge zu verschieben und neu anzuordnen. Tippen Sie auf die Umschaltfläche, um Komponenten ein- oder auszublenden.';
+  String get customizeHomepageDesc => 'Halten Sie gedrückt, um die Reihenfolge zu verschieben und neu anzuordnen. Tippen Sie auf die Umschaltfläche, um Komponenten ein- oder auszublenden.';
 
   @override
-  String get customizeHomepageSaved =>
-      'Das Layout der Startseite wurde gespeichert.';
+  String get customizeHomepageSaved => 'Das Layout der Startseite wurde gespeichert.';
 
   @override
   String get lastUpdated => 'Zuletzt aktualisiert';
 
   @override
-  String get selectWidgetType =>
-      'Wähle den Widget-Typ aus, den du hinzufügen möchtest';
+  String get selectWidgetType => 'Wähle den Widget-Typ aus, den du hinzufügen möchtest';
 
   @override
   String get currentWeatherWidget => 'Aktuelles Wetter-Widget';
 
   @override
-  String get currentWeatherWidgetDesc =>
-      'Zeigt die aktuellen Wetterinformationen der Hauptstadt an.';
+  String get currentWeatherWidgetDesc => 'Zeigt die aktuellen Wetterinformationen der Hauptstadt an.';
 
   @override
   String get forecastWeatherWidget => 'Wettervorhersage-Widget';
 
   @override
-  String get forecastWeatherWidgetDesc =>
-      'Zeigt die 7-Tage-Wettervorhersage der Hauptstadt an.';
+  String get forecastWeatherWidgetDesc => 'Zeigt die 7-Tage-Wettervorhersage der Hauptstadt an.';
 
   @override
   String get test => 'Test';
@@ -309,8 +296,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get llmAddProvider => 'LLM Anbieter hinzufügen';
 
   @override
-  String get llmNoProviders =>
-      'Noch keine Anbieter.\nKlicken Sie auf +, um einen hinzuzufügen.';
+  String get llmNoProviders => 'Noch keine Anbieter.\nKlicken Sie auf +, um einen hinzuzufügen.';
 
   @override
   String get llmModelName => 'LLM Modellname';
@@ -331,18 +317,17 @@ class AppLocalizationsDe extends AppLocalizations {
   String get testError => 'Test fehlgeschlagen';
 
   @override
-  String get aiAdviceTitle => 'AI Advice';
+  String get aiAdviceTitle => 'KI-Beratung';
 
   @override
-  String get aiAdviceNotConfigured => 'You have not configured AI advice yet';
+  String get aiAdviceNotConfigured => 'Der KI-Beratungsdienst basiert auf LLM, Sie haben kein LLM konfiguriert';
 
   @override
-  String get aiAdviceGoConfigure => 'Configure AI';
+  String get aiAdviceGoConfigure => 'LLM-Konfiguration';
 
   @override
-  String get aiAdviceServiceDisabled =>
-      'AI advice service is disabled. Please enable it in Settings.';
+  String get aiAdviceServiceDisabled => 'KI-Beratungsdienst ist nicht aktiviert';
 
   @override
-  String get aiAdviceServiceEnabled => 'AI advice service is enabled';
+  String get aiAdviceServiceEnabled => 'KI-Beratungsdienst ist aktiviert';
 }

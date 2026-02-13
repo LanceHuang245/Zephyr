@@ -108,5 +108,10 @@
   "name": "Nom",
   "template": "Modèle",
   "testSuccess": "Test réussi",
-  "testError": "Erreur lors du test"
+  "testError": "Erreur lors du test",
+  "aiAdviceTitle": "Conseils IA",
+  "aiAdviceNotConfigured": "Le service de conseil IA repose sur LLM, vous n'avez pas configuré LLM",
+  "aiAdviceGoConfigure": "Configuration LLM",
+  "aiAdviceServiceDisabled": "Le service de conseil IA n'est pas activé",
+  "aiAdviceServiceEnabled": "Le service de conseil IA est activé"
 }

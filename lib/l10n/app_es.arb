@@ -108,5 +108,10 @@
   "name": "Nombre",
   "template": "Plantilla",
   "testSuccess": "¡Prueba exitosa!",
-  "testError": "¡Error de prueba!"
+  "testError": "¡Error de prueba!",
+  "aiAdviceTitle": "Asesoría de IA",
+  "aiAdviceNotConfigured": "El servicio de asesoría de IA depende de LLM, no has configurado LLM",
+  "aiAdviceGoConfigure": "Configuración de LLM",
+  "aiAdviceServiceDisabled": "El servicio de asesoría de IA no está habilitado",
+  "aiAdviceServiceEnabled": "El servicio de asesoría de IA está habilitado"
 }

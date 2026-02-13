@@ -108,5 +108,10 @@
   "name": "Name",
   "template": "Vorlage",
   "testSuccess": "Test erfolgreich",
-  "testError": "Test fehlgeschlagen"
+  "testError": "Test fehlgeschlagen",
+  "aiAdviceTitle": "KI-Beratung",
+  "aiAdviceNotConfigured": "Der KI-Beratungsdienst basiert auf LLM, Sie haben kein LLM konfiguriert",
+  "aiAdviceGoConfigure": "LLM-Konfiguration",
+  "aiAdviceServiceDisabled": "KI-Beratungsdienst ist nicht aktiviert",
+  "aiAdviceServiceEnabled": "KI-Beratungsdienst ist aktiviert"
 }
