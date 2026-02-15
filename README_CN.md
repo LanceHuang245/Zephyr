@@ -16,7 +16,9 @@
 ---
 ## 功能特性
 - 实时天气查询：支持多城市天气信息获取
+- 自定义LLM接入：允许用户自定义LLM，并使用LLM获取天气建议
 - 自定义天气来源：为用户提供OpenMeteo API、Qweather API的选择
+- 自定义主页面布局：用户可任意显示/隐藏部分组件或调整组件位置
 - 城市管理：可添加、删除、设为默认
 - 7天天气预报：未来一周天气趋势一目了然
 - 24小时天气查询：支持24小时温度、降雨查询
@@ -49,7 +51,7 @@
 
 ## 下载
 [Zephyr Release](https://github.com/LanceHuang245/Zephyr/releases/latest) \
-[Zephyr Action(Experiment)](https://github.com/LanceHuang245/Zephyr/actions/workflows/build.yml)
+[Zephyr Action(测试版)](https://github.com/LanceHuang245/Zephyr/actions/workflows/build.yml)
 
 ## 截图
 <table>

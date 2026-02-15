@@ -15,16 +15,19 @@ The backend is powered by the open-source [Zeus](https://github.com/LanceHuang24
 > This project is only for learning and communication use, please do not use for commercial purposes. All API interfaces have usage limits; please refrain from excessive or abusive use.
 ---
 ## Features
-- Real-time weather query for multiple cities
-- Custom weather source
-- City management
-- 7-day/24-Hour weather forecast
-- Background auto update
-- Weather warnings
-- Dynamic weather icons and backgrounds
-- Theme settings with dynamic color support
-- Temperature unit switch (°C/°F)
-- Localization (l10n) support (English, Deutch, French, Spanish, Italian, Chinese)
+- Real-time weather lookup: Supports retrieving weather information for multiple cities
+- Custom LLM integration: Allows users to configure their own LLM and use it to obtain weather recommendations
+- Customizable weather sources: Offers users the choice between OpenMeteo API and Qweather API
+- Customizable home screen layout: Users can freely show/hide components or adjust their positions
+- City Management: Add, remove, or set cities as default
+- 7-Day Forecast: Future weather trends at a glance
+- 24-Hour Weather: Check hourly temperatures and precipitation
+- Weather alerts: Real-time warnings with notifications
+- Background auto-refresh: Cached data with automatic updates
+- Diverse weather icons and animated backgrounds
+- Theme settings: Monet color palette support
+- Temperature unit switching (℃/℉)
+- Multilingual localization (l10n): Simplified Chinese, Traditional Chinese, English, German, Spanish, French, Italian
 
 ## Roadmap
 Visit the [Wiki](https://github.com/LanceHuang245/Zephyr/wiki) to see the features Zephyr is currently working to support.
