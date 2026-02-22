@@ -101,10 +101,10 @@ packages:
     dependency: transitive
     description:
       name: built_value
-      sha256: "7931c90b84bc573fef103548e354258ae4c9d28d140e41961df6843c5d60d4d8"
+      sha256: "6ae8a6435a8c6520c7077b107e77f1fb4ba7009633259a4d49a8afd8e7efc5e9"
       url: "https://pub.dev"
     source: hosted
-    version: "8.12.3"
+    version: "8.12.4"
   characters:
     dependency: transitive
     description:
@@ -266,34 +266,34 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_local_notifications
-      sha256: "2b50e938a275e1ad77352d6a25e25770f4130baa61eaf02de7a9a884680954ad"
+      sha256: cf206c68707773b670340dfeca7fc95f95509f4ca91a544bdd77d03a8106b91e
       url: "https://pub.dev"
     source: hosted
-    version: "20.1.0"
+    version: "21.0.0-dev.2"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
       name: flutter_local_notifications_linux
-      sha256: dce0116868cedd2cdf768af0365fc37ff1cbef7c02c4f51d0587482e625868d0
+      sha256: "223bdd6e389a5ec02597fb494c8b3d6b0a9119534f9f45b7feef69cc0ee838e5"
       url: "https://pub.dev"
     source: hosted
-    version: "7.0.0"
+    version: "8.0.0-dev.1"
   flutter_local_notifications_platform_interface:
     dependency: transitive
     description:
       name: flutter_local_notifications_platform_interface
-      sha256: "23de31678a48c084169d7ae95866df9de5c9d2a44be3e5915a2ff067aeeba899"
+      sha256: "2adc3c14a650af4e6235817fbf4335ba14bc3d36d5d497d7104d94e1475d5ddc"
       url: "https://pub.dev"
     source: hosted
-    version: "10.0.0"
+    version: "11.0.0-dev.1"
   flutter_local_notifications_windows:
     dependency: transitive
     description:
       name: flutter_local_notifications_windows
-      sha256: e97a1a3016512437d9c0b12fae7d1491c3c7b9aa7f03a69b974308840656b02a
+      sha256: e7136082af98f3459552d2cc423f4b27e3010bbddcd1e575d9a270d47d2384d4
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "3.0.0-dev.1"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -489,26 +489,18 @@ packages:
     dependency: "direct main"
     description:
       name: json_annotation
-      sha256: "805fa86df56383000f640384b282ce0cb8431f1a7a2396de92fb66186d8c57df"
+      sha256: cb09e7dac6210041fad964ed7fbee004f14258b4eca4040f72d1234062ace4c8
       url: "https://pub.dev"
     source: hosted
-    version: "4.10.0"
-  json_schema:
-    dependency: transitive
-    description:
-      name: json_schema
-      sha256: f37d9c3fdfe8c9aae55fdfd5af815d24ce63c3a0f6a2c1f0982c30f43643fa1a
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.2.2"
+    version: "4.11.0"
   json_serializable:
     dependency: "direct dev"
     description:
       name: json_serializable
-      sha256: "93fba3ad139dab2b1ce59ecc6fdce6da46a42cdb6c4399ecda30f1e7e725760d"
+      sha256: "44729f5c45748e6748f6b9a57ab8f7e4336edc8ae41fc295070e3814e616a6c0"
       url: "https://pub.dev"
     source: hosted
-    version: "6.12.0"
+    version: "6.13.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -781,22 +773,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
-  quiver:
-    dependency: transitive
-    description:
-      name: quiver
-      sha256: ea0b925899e64ecdfbf9c7becb60d5b50e706ade44a85b2363be2a22d88117d2
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.2.2"
-  rfc_6901:
-    dependency: transitive
-    description:
-      name: rfc_6901
-      sha256: "6a43b1858dca2febaf93e15639aa6b0c49ccdfd7647775f15a499f872b018154"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.1"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -950,10 +926,10 @@ packages:
     dependency: "direct main"
     description:
       name: timezone
-      sha256: dd14a3b83cfd7cb19e7888f1cbc20f258b8d71b54c06f79ac585f14093a287d1
+      sha256: "784a5e34d2eb62e1326f24d6f600aaaee452eb8ca8ef2f384a59244e292d158b"
       url: "https://pub.dev"
     source: hosted
-    version: "0.10.1"
+    version: "0.11.0"
   typed_data:
     dependency: transitive
     description:
@@ -962,14 +938,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-  uri:
-    dependency: transitive
-    description:
-      name: uri
-      sha256: "889eea21e953187c6099802b7b4cf5219ba8f3518f604a1033064d45b1b8268a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   url_launcher:
     dependency: "direct main"
     description:
@@ -1038,10 +1006,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: a11b666489b1954e01d992f3d601b1804a33937b5a8fe677bd26b8a9f96f96e8
+      sha256: "1fef9e8e11e2991bb773070d4656b7bd5d850967a2456cfc83cf47925ba79489"
       url: "https://pub.dev"
     source: hosted
-    version: "4.5.2"
+    version: "4.5.3"
   vector_math:
     dependency: transitive
     description:
