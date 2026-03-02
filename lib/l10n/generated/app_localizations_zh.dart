@@ -320,7 +320,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get aiAdviceTitle => 'AI建议';
 
   @override
-  String get aiAdviceNotConfigured => 'AI建议服务依赖于LLM，您没有配置LLM';
+  String get aiAdviceNotConfigured => 'AI建议服务依赖于您配置的LLM服务，您还没有配置';
 
   @override
   String get aiAdviceGoConfigure => 'LLM配置';
