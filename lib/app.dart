@@ -61,14 +61,6 @@ class _ZephyrAppState extends State<ZephyrApp> {
                               colorScheme: lightDynamic ??
                                   ColorScheme.fromSeed(seedColor: customColor),
                               useMaterial3: true,
-                              pageTransitionsTheme: const PageTransitionsTheme(
-                                builders: {
-                                  TargetPlatform.android:
-                                      CupertinoPageTransitionsBuilder(),
-                                  TargetPlatform.iOS:
-                                      CupertinoPageTransitionsBuilder(),
-                                },
-                              ),
                             ),
                             darkTheme: ThemeData(
                               colorScheme: darkDynamic ??
@@ -76,14 +68,6 @@ class _ZephyrAppState extends State<ZephyrApp> {
                                       seedColor: customColor,
                                       brightness: Brightness.dark),
                               useMaterial3: true,
-                              pageTransitionsTheme: const PageTransitionsTheme(
-                                builders: {
-                                  TargetPlatform.android:
-                                      CupertinoPageTransitionsBuilder(),
-                                  TargetPlatform.iOS:
-                                      CupertinoPageTransitionsBuilder(),
-                                },
-                              ),
                             ),
                             themeMode: mode,
                             home: const HomePage(),
@@ -108,28 +92,12 @@ class _ZephyrAppState extends State<ZephyrApp> {
                           colorScheme:
                               ColorScheme.fromSeed(seedColor: customColor),
                           useMaterial3: true,
-                          pageTransitionsTheme: const PageTransitionsTheme(
-                            builders: {
-                              TargetPlatform.android:
-                                  CupertinoPageTransitionsBuilder(),
-                              TargetPlatform.iOS:
-                                  CupertinoPageTransitionsBuilder(),
-                            },
-                          ),
                         ),
                         darkTheme: ThemeData(
                           colorScheme: ColorScheme.fromSeed(
                               seedColor: customColor,
                               brightness: Brightness.dark),
                           useMaterial3: true,
-                          pageTransitionsTheme: const PageTransitionsTheme(
-                            builders: {
-                              TargetPlatform.android:
-                                  CupertinoPageTransitionsBuilder(),
-                              TargetPlatform.iOS:
-                                  CupertinoPageTransitionsBuilder(),
-                            },
-                          ),
                         ),
                         themeMode: mode,
                         home: const HomePage(),
