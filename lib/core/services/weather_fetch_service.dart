@@ -23,11 +23,7 @@ class WeatherFetchService {
           lat: city.lat,
           lon: city.lon,
         );
-        if (warnings.isNotEmpty) {
-          final title = warnings.first.title;
-          final body = warnings.map((w) => w.text).join('\n');
-          await NotificationService().showWarningNotification(title, body);
-        }
+        await NotificationService().showWarningNotifications(warnings);
       } catch (e) {
         if (kDebugMode) debugPrint('获取天气预警失败: $e');
       }
@@ -86,16 +82,7 @@ class WeatherFetchService {
       }
 
       final mainCity = cities.first;
-      final weatherData = await getFreshWeatherData(mainCity);
-
-      if (weatherData != null) {
-        final warnings = weatherData['warnings'] as List<WeatherWarning>? ?? [];
-        if (warnings.isNotEmpty) {
-          final title = warnings.first.title;
-          final body = warnings.map((w) => w.text).join('\n');
-          await NotificationService().showWarningNotification(title, body);
-        }
-      }
+      await getFreshWeatherData(mainCity);
     } catch (e) {
       if (kDebugMode) debugPrint('后台任务获取天气失败: $e');
     } finally {

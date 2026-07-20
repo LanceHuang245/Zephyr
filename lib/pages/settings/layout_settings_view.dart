@@ -319,7 +319,7 @@ class _LayoutSettingsViewState extends State<LayoutSettingsView> {
                         ),
                       );
                     },
-                    onReorder: (int oldIndex, int newIndex) {
+                    onReorderItem: (int oldIndex, int newIndex) {
                       setState(() {
                         if (oldIndex < newIndex) {
                           newIndex -= 1;

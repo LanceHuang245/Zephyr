@@ -1,6 +1,8 @@
 import '../import.dart';
 
 class LocationService {
+  static final Geocoding _geocoding = Geocoding();
+
   static Future<Position?> getCurrentPosition() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) return null;
@@ -17,7 +19,7 @@ class LocationService {
 
   static Future<City> getCityFromPosition(Position position) async {
     try {
-      List<Placemark> placemarks = await placemarkFromCoordinates(
+      final placemarks = await _geocoding.placemarkFromCoordinates(
         position.latitude,
         position.longitude,
       );
