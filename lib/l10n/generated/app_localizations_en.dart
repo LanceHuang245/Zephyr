@@ -308,7 +308,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get name => 'Name';
 
   @override
-  String get template => 'Template';
+  String get template => 'Endpoint Type';
 
   @override
   String get testSuccess => 'Test successful';

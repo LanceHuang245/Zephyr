@@ -13,43 +13,54 @@ class AIProviderTemplate {
 }
 
 class AIProviderTemplates {
-  static const String openAI = 'openai';
+  static const String openAICompatible = 'openai_compatible';
+  static const String openAIResponses = 'openai_responses';
+  static const String anthropic = 'anthropic';
   static const String gemini = 'gemini';
-  static const String claude = 'claude';
-  static const String custom = 'custom';
 
   static const List<AIProviderTemplate> templates = [
     AIProviderTemplate(
-      label: 'OpenAI',
-      providerId: openAI,
+      label: 'OpenAI Compatible',
+      providerId: openAICompatible,
       baseUrl: 'https://api.openai.com/v1/chat/completions',
-      defaultModel: 'gpt-4',
+      defaultModel: 'gpt-4o-mini',
     ),
     AIProviderTemplate(
-      label: 'Gemini',
-      providerId: gemini,
-      baseUrl:
-          'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',
-      defaultModel: 'gemini-2.5-flash',
+      label: 'OpenAI Responses',
+      providerId: openAIResponses,
+      baseUrl: 'https://api.openai.com/v1/responses',
+      defaultModel: 'gpt-4o-mini',
     ),
     AIProviderTemplate(
-      label: 'Claude',
-      providerId: claude,
+      label: 'Anthropic',
+      providerId: anthropic,
       baseUrl: 'https://api.anthropic.com/v1/messages',
       defaultModel: 'claude-3-haiku-20240307',
     ),
     AIProviderTemplate(
-      label: 'Custom',
-      providerId: custom,
-      baseUrl: '',
-      defaultModel: '',
+      label: 'Gemini Official Endpoint',
+      providerId: gemini,
+      baseUrl: 'https://generativelanguage.googleapis.com/v1beta/models',
+      defaultModel: 'gemini-2.5-flash',
     ),
   ];
 
+  static String resolveEndpointType(String providerId) {
+    switch (providerId) {
+      case openAICompatible:
+      case openAIResponses:
+      case anthropic:
+      case gemini:
+        return providerId;
+      default:
+        return openAICompatible;
+    }
+  }
+
   static AIProviderTemplate getTemplate(String providerId) {
     return templates.firstWhere(
-      (t) => t.providerId == providerId,
-      orElse: () => templates.last, // Default to Custom
+      (t) => t.providerId == resolveEndpointType(providerId),
+      orElse: () => templates.first,
     );
   }
 }

@@ -308,7 +308,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get name => 'Nom';
 
   @override
-  String get template => 'Modèle';
+  String get template => 'Type de point de terminaison';
 
   @override
   String get testSuccess => 'Test réussi';

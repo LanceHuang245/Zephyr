@@ -308,7 +308,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get name => '名称';
 
   @override
-  String get template => '模板';
+  String get template => '端点类型';
 
   @override
   String get testSuccess => '测试成功';
@@ -317,19 +317,19 @@ class AppLocalizationsZh extends AppLocalizations {
   String get testError => '测试失败';
 
   @override
-  String get aiAdviceTitle => 'AI建议';
+  String get aiAdviceTitle => '智能天气建议';
 
   @override
-  String get aiAdviceNotConfigured => 'AI建议服务依赖于您配置的LLM服务，您还没有配置';
+  String get aiAdviceNotConfigured => '智能天气建议服务依赖于您配置的LLM服务，您还没有配置';
 
   @override
   String get aiAdviceGoConfigure => 'LLM配置';
 
   @override
-  String get aiAdviceServiceDisabled => 'AI建议服务未启用';
+  String get aiAdviceServiceDisabled => '智能天气建议服务未启用';
 
   @override
-  String get aiAdviceServiceEnabled => 'AI建议服务已启用';
+  String get aiAdviceServiceEnabled => '智能天气建议服务已启用';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -636,7 +636,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get name => '名稱';
 
   @override
-  String get template => '模板';
+  String get template => '端點類型';
 
   @override
   String get testSuccess => '測試成功';
@@ -645,17 +645,17 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get testError => '測試失敗';
 
   @override
-  String get aiAdviceTitle => 'AI建議';
+  String get aiAdviceTitle => '智能天氣建議';
 
   @override
-  String get aiAdviceNotConfigured => 'AI建議服務依賴於LLM配置，您沒有配置LLM';
+  String get aiAdviceNotConfigured => '智能天氣建議服務依賴於LLM配置，您沒有配置LLM';
 
   @override
   String get aiAdviceGoConfigure => 'LLM配置';
 
   @override
-  String get aiAdviceServiceDisabled => 'AI建議服務被關閉';
+  String get aiAdviceServiceDisabled => '智能天氣建議服務被關閉';
 
   @override
-  String get aiAdviceServiceEnabled => 'AI建議服務已經開啓';
+  String get aiAdviceServiceEnabled => '智能天氣建議服務已經開啓';
 }

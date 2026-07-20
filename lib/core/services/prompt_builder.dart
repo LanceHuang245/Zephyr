@@ -1,52 +1,57 @@
 ﻿import 'package:zephyr/core/import.dart';
 
 class PromptBuilder {
-  // 构建AI建议
+  // Builds a compact, localized recommendation from the supplied weather data.
   static String buildHealthPrompt(WeatherData weather, String cityName) {
     final current = weather.current;
-    final firstHourly = weather.hourly.isNotEmpty ? weather.hourly.first : null;
-
-    String visibilityKm = '-';
-    final currentVisibility = current?.visibility;
-    if (currentVisibility != null && currentVisibility > 0) {
-      visibilityKm = currentVisibility.toStringAsFixed(1);
-    } else {
-      for (final h in weather.hourly) {
-        final v = h.visibility;
-        if (v != null && v > 0) {
-          visibilityKm = (v / 1000).toStringAsFixed(1);
-          break;
-        }
-      }
-    }
-
-    final temp = current?.temperature.toStringAsFixed(1) ?? '-';
-    final feelsLike = current?.apparentTemperature?.toStringAsFixed(1) ?? '-';
-    final humidity = current?.humidity?.toStringAsFixed(0) ?? '-';
-    final windSpeed = current?.windSpeed.toStringAsFixed(1) ?? '-';
-    final precipitation = firstHourly?.precipitation?.toStringAsFixed(1) ?? '-';
-    final weatherDesc =
-        getWeatherDescForWidget(current?.weatherCode ?? 0, 'en');
+    final today = weather.daily.isNotEmpty ? weather.daily.first : null;
+    final now = DateTime.now();
+    final upcomingHours = weather.hourly
+        .where((hour) {
+          final time = DateTime.tryParse(hour.time);
+          return time == null ||
+              time.add(const Duration(hours: 1)).isAfter(now);
+        })
+        .take(6)
+        .map((hour) {
+          return _compactWeatherJson(hour.toJson(), hour.weatherCode);
+        })
+        .toList();
+    final weatherContext = <String, dynamic>{
+      'city': cityName,
+      'temperature_unit': '°${tempUnitNotifier.value}',
+      if (current != null)
+        'current': _compactWeatherJson(
+          current.toJson(),
+          current.weatherCode,
+        ),
+      if (today != null)
+        'today': _compactWeatherJson(today.toJson(), today.weatherCode),
+      if (upcomingHours.isNotEmpty) 'next_6_hours': upcomingHours,
+    };
 
     return '''
-Act as a professional health and wellness advisor API. Please provide recommendations based on the following weather data.
+You are a concise weather-life advisor. Base your recommendation only on the supplied weather data.
 
-Weather Data:
-- City: $cityName
-- Temperature: $temp°, Feels Like $feelsLike°
-- Humidity: $humidity%
-- Wind Speed: $windSpeed m/s
-- Precipitation: $precipitation mm
-- Weather: $weatherDesc
-- Visibility: $visibilityKm km
+Weather Data (JSON):
+${jsonEncode(weatherContext)}
 
-Please provide recommendations based on location and weather conditions in the following areas: Clothing suggestions, Exercise recommendations, Travel advice, Health reminders.
-Keep your response warm and friendly after synthesizing multiple areas, without greetings. Please use the ${localeCodeNotifier.value} in your reply. Keep your reply around 160 characters.
-Please strictly adhere to the following JSON format when replying. No extra text or fences.
-Example Output:
-{
-  "suggestion": "Today's temperature is 20°C, with comfortable conditions but strong winds. We recommend wearing long sleeves and pants, paired with a lightweight windproof jacket or windbreaker to effectively ward off the chill. Outdoor activities are not ideal. With low humidity, opt for breathable fabrics in your clothing choices. Consider bringing a thin scarf to prevent catching a chill from the wind."
-}
+Write one natural, coherent paragraph in ${localeCodeNotifier.value}. Prioritize unusual or high-impact conditions; if there is a safety risk, state the most important precaution first. Give specific, practical advice about clothing, outdoor activity or travel, and health, omitting irrelevant categories. Mention weather values only when they explain the advice.
+Keep the suggestion between 60 and 90 characters, including punctuation. Avoid repetition, greetings, headings, bullet points, exaggerated warnings, medical diagnoses, and unsupported claims.
+Return valid JSON only, without Markdown fences or extra text: {"suggestion":"..."}
 ''';
+  }
+
+  // Removes unavailable values and adds a readable weather description.
+  static Map<String, dynamic> _compactWeatherJson(
+    Map<String, dynamic> json,
+    int? weatherCode,
+  ) {
+    return {
+      for (final entry in json.entries)
+        if (entry.value != null) entry.key: entry.value,
+      if (weatherCode != null)
+        'weather_description': getWeatherDescForWidget(weatherCode, 'en'),
+    };
   }
 }

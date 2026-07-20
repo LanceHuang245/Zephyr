@@ -106,12 +106,12 @@
   "llmModelName": "LLM模型名稱",
   "llmSaved": "LLM配置已保存",
   "name": "名稱",
-  "template": "模板",
+  "template": "端點類型",
   "testSuccess": "測試成功",
   "testError": "測試失敗",
-  "aiAdviceTitle": "AI建議",
-  "aiAdviceNotConfigured": "AI建議服務依賴於LLM配置，您沒有配置LLM",
+  "aiAdviceTitle": "智能天氣建議",
+  "aiAdviceNotConfigured": "智能天氣建議服務依賴於LLM配置，您沒有配置LLM",
   "aiAdviceGoConfigure": "LLM配置",
-  "aiAdviceServiceDisabled": "AI建議服務被關閉",
-  "aiAdviceServiceEnabled": "AI建議服務已經開啓"
+  "aiAdviceServiceDisabled": "智能天氣建議服務被關閉",
+  "aiAdviceServiceEnabled": "智能天氣建議服務已經開啓"
 }

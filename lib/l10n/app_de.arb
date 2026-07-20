@@ -106,7 +106,7 @@
   "llmModelName": "LLM Modellname",
   "llmSaved": "LLM gespeichert",
   "name": "Name",
-  "template": "Vorlage",
+  "template": "Endpunkttyp",
   "testSuccess": "Test erfolgreich",
   "testError": "Test fehlgeschlagen",
   "aiAdviceTitle": "KI-Beratung",

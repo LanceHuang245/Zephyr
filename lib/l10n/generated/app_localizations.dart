@@ -701,7 +701,7 @@ abstract class AppLocalizations {
   /// No description provided for @template.
   ///
   /// In en, this message translates to:
-  /// **'Template'**
+  /// **'Endpoint Type'**
   String get template;
 
   /// No description provided for @testSuccess.

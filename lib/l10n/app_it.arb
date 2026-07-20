@@ -106,7 +106,7 @@
   "llmModelName": "Nome modello",
   "llmSaved": "Configurazione salvata",
   "name": "Nome",
-  "template": "Modello",
+  "template": "Tipo di endpoint",
   "testSuccess": "Test completato con successo",
   "testError": "Test fallito",
   "aiAdviceTitle": "Consulenza IA",

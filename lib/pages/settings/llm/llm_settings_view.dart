@@ -5,7 +5,7 @@ import '../import.dart';
 class LLMProviderConfig {
   String id;
   String name;
-  String templateId; // 'openai', 'gemini', 'custom' 等
+  String endpointType;
   String apiKey;
   String endpoint;
   String model;
@@ -13,7 +13,7 @@ class LLMProviderConfig {
   LLMProviderConfig({
     required this.id,
     required this.name,
-    required this.templateId,
+    required this.endpointType,
     this.apiKey = '',
     this.endpoint = '',
     this.model = '',
@@ -22,7 +22,7 @@ class LLMProviderConfig {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
-        'templateId': templateId,
+        'endpointType': endpointType,
         'apiKey': apiKey,
         'endpoint': endpoint,
         'model': model,
@@ -32,7 +32,8 @@ class LLMProviderConfig {
     return LLMProviderConfig(
       id: json['id'],
       name: json['name'],
-      templateId: json['templateId'],
+      endpointType: AIProviderTemplates.resolveEndpointType(
+          json['endpointType'] ?? AIProviderTemplates.openAICompatible),
       apiKey: json['apiKey'] ?? '',
       endpoint: json['endpoint'] ?? '',
       model: json['model'] ?? '',
@@ -99,9 +100,8 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
       final migratedProvider = LLMProviderConfig(
         id: 'migrated_${DateTime.now().millisecondsSinceEpoch}',
         name: 'Default (${activeConfig.provider})',
-        templateId: activeConfig.provider.isNotEmpty
-            ? activeConfig.provider
-            : AIProviderTemplates.gemini,
+        endpointType:
+            AIProviderTemplates.resolveEndpointType(activeConfig.provider),
         apiKey: activeConfig.apiKey,
         endpoint: activeConfig.customEndpoint,
         model: activeConfig.model,
@@ -177,7 +177,7 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
 
   // 添加新Provider的对话框
   Future<void> _showAddProviderDialog() async {
-    String selectedTemplateId = AIProviderTemplates.gemini;
+    String selectedEndpointType = AIProviderTemplates.openAICompatible;
     final nameController = TextEditingController();
 
     await showDialog(
@@ -189,7 +189,7 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               DropdownButtonFormField<String>(
-                initialValue: selectedTemplateId,
+                initialValue: selectedEndpointType,
                 decoration: InputDecoration(
                     labelText: AppLocalizations.of(context).template),
                 items: AIProviderTemplates.templates.map((t) {
@@ -199,7 +199,7 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
                   );
                 }).toList(),
                 onChanged: (v) {
-                  if (v != null) setState(() => selectedTemplateId = v);
+                  if (v != null) setState(() => selectedEndpointType = v);
                 },
                 borderRadius: BorderRadius.circular(24),
               ),
@@ -222,7 +222,7 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
               onPressed: () {
                 final name = nameController.text.trim();
                 if (name.isNotEmpty) {
-                  _addNewProvider(name, selectedTemplateId);
+                  _addNewProvider(name, selectedEndpointType);
                   Navigator.pop(context);
                 }
               },
@@ -234,16 +234,16 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
     );
   }
 
-  void _addNewProvider(String name, String templateId) {
-    final template = AIProviderTemplates.getTemplate(templateId);
+  void _addNewProvider(String name, String endpointType) {
+    final endpoint = AIProviderTemplates.getTemplate(endpointType);
     final newId = DateTime.now().millisecondsSinceEpoch.toString();
 
     final newProvider = LLMProviderConfig(
       id: newId,
       name: name,
-      templateId: templateId,
-      endpoint: template.baseUrl, // 预填默认Endpoint
-      model: template.defaultModel, // 预填默认Model
+      endpointType: endpointType,
+      endpoint: endpoint.baseUrl, // 预填默认Endpoint
+      model: endpoint.defaultModel, // 预填默认Model
     );
 
     setState(() {
@@ -291,7 +291,7 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
     final enabled = existingConfig?.enabled ?? false;
 
     final newConfig = AIConfig(
-      provider: provider.templateId,
+      provider: provider.endpointType,
       apiKey: provider.apiKey,
       customEndpoint: provider.endpoint,
       model: provider.model,
@@ -380,7 +380,7 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
                         return RadioListTile<String>(
                           title: Text(p.name),
                           subtitle: Text(
-                            AIProviderTemplates.getTemplate(p.templateId).label,
+                            AIProviderTemplates.getTemplate(p.endpointType).label,
                             style: textTheme.bodySmall,
                           ),
                           value: p.id,
@@ -458,7 +458,7 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
                       style: textTheme.bodyLarge,
                       textAlignVertical: TextAlignVertical.center,
                       decoration: InputDecoration(
-                        hintText: 'URL',
+                        hintText: 'Provider Endpoint',
                         hintStyle: textTheme.bodyLarge?.copyWith(
                           color: colorScheme.onSurfaceVariant
                               .withValues(alpha: 0.7),

@@ -106,7 +106,7 @@
   "llmModelName": "Nombre del modelo",
   "llmSaved": "Configuración guardada",
   "name": "Nombre",
-  "template": "Plantilla",
+  "template": "Tipo de endpoint",
   "testSuccess": "¡Prueba exitosa!",
   "testError": "¡Error de prueba!",
   "aiAdviceTitle": "Asesoría de IA",

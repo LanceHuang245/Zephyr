@@ -31,8 +31,8 @@ class AIAdvisorService {
 
   // 生成建议缓存键（城市 + 天气源）
   static String _buildCacheKey(String cityName, String weatherSource) {
-    final normalizedCity = cityName.trim().toLowerCase();
-    return '$_adviceCacheKey${normalizedCity}_$weatherSource';
+    final cacheCityName = cityName.trim().toLowerCase();
+    return '$_adviceCacheKey${cacheCityName}_$weatherSource';
   }
 
   // 基于关键天气字段生成签名，用于判断缓存是否可复用
@@ -156,18 +156,22 @@ class AIAdvisorService {
     String prompt,
     AIConfig config,
   ) async {
-    final endpoint = config.customEndpoint;
     final model = config.model.isNotEmpty ? config.model : 'default';
-    final provider = config.provider.toLowerCase();
+    final provider = AIProviderTemplates.resolveEndpointType(config.provider);
+    final endpoint = provider == AIProviderTemplates.gemini
+        ? _buildGeminiEndpoint(config.customEndpoint, model)
+        : config.customEndpoint;
 
     final headers = <String, String>{
       'Content-Type': 'application/json',
     };
     headers.addAll(config.customHeaders);
 
-    if (provider == AIProviderTemplates.claude) {
+    if (provider == AIProviderTemplates.anthropic) {
       headers['x-api-key'] = config.apiKey;
       headers['anthropic-version'] = '2023-06-01';
+    } else if (provider == AIProviderTemplates.gemini) {
+      headers['x-goog-api-key'] = config.apiKey;
     } else {
       if (!headers.containsKey('Authorization')) {
         headers['Authorization'] = 'Bearer ${config.apiKey}';
@@ -189,6 +193,16 @@ class AIAdvisorService {
     );
   }
 
+  // Build the official Gemini generateContent endpoint from the user inputs.
+  static String _buildGeminiEndpoint(String endpoint, String model) {
+    final endpointValue = endpoint.trim();
+    if (endpointValue.contains(':generateContent')) {
+      return endpointValue;
+    }
+    return '${endpointValue.replaceFirst(RegExp(r'[/]+$'), '')}/'
+        '$model:generateContent';
+  }
+
   // 构建不同 provider 的请求体
   static Map<String, dynamic> _buildRequestBody(
     String prompt,
@@ -196,7 +210,12 @@ class AIAdvisorService {
     String provider,
   ) {
     switch (provider) {
-      case AIProviderTemplates.claude:
+      case AIProviderTemplates.openAIResponses:
+        return {
+          'model': model,
+          'input': prompt,
+        };
+      case AIProviderTemplates.anthropic:
         return {
           'model': model,
           'max_tokens': 1024,
@@ -204,7 +223,18 @@ class AIAdvisorService {
             {'role': 'user', 'content': prompt}
           ],
         };
-      case AIProviderTemplates.openAI:
+      case AIProviderTemplates.gemini:
+        return {
+          'contents': [
+            {
+              'role': 'user',
+              'parts': [
+                {'text': prompt}
+              ],
+            }
+          ],
+        };
+      case AIProviderTemplates.openAICompatible:
       default:
         return {
           'model': model,
@@ -243,6 +273,21 @@ class AIAdvisorService {
         if (messageContent != null) {
           suggestionText = messageContent;
         }
+      } else if (content['output_text'] is String) {
+        suggestionText = content['output_text'];
+      } else if (content['output'] is List) {
+        final outputTexts = <String>[];
+        for (final item in content['output']) {
+          final parts = item is Map ? item['content'] : null;
+          if (parts is List) {
+            for (final part in parts) {
+              if (part is Map && part['text'] is String) {
+                outputTexts.add(part['text'] as String);
+              }
+            }
+          }
+        }
+        suggestionText = outputTexts.join();
       } else if (content.containsKey('content')) {
         final contentList = content['content'];
         if (contentList is List && contentList.isNotEmpty) {

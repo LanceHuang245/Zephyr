@@ -106,7 +106,7 @@
   "llmModelName": "Nom du modèle",
   "llmSaved": "Modèle enregistré",
   "name": "Nom",
-  "template": "Modèle",
+  "template": "Type de point de terminaison",
   "testSuccess": "Test réussi",
   "testError": "Erreur lors du test",
   "aiAdviceTitle": "Conseils IA",

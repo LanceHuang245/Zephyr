@@ -308,7 +308,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get name => 'Nombre';
 
   @override
-  String get template => 'Plantilla';
+  String get template => 'Tipo de endpoint';
 
   @override
   String get testSuccess => '¡Prueba exitosa!';
