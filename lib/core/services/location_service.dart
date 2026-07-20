@@ -25,9 +25,12 @@ class LocationService {
       );
       if (placemarks.isNotEmpty) {
         final p = placemarks.first;
+        // Prefer the district-level placemark when the platform geocoder provides it.
+        final subLocality = p.subLocality?.trim();
         return City(
-          name: p.locality ??
-              p.name ??
+          name: (subLocality?.isNotEmpty == true
+                  ? subLocality
+                  : p.locality ?? p.name) ??
               "${position.latitude.toStringAsFixed(4)},${position.longitude.toStringAsFixed(4)}",
           admin: p.administrativeArea,
           country: p.country ?? '',
