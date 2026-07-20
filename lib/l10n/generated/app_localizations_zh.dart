@@ -33,7 +33,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get cities => '个城市';
 
   @override
-  String get main => '主城市';
+  String get main => '默认城市';
 
   @override
   String get noCitiesAdded => '暂无城市';
@@ -361,7 +361,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get cities => '个城市';
 
   @override
-  String get main => '主城市';
+  String get main => '預設城市';
 
   @override
   String get noCitiesAdded => '暫無已添加的城市';

@@ -155,7 +155,7 @@ abstract class AppLocalizations {
   /// No description provided for @main.
   ///
   /// In en, this message translates to:
-  /// **'Main'**
+  /// **'Default'**
   String get main;
 
   /// No description provided for @noCitiesAdded.

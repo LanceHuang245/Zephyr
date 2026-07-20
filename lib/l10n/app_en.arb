@@ -8,7 +8,7 @@
   "temperatureUnit": "Temperature Unit",
   "cityManager": "City Manager",
   "cities": "cities",
-  "main": "Main",
+  "main": "Default",
   "noCitiesAdded": "No cities added",
   "deleteCityMessage": "Are you sure you want to delete \"{cityName}\"?",
   "@deleteCityMessage": {

@@ -8,7 +8,7 @@
   "temperatureUnit": "Unità di Temperatura",
   "cityManager": "Gestore Città",
   "cities": "città",
-  "main": "Principale",
+  "main": "Città predefinita",
   "noCitiesAdded": "Nessuna città aggiunta",
   "deleteCityMessage": "Sei sicuro di voler eliminare \"{cityName}\"?",
   "@deleteCityMessage": {

@@ -33,7 +33,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get cities => 'Villes';
 
   @override
-  String get main => 'Principal';
+  String get main => 'Ville par défaut';
 
   @override
   String get noCitiesAdded => 'Aucune ville ajoutée';

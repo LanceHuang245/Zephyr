@@ -33,7 +33,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get cities => 'Städte';
 
   @override
-  String get main => 'Hauptstadt';
+  String get main => 'Standardstadt';
 
   @override
   String get noCitiesAdded => 'Noch keine Städte hinzugefügt';

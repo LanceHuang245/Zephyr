@@ -8,7 +8,7 @@
   "temperatureUnit": "Temperatureinheit",
   "cityManager": "Städte verwalten",
   "cities": "Städte",
-  "main": "Hauptstadt",
+  "main": "Standardstadt",
   "noCitiesAdded": "Noch keine Städte hinzugefügt",
   "deleteCityMessage": "Möchten Sie \"{cityName}\" wirklich löschen?",
   "@deleteCityMessage": {

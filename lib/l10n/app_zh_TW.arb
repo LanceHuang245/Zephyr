@@ -62,7 +62,7 @@
   "locationNotRecognized": "無法識別當前位置",
   "locatingSuccess": "獲取位置信息成功，請稍後...",
   "cities": "个城市",
-  "main": "主城市",
+  "main": "預設城市",
   "airQuality": "空氣質量",
   "airQualityGood": "優",
   "airQualityModerate": "良",
