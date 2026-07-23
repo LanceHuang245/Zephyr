@@ -45,7 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
           prefs.getInt('custom_color') ?? Colors.blue.toARGB32();
       _customColor = Color(customColorValue);
 
-      _llmEnabled = aiConfig?.enabled ?? false;
+      _llmEnabled = aiConfig?.enabled ?? true;
 
       _loading = false;
     });

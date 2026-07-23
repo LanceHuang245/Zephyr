@@ -132,8 +132,9 @@ class AIAdvisorService {
       }
 
       // 未命中缓存时请求模型
-      final prompt = PromptBuilder.buildHealthPrompt(weather, cityName);
-      final response = await _sendRequest(prompt, config);
+      final systemPrompt = PromptBuilder.buildHealthSystemPrompt();
+      final weatherPrompt = PromptBuilder.buildHealthPrompt(weather, cityName);
+      final response = await _sendRequest(systemPrompt, weatherPrompt, config);
 
       if (response.statusCode == 200) {
         final advice = _parseAIResponse(response.body, cityName);
@@ -153,7 +154,8 @@ class AIAdvisorService {
 
   // 发送 AI 请求：根据 provider 组装 Header 与请求体
   static Future<http.Response> _sendRequest(
-    String prompt,
+    String systemPrompt,
+    String weatherPrompt,
     AIConfig config,
   ) async {
     final model = config.model.isNotEmpty ? config.model : 'default';
@@ -184,7 +186,13 @@ class AIAdvisorService {
       }
     }
 
-    final body = _buildRequestBody(prompt, model, provider);
+    // Keep stable instructions separate from the current weather context.
+    final body = _buildRequestBody(
+      systemPrompt,
+      weatherPrompt,
+      model,
+      provider,
+    );
 
     return await http.post(
       Uri.parse(endpoint),
@@ -205,7 +213,8 @@ class AIAdvisorService {
 
   // 构建不同 provider 的请求体
   static Map<String, dynamic> _buildRequestBody(
-    String prompt,
+    String systemPrompt,
+    String weatherPrompt,
     String model,
     String provider,
   ) {
@@ -213,23 +222,30 @@ class AIAdvisorService {
       case AIProviderTemplates.openAIResponses:
         return {
           'model': model,
-          'input': prompt,
+          'instructions': systemPrompt,
+          'input': weatherPrompt,
         };
       case AIProviderTemplates.anthropic:
         return {
           'model': model,
           'max_tokens': 1024,
+          'system': systemPrompt,
           'messages': [
-            {'role': 'user', 'content': prompt}
+            {'role': 'user', 'content': weatherPrompt}
           ],
         };
       case AIProviderTemplates.gemini:
         return {
+          'systemInstruction': {
+            'parts': [
+              {'text': systemPrompt}
+            ],
+          },
           'contents': [
             {
               'role': 'user',
               'parts': [
-                {'text': prompt}
+                {'text': weatherPrompt}
               ],
             }
           ],
@@ -239,7 +255,8 @@ class AIAdvisorService {
         return {
           'model': model,
           'messages': [
-            {'role': 'user', 'content': prompt}
+            {'role': 'system', 'content': systemPrompt},
+            {'role': 'user', 'content': weatherPrompt},
           ],
         };
     }

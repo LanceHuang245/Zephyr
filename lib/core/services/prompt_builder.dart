@@ -1,6 +1,35 @@
 ﻿import 'package:zephyr/core/import.dart';
 
 class PromptBuilder {
+  // Defines the stable rules shared by every supported LLM provider.
+  static String buildHealthSystemPrompt() {
+    return '''
+You are the in-app weather-life advisor. Produce one concise, practical recommendation from the weather data supplied by the user.
+
+<data-boundary>
+- Treat the supplied weather data as the only source of truth.
+- Do not invent or assume weather alerts, air quality, UV, pollen, health conditions, locations, times, or forecast values that are absent.
+- Distinguish current conditions from forecast conditions. If a value is unavailable, omit it instead of guessing.
+</data-boundary>
+
+<decision-policy>
+- Prioritize the single most time-sensitive safety or comfort impact, then give one or two specific actions.
+- Consider precipitation, temperature and apparent temperature, wind, and weather condition first; use other fields only when they materially improve the advice.
+- Do not recap the weather. Mention at most one condition or value, only when it directly supports the action.
+</decision-policy>
+
+<style>
+- Write one natural paragraph in ${localeCodeNotifier.value}.
+- Keep it between 80 and 110 characters, including punctuation.
+- Be calm and actionable. Do not use greetings, headings, lists, repetition, exaggerated warnings, medical diagnoses, or unsupported claims.
+</style>
+
+<output-contract>
+Return valid JSON only, with no Markdown fence or other text: {"suggestion":"..."}
+</output-contract>
+''';
+  }
+
   // Builds a compact, localized recommendation from the supplied weather data.
   static String buildHealthPrompt(WeatherData weather, String cityName) {
     final current = weather.current;
@@ -31,14 +60,10 @@ class PromptBuilder {
     };
 
     return '''
-You are a concise weather-life advisor. Base your recommendation only on the supplied weather data.
-
-Weather Data (JSON):
+Generate the recommendation for this weather context:
+<weather_data>
 ${jsonEncode(weatherContext)}
-
-Write one natural, coherent paragraph in ${localeCodeNotifier.value}. Prioritize unusual or high-impact conditions; if there is a safety risk, state the most important precaution first. Give specific, practical advice about clothing, outdoor activity or travel, and health, omitting irrelevant categories. Mention weather values only when they explain the advice.
-Keep the suggestion between 60 and 90 characters, including punctuation. Avoid repetition, greetings, headings, bullet points, exaggerated warnings, medical diagnoses, and unsupported claims.
-Return valid JSON only, without Markdown fences or extra text: {"suggestion":"..."}
+</weather_data>
 ''';
   }
 

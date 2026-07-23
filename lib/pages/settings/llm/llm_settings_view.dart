@@ -288,7 +288,7 @@ class _LLMSettingsPageState extends State<LLMSettingsPage> {
 
     // 获取之前的配置以保留enabled状态
     final existingConfig = await AIAdvisorService.getConfig();
-    final enabled = existingConfig?.enabled ?? false;
+    final enabled = existingConfig?.enabled ?? true;
 
     final newConfig = AIConfig(
       provider: provider.endpointType,
