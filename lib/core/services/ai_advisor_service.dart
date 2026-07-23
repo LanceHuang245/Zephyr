@@ -36,7 +36,10 @@ class AIAdvisorService {
   }
 
   // 基于关键天气字段生成签名，用于判断缓存是否可复用
-  static String _buildWeatherSignature(WeatherData weather) {
+  static String _buildWeatherSignature(
+    WeatherData weather,
+    List<WeatherWarning> warnings,
+  ) {
     final current = weather.current;
     final firstHour = weather.hourly.isNotEmpty ? weather.hourly.first : null;
     return [
@@ -47,6 +50,7 @@ class AIAdvisorService {
       current?.windSpeed ?? '',
       current?.weatherCode ?? '',
       firstHour?.precipitation ?? '',
+      jsonEncode(warnings.map((warning) => warning.toJson()).toList()),
     ].join('|');
   }
 
@@ -54,6 +58,7 @@ class AIAdvisorService {
   static Future<AIAdvice?> _getCachedAdvice(
     String cityName,
     WeatherData weather,
+    List<WeatherWarning> warnings,
   ) async {
     final prefs = await SharedPreferences.getInstance();
     final weatherSource = prefs.getString('weather_source') ?? 'OpenMeteo';
@@ -78,7 +83,7 @@ class AIAdvisorService {
         return null;
       }
 
-      if (weatherSig != _buildWeatherSignature(weather)) {
+      if (weatherSig != _buildWeatherSignature(weather, warnings)) {
         return null;
       }
 
@@ -93,6 +98,7 @@ class AIAdvisorService {
   static Future<bool> _cacheAdvice(
     String cityName,
     WeatherData weather,
+    List<WeatherWarning> warnings,
     AIAdvice advice,
   ) async {
     final prefs = await SharedPreferences.getInstance();
@@ -103,7 +109,7 @@ class AIAdvisorService {
       cacheKey,
       jsonEncode({
         'advice': advice.toJson(),
-        'weather_sig': _buildWeatherSignature(weather),
+        'weather_sig': _buildWeatherSignature(weather, warnings),
         'ts': DateTime.now().millisecondsSinceEpoch,
       }),
     );
@@ -111,9 +117,8 @@ class AIAdvisorService {
 
   // 获取 AI 建议：
   static Future<AIAdviceResponse> getAdvice(
-    WeatherData weather,
-    String cityName,
-  ) async {
+      WeatherData weather, String cityName,
+      [List<WeatherWarning> warnings = const []]) async {
     try {
       // 先校验配置状态
       final config = await getConfig();
@@ -126,21 +131,22 @@ class AIAdvisorService {
       }
 
       // 缓存命中直接返回
-      final cachedAdvice = await _getCachedAdvice(cityName, weather);
+      final cachedAdvice = await _getCachedAdvice(cityName, weather, warnings);
       if (cachedAdvice != null) {
         return AIAdviceResponse.success(cachedAdvice);
       }
 
       // 未命中缓存时请求模型
       final systemPrompt = PromptBuilder.buildHealthSystemPrompt();
-      final weatherPrompt = PromptBuilder.buildHealthPrompt(weather, cityName);
+      final weatherPrompt =
+          PromptBuilder.buildHealthPrompt(weather, cityName, warnings);
       final response = await _sendRequest(systemPrompt, weatherPrompt, config);
 
       if (response.statusCode == 200) {
         final advice = _parseAIResponse(response.body, cityName);
         if (advice != null) {
           // 请求成功后写回缓存
-          await _cacheAdvice(cityName, weather, advice);
+          await _cacheAdvice(cityName, weather, warnings, advice);
           return AIAdviceResponse.success(advice);
         }
         return AIAdviceResponse.error('Failed to parse AI response');

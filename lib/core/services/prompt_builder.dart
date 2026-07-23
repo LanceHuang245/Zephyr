@@ -10,10 +10,12 @@ You are the in-app weather-life advisor. Produce one concise, practical recommen
 - Treat the supplied weather data as the only source of truth.
 - Do not invent or assume weather alerts, air quality, UV, pollen, health conditions, locations, times, or forecast values that are absent.
 - Distinguish current conditions from forecast conditions. If a value is unavailable, omit it instead of guessing.
+- If weather warnings are present, use their status and timing as supplied; do not assume additional warnings.
 </data-boundary>
 
 <decision-policy>
 - Prioritize the single most time-sensitive safety or comfort impact, then give one or two specific actions.
+- If warnings are present, prioritize the most urgent active warning. Do not enumerate warnings or repeat their text.
 - Consider precipitation, temperature and apparent temperature, wind, and weather condition first; use other fields only when they materially improve the advice.
 - Do not recap the weather. Mention at most one condition or value, only when it directly supports the action.
 </decision-policy>
@@ -31,7 +33,11 @@ Return valid JSON only, with no Markdown fence or other text: {"suggestion":"...
   }
 
   // Builds a compact, localized recommendation from the supplied weather data.
-  static String buildHealthPrompt(WeatherData weather, String cityName) {
+  static String buildHealthPrompt(
+    WeatherData weather,
+    String cityName,
+    List<WeatherWarning> warnings,
+  ) {
     final current = weather.current;
     final today = weather.daily.isNotEmpty ? weather.daily.first : null;
     final now = DateTime.now();
@@ -57,6 +63,8 @@ Return valid JSON only, with no Markdown fence or other text: {"suggestion":"...
       if (today != null)
         'today': _compactWeatherJson(today.toJson(), today.weatherCode),
       if (upcomingHours.isNotEmpty) 'next_6_hours': upcomingHours,
+      if (warnings.isNotEmpty)
+        'warnings': warnings.map((warning) => warning.toJson()).toList(),
     };
 
     return '''

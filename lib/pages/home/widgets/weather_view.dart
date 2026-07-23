@@ -1,4 +1,6 @@
-﻿import 'package:intl/intl.dart';
+﻿import 'dart:convert';
+
+import 'package:intl/intl.dart';
 import 'package:zephyr/core/models/ai_advice.dart';
 import 'package:zephyr/core/models/ai_config.dart';
 import 'package:zephyr/core/services/ai_advisor_service.dart';
@@ -68,11 +70,14 @@ class _WeatherViewState extends State<WeatherView>
       return true;
     }
 
-    return _weatherSignature(oldWidget.weather) !=
-        _weatherSignature(widget.weather);
+    return _weatherSignature(oldWidget.weather, oldWidget.warnings) !=
+        _weatherSignature(widget.weather, widget.warnings);
   }
 
-  String _weatherSignature(WeatherData weather) {
+  String _weatherSignature(
+    WeatherData weather,
+    List<WeatherWarning> warnings,
+  ) {
     final current = weather.current;
     final firstHour = weather.hourly.isNotEmpty ? weather.hourly.first : null;
     return [
@@ -83,6 +88,7 @@ class _WeatherViewState extends State<WeatherView>
       current?.windSpeed ?? '',
       current?.weatherCode ?? '',
       firstHour?.precipitation ?? '',
+      jsonEncode(warnings.map((warning) => warning.toJson()).toList()),
     ].join('|');
   }
 
@@ -103,8 +109,11 @@ class _WeatherViewState extends State<WeatherView>
       return _AiAdviceLoadResult(config: config);
     }
 
-    final response =
-        await AIAdvisorService.getAdvice(widget.weather, widget.city.name);
+    final response = await AIAdvisorService.getAdvice(
+      widget.weather,
+      widget.city.name,
+      widget.warnings,
+    );
     return _AiAdviceLoadResult(config: config, adviceResponse: response);
   }
 
