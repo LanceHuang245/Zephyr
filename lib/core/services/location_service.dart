@@ -17,44 +17,34 @@ class LocationService {
     return await Geolocator.getCurrentPosition();
   }
 
-  static Future<City> getCityFromPosition(Position position) async {
+  static Future<City?> getCityFromPosition(Position position) async {
     try {
       final placemarks = await _geocoding.placemarkFromCoordinates(
         position.latitude,
         position.longitude,
       );
-      if (placemarks.isNotEmpty) {
-        final p = placemarks.first;
-        // Prefer the district-level placemark when the platform geocoder provides it.
-        final subLocality = p.subLocality?.trim();
-        return City(
-          name: (subLocality?.isNotEmpty == true
-                  ? subLocality
-                  : p.locality ?? p.name) ??
-              "${position.latitude.toStringAsFixed(4)},${position.longitude.toStringAsFixed(4)}",
-          admin: p.administrativeArea,
-          country: p.country ?? '',
-          lat: position.latitude,
-          lon: position.longitude,
-        );
-      }
+      if (placemarks.isEmpty) return null;
+
+      final p = placemarks.first;
+      // Use the best available place name; an empty result is a failed lookup.
+      final subLocality = p.subLocality?.trim();
+      final locality = p.locality?.trim();
+      final placeName = subLocality?.isNotEmpty == true
+          ? subLocality
+          : locality?.isNotEmpty == true
+              ? locality
+              : p.name?.trim();
+      if (placeName == null || placeName.isEmpty) return null;
+
       return City(
-        name:
-            "${position.latitude.toStringAsFixed(4)},${position.longitude.toStringAsFixed(4)}",
-        admin: null,
-        country: '',
+        name: placeName,
+        admin: p.administrativeArea,
+        country: p.country ?? '',
         lat: position.latitude,
         lon: position.longitude,
       );
-    } catch (e) {
-      return City(
-        name:
-            "${position.latitude.toStringAsFixed(4)},${position.longitude.toStringAsFixed(4)}",
-        admin: null,
-        country: '',
-        lat: position.latitude,
-        lon: position.longitude,
-      );
+    } catch (_) {
+      return null;
     }
   }
 }

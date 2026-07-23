@@ -231,8 +231,7 @@ class _HomePageState extends State<HomePage> {
       );
     }
     final city = await LocationService.getCityFromPosition(pos);
-    final prefs = await SharedPreferences.getInstance();
-    if (city.name.isEmpty) {
+    if (city == null) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       NotificationUtils.showSnackBar(
@@ -241,6 +240,7 @@ class _HomePageState extends State<HomePage> {
       );
       return;
     }
+    final prefs = await SharedPreferences.getInstance();
     final citiesStr = prefs.getString('cities');
     List<City> list = citiesStr != null ? City.listFromJson(citiesStr) : [];
     if (!list.any((c) => c.lat == city.lat && c.lon == city.lon)) {
